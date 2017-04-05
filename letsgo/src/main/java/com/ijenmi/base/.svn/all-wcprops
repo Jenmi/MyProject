@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/herp/!svn/ver/4459/trunk/HERP/src/main/java/com/hiseas/base
+END
+EntityDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/herp/!svn/ver/4458/trunk/HERP/src/main/java/com/hiseas/base/EntityDao.java
+END
+BaseRestSpringController.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/herp/!svn/ver/4198/trunk/HERP/src/main/java/com/hiseas/base/BaseRestSpringController.java
+END
+BaseManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/herp/!svn/ver/4458/trunk/HERP/src/main/java/com/hiseas/base/BaseManager.java
+END
+BaseSpringJdbcDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/herp/!svn/ver/4459/trunk/HERP/src/main/java/com/hiseas/base/BaseSpringJdbcDao.java
+END
+BaseReportManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/herp/!svn/ver/4198/trunk/HERP/src/main/java/com/hiseas/base/BaseReportManager.java
+END
+BaseQuery.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/herp/!svn/ver/4198/trunk/HERP/src/main/java/com/hiseas/base/BaseQuery.java
+END
+BaseEntity.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/herp/!svn/ver/4198/trunk/HERP/src/main/java/com/hiseas/base/BaseEntity.java
+END

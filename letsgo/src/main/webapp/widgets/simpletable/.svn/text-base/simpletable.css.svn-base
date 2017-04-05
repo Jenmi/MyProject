@@ -1,0 +1,111 @@
+.gridTable {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	width:100%;border:1px solid #c2c2c2
+}
+
+/** grid body */
+.gridBody {
+	border-right: 1px solid silver;
+	border-top: 1px solid silver;
+}
+.gridBody th {
+	border-left: 1px solid silver;
+	border-bottom: 1px solid silver;
+	vertical-align: middle;
+	background-color: #E5E5E5;
+	padding:0 10px 0 0;
+}
+.gridBody td {
+	border-left: 1px solid silver;
+	border-bottom: 1px solid silver;
+	color: black;
+}
+
+/** grid header sort */
+.gridBody th.sort {
+}
+.gridBody th.sort.desc {
+	background:#c5c5c5 url(images/sort_desc.gif) center right no-repeat
+}
+.gridBody th.sort.asc {
+	background:#c5c5c5 url(images/sort_asc.gif) center right no-repeat
+}
+
+/** mouse hove over sort header */
+.gridBody .tableHeaderSortHover {
+	background-color: #f5f5f5 !important;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/** gridBody row colors */
+.gridBody .odd {
+	background-color: #FFFFFF;
+}
+.gridBody .even {
+	background-color: #F8F8F8;
+}
+.gridBody .highlight {
+	background-color: #fdeccf !important;
+}
+
+/** grid toolbar */
+.gridToolbar .leftControls {
+}
+.gridToolbar .paginationControls .buttonLabel{
+	margin:0 0 0 12px
+}
+.gridToolbar .box div {
+	display:inline;
+	float:left;
+}
+.gridToolbar .box .paginationControls {
+	float:right;
+}
+.gridToolbar td{
+	background-color: #F4F4F4;
+}
+
+.grid .odd a, .grid .even a {
+	font-size: 12px;
+	color: 005C9C !important;
+}
+
+.grid{width:100%;border:1px solid #c2c2c2;}
+.grid .search{height:18px;line-height:18px;font-size:14px;}
+.grid .slt{border:1px solid #c2c2c2;background:#fff;}
+.grid tr{height:30px;}
+.grid tr.odd{background:#f1f1f1;}
+.grid tr.even{background:#F8F8F8;}
+.grid .highlight {background-color: #fdeccf !important;}
+.grid .page{background:#e9e9e9;}
+.grid .hd{border:1px solid #c2c2c2;}
+.grid th.sort.desc {background:#c5c5c5 url(images/sort_desc.gif) center right no-repeat}
+.grid th.sort.asc {background:#c5c5c5 url(images/sort_asc.gif) center right no-repeat}
+.grid th{background:#08c;border:1px solid #ffffff;color:#fff}
+.grid td{padding-left:10px;}
+/** grid header sort */
+.grid th.sort {
+}
+
+
+/** mouse hove over sort header */
+.grid .tableHeaderSortHover {
+	background-color: #f5f5f5 !important;
+	text-decoration: underline;
+	cursor: pointer;
+	color:#3B3B3B
+}
+
+	/*分页的样式*/
+.page{padding-right:10px;letter-spacing:3px; line-height:25px}
+.page a{border:#9aafe5 1px solid;color:#2e6ab1;padding:2px 4px 2px 6px;}
+.page a:hover,.listpage_Box a:active{border:#2b66a5 1px solid;color:#000;background:#cce9ee;}
+.page span{border:#929292 1px solid;color:#929292;padding:2px 4px 2px 6px;}
+.page span.current{
+	font-weight:700;
+	color:#fff;
+	background-image: url(../../images/page_blue.png);
+}

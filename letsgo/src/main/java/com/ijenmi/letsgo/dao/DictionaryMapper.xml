@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ijenmi.letsgo.dao.DictionaryMapper" >
+  <resultMap id="BaseResultMap" type="com.ijenmi.letsgo.model.Dictionary" >
+    <id column="dictionary_id" property="dictionaryId" jdbcType="INTEGER" />
+    <result column="dict_key" property="dictKey" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="value" property="value" jdbcType="SMALLINT" />
+    <result column="display_order" property="displayOrder" jdbcType="SMALLINT" />
+    <result column="valid" property="valid" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dictionary_id, dict_key, name, value, display_order, valid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dictionary
+    where dictionary_id = #{dictionaryId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dictionary
+    where dictionary_id = #{dictionaryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ijenmi.letsgo.model.Dictionary" >
+    insert into dictionary (dictionary_id, dict_key, name, 
+      value, display_order, valid
+      )
+    values (#{dictionaryId,jdbcType=INTEGER}, #{dictKey,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, 
+      #{value,jdbcType=SMALLINT}, #{displayOrder,jdbcType=SMALLINT}, #{valid,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ijenmi.letsgo.model.Dictionary" >
+    insert into dictionary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dictionaryId != null" >
+        dictionary_id,
+      </if>
+      <if test="dictKey != null" >
+        dict_key,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+      <if test="displayOrder != null" >
+        display_order,
+      </if>
+      <if test="valid != null" >
+        valid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dictionaryId != null" >
+        #{dictionaryId,jdbcType=INTEGER},
+      </if>
+      <if test="dictKey != null" >
+        #{dictKey,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=SMALLINT},
+      </if>
+      <if test="displayOrder != null" >
+        #{displayOrder,jdbcType=SMALLINT},
+      </if>
+      <if test="valid != null" >
+        #{valid,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ijenmi.letsgo.model.Dictionary" >
+    update dictionary
+    <set >
+      <if test="dictKey != null" >
+        dict_key = #{dictKey,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=SMALLINT},
+      </if>
+      <if test="displayOrder != null" >
+        display_order = #{displayOrder,jdbcType=SMALLINT},
+      </if>
+      <if test="valid != null" >
+        valid = #{valid,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where dictionary_id = #{dictionaryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ijenmi.letsgo.model.Dictionary" >
+    update dictionary
+    set dict_key = #{dictKey,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR},
+      value = #{value,jdbcType=SMALLINT},
+      display_order = #{displayOrder,jdbcType=SMALLINT},
+      valid = #{valid,jdbcType=SMALLINT}
+    where dictionary_id = #{dictionaryId,jdbcType=INTEGER}
+  </update>
+</mapper>

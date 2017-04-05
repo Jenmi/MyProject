@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ijenmi.letsgo.dao.PhotoMapper" >
+  <resultMap id="BaseResultMap" type="com.ijenmi.letsgo.model.Photo" >
+    <id column="photo_id" property="photoId" jdbcType="INTEGER" />
+    <result column="photo_path" property="photoPath" jdbcType="VARCHAR" />
+    <result column="photo_title" property="photoTitle" jdbcType="VARCHAR" />
+    <result column="photo_content" property="photoContent" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    photo_id, photo_path, photo_title, photo_content, create_date, is_delete, user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from photo
+    where photo_id = #{photoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from photo
+    where photo_id = #{photoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ijenmi.letsgo.model.Photo" >
+    insert into photo (photo_id, photo_path, photo_title, 
+      photo_content, create_date, is_delete, 
+      user_id)
+    values (#{photoId,jdbcType=INTEGER}, #{photoPath,jdbcType=VARCHAR}, #{photoTitle,jdbcType=VARCHAR}, 
+      #{photoContent,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=INTEGER}, 
+      #{userId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ijenmi.letsgo.model.Photo" >
+    insert into photo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="photoId != null" >
+        photo_id,
+      </if>
+      <if test="photoPath != null" >
+        photo_path,
+      </if>
+      <if test="photoTitle != null" >
+        photo_title,
+      </if>
+      <if test="photoContent != null" >
+        photo_content,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="photoId != null" >
+        #{photoId,jdbcType=INTEGER},
+      </if>
+      <if test="photoPath != null" >
+        #{photoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="photoTitle != null" >
+        #{photoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="photoContent != null" >
+        #{photoContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ijenmi.letsgo.model.Photo" >
+    update photo
+    <set >
+      <if test="photoPath != null" >
+        photo_path = #{photoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="photoTitle != null" >
+        photo_title = #{photoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="photoContent != null" >
+        photo_content = #{photoContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where photo_id = #{photoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ijenmi.letsgo.model.Photo" >
+    update photo
+    set photo_path = #{photoPath,jdbcType=VARCHAR},
+      photo_title = #{photoTitle,jdbcType=VARCHAR},
+      photo_content = #{photoContent,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER}
+    where photo_id = #{photoId,jdbcType=INTEGER}
+  </update>
+</mapper>

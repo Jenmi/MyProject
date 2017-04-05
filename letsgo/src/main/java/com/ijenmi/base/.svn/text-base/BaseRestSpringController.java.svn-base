@@ -1,0 +1,200 @@
+package com.hiseas.base;
+
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import org.apache.log4j.Logger;
+import org.springframework.ui.ModelMap;
+import org.springframework.util.Assert;
+import org.springframework.util.ReflectionUtils;
+import cn.org.commonframework.beanutils.BeanUtils;
+import cn.org.commonframework.page.Page;
+import cn.org.commonframework.page.PageRequest;
+
+import com.hiseas.framework.vo.UserInfo;
+import com.hiseas.util.ConvertRegisterHelper;
+import com.hiseas.util.MD5Util;
+import com.hiseas.util.PageRequestFactory;
+
+import static com.hiseas.common.CommonConstant.*;
+
+/**
+ * 标准的rest方法列表
+ * <pre>
+ * /userinfo                => index()  
+ * /userinfo/new            => _new()  注意: 不使用/userinfo/add => add()的原因是ad会被一些浏览器当做广告URL拦截
+ * /userinfo/{id}           => show()  
+ * /userinfo/{id}/edit      => edit()  
+ * /userinfo        POST    => create()  
+ * /userinfo/{id}   PUT     => update()  
+ * /userinfo/{id}   DELETE  => delete()  
+ * /userinfo        DELETE  => batchDelete()  
+ * </pre>
+ * 
+ * 
+ */
+public class BaseRestSpringController<Entity,PK> {
+	private static Logger logger = Logger.getLogger(BaseRestSpringController.class);
+    protected final static String CREATED_SUCCESS = "create.success";
+    protected final static String UPDATE_SUCCESS = "update.success";
+    protected final static String DELETE_SUCCESS = "delete.success";
+    
+    //允许上传的文件格式
+  	protected final String[] allowtype = new String[] { "doc","docx", "xls", "xlsx", "pdf",  
+  	            "ppt", "jpg", "jpeg", "gif", "bmp", "png", "txt", "html", "htm" };
+    
+    static {
+        //注册converters
+        ConvertRegisterHelper.registerConverters();
+    }
+    
+    public static void copyProperties(Object target,Object source) {
+        BeanUtils.copyProperties(target, source);
+    }
+
+    public static <T> T copyProperties(Class<T> destClass,Object orig) {
+        return BeanUtils.copyProperties(destClass, orig);
+    }
+    
+    public static ModelMap toModelMap(Page page,PageRequest pageRequest) {
+        return toModelMap("",page, pageRequest);
+    }
+    
+    public static ModelMap toModelMap(String tableId,Page page,PageRequest pageRequest) {
+        ModelMap model = new ModelMap();
+        saveIntoModelMap(tableId,page,pageRequest,model);
+        return model;
+    }
+    
+    protected UserInfo getSessionUser(HttpServletRequest request) {
+		return (UserInfo) request.getSession().getAttribute(USER_CONTEXT);
+	}
+    
+    protected void setSessionUser(HttpServletRequest request, UserInfo user) {
+		request.getSession().setAttribute(USER_CONTEXT, user);
+	}
+    /**
+     * 设置用户当前角色（已过时，请使用setSessionRoIds）
+     * @param request
+     * @param roleid
+     */
+    @Deprecated()
+    protected void setSessionRoId(HttpServletRequest request,Long roleid){
+    	request.getSession().setAttribute(AUTH_ROLEID, roleid);
+    }
+    /**
+     * 设置用户当前角色列表
+     * @param request
+     * @param roleid
+     */
+    protected void setSessionRoIds(HttpServletRequest request,List<Long> roleids){
+    	request.getSession().setAttribute(AUTH_ROLEIDS, roleids);
+    }
+    /**
+     * 取得用户当前角色（已过时，请使用getSessionRoIds）
+     * @param request
+     * @param roleid
+     */
+    protected Long getSessionRoId(HttpServletRequest request){
+    	return (Long) request.getSession().getAttribute(AUTH_ROLEID);
+    }
+    /**
+     * 取得用户当前角色列表
+     * @param request
+     * @param roleid
+     */
+    protected List<Long> getSessionRoIds(HttpServletRequest request){
+    	return (List<Long>) request.getSession().getAttribute(AUTH_ROLEIDS);
+    }
+    
+    /**
+     * 用于一个页面有多个extremeTable时使用
+     * @param tableId 等于extremeTable的tableId属性
+     */
+    public static void saveIntoModelMap(String tableId,Page page,PageRequest pageRequest,ModelMap model){
+        Assert.notNull(tableId,"tableId must be not null");
+        Assert.notNull(page,"page must be not null");
+        
+        model.addAttribute(tableId+"page", page);
+        model.addAttribute(tableId+"totalRows", new Integer(page.getTotalCount()));
+        model.addAttribute(tableId+"pageRequest", pageRequest);
+        model.addAttribute(tableId+"query", pageRequest);
+    }
+    
+    public static PageRequest bindPageRequest(HttpServletRequest request,PageRequest pageRequest,String defaultSortColumns){
+        return PageRequestFactory.bindPageRequest(pageRequest,request, defaultSortColumns);
+    }
+    
+    public static <T> T getOrCreateRequestAttribute(HttpServletRequest request, String key,Class<T> clazz) {
+        Object value = request.getAttribute(key);
+        if(value == null) {
+            try {
+                value = clazz.newInstance();
+            } catch (Exception e) {
+                ReflectionUtils.handleReflectionException(e);
+            }
+            request.setAttribute(key, value);
+        }
+        return (T)value;
+    }
+    /** 
+     * 验证登陆密码 
+     *   
+     * @param userName 
+     * @param password 
+     * @return 
+     * @throws UnsupportedEncodingException   
+     * @throws NoSuchAlgorithmException   
+     */ 
+    public static boolean loginValid(String pwdInDb,String password)    
+                throws NoSuchAlgorithmException, UnsupportedEncodingException{   
+        if(null!=pwdInDb){ // 该用户存在   
+                return MD5Util.validPassword(password, pwdInDb);   
+        }else{
+        	logger.error("不存在该用户！！！"); 
+            return false;
+        }   
+    } 
+    
+    /** 
+     * 对密码加密
+     *   
+     * @param password 加密前密码
+     */ 
+    public static String encryptPassword(String password){   
+        String encryptedPwd = null;   
+        try {   
+            encryptedPwd = MD5Util.getEncryptedPwd(password);   
+        } catch (NoSuchAlgorithmException e) {
+        	logger.error(e.getMessage());
+        } catch (UnsupportedEncodingException e) {   
+        	logger.error(e.getMessage());  
+        }   
+        return encryptedPwd;
+    }
+    /**
+     * 获得真实IP地址
+     * @param request
+     * @return
+     */
+    public String getIpAddr(HttpServletRequest request) { 
+        String ip = request.getHeader("x-forwarded-for"); 
+        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) { 
+            ip = request.getHeader("Proxy-Client-IP"); 
+        } 
+        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) { 
+            ip = request.getHeader("WL-Proxy-Client-IP"); 
+        } 
+        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) { 
+            ip = request.getRemoteAddr(); 
+        } 
+        return ip; 
+    } 
+    
+    public String getRealPath(HttpServletRequest request){
+    	return request.getSession().getServletContext().getRealPath("/");
+    }
+   
+}

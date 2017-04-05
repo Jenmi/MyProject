@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ijenmi.letsgo.dao.SayAtchRelevanceMapper" >
+  <resultMap id="BaseResultMap" type="com.ijenmi.letsgo.model.SayAtchRelevance" >
+    <id column="relevance_id" property="relevanceId" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="saysay_id" property="saysayId" jdbcType="INTEGER" />
+    <result column="atch_id" property="atchId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    relevance_id, is_delete, saysay_id, atch_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from say_atch_relevance
+    where relevance_id = #{relevanceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from say_atch_relevance
+    where relevance_id = #{relevanceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ijenmi.letsgo.model.SayAtchRelevance" >
+    insert into say_atch_relevance (relevance_id, is_delete, saysay_id, 
+      atch_id)
+    values (#{relevanceId,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, #{saysayId,jdbcType=INTEGER}, 
+      #{atchId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ijenmi.letsgo.model.SayAtchRelevance" >
+    insert into say_atch_relevance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="relevanceId != null" >
+        relevance_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="saysayId != null" >
+        saysay_id,
+      </if>
+      <if test="atchId != null" >
+        atch_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="relevanceId != null" >
+        #{relevanceId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="saysayId != null" >
+        #{saysayId,jdbcType=INTEGER},
+      </if>
+      <if test="atchId != null" >
+        #{atchId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ijenmi.letsgo.model.SayAtchRelevance" >
+    update say_atch_relevance
+    <set >
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="saysayId != null" >
+        saysay_id = #{saysayId,jdbcType=INTEGER},
+      </if>
+      <if test="atchId != null" >
+        atch_id = #{atchId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where relevance_id = #{relevanceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ijenmi.letsgo.model.SayAtchRelevance" >
+    update say_atch_relevance
+    set is_delete = #{isDelete,jdbcType=INTEGER},
+      saysay_id = #{saysayId,jdbcType=INTEGER},
+      atch_id = #{atchId,jdbcType=INTEGER}
+    where relevance_id = #{relevanceId,jdbcType=INTEGER}
+  </update>
+</mapper>

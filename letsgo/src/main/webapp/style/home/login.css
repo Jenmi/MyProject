@@ -1,0 +1,10 @@
+#loginBody{
+	background:url('../../images/home/pre-bg.png') no-repeat center center;
+}
+
+#eMsg{
+	color: red;margin: 5px 5px;position: absolute;margin-top:-20px;
+}
+#login{
+	padding:5px 0px;width:255px;background-color:#00a0ea;
+}

@@ -1,0 +1,200 @@
+package com.hiseas.framework.controller;
+
+import static com.hiseas.common.CommonConstant.AU_MENUP;
+import static com.hiseas.common.CommonConstant.AU_MENU_GROUP;
+import static com.hiseas.common.CommonConstant.MSG;
+import static com.hiseas.common.CommonConstant.USER_CONTEXT;
+
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+
+import com.hiseas.base.BaseRestSpringController;
+import com.hiseas.framework.vo.UserInfo;
+import com.hiseas.herp.model.Menu;
+import com.hiseas.herp.model.MenuGroup;
+import com.hiseas.herp.model.Staff;
+import com.hiseas.herp.service.MenuGroupManager;
+import com.hiseas.herp.service.MenuManager;
+import com.hiseas.herp.service.StaffManager;
+import com.hiseas.herp.vo.MenuBar;
+import com.hiseas.util.LanguageUtil;
+import com.hiseas.util.Utils;
+
+@Controller
+@RequestMapping("/")
+public class IndexController extends BaseRestSpringController<Staff,java.lang.Integer> {
+	private  Logger logger = Logger.getLogger(IndexController.class);
+	
+	@Autowired
+    private StaffManager staffManager;
+	
+	@Autowired
+	private MenuManager menuManager;
+	
+	@Autowired
+	private MenuGroupManager menuGroupManager;
+
+	@RequestMapping("/index")
+	public String index(ModelMap model,HttpServletRequest request,HttpServletResponse response) {
+		loadRoleIds(request);
+		//return "/index";
+		return "/home";
+	}
+	
+	/** 取得系统角色ID，保存在session中 */
+	private void loadRoleIds(HttpServletRequest request){
+//		request.getSession().setAttribute("sys_admin_role", ROLEID_SYS_ADMIN);
+//		request.getSession().setAttribute("sale_role", ROLEID_SALE);
+//		request.getSession().setAttribute("sale_manager_role", ROLEID_SALE_MANAGER);
+//		request.getSession().setAttribute("op_role", ROLEID_OP);
+//		request.getSession().setAttribute("op_manager_role", ROLEID_OP_MANAGER);
+//		request.getSession().setAttribute("purchase_role", ROLEID_PURCHASE);
+//		request.getSession().setAttribute("purchase_manager_role", ROLEID_PURCHASE_MANAGER);
+	}
+	
+	@RequestMapping("/left/{contentid}")
+	public String left(@PathVariable("contentid")String contentid,  ModelMap model,HttpServletRequest request,HttpServletResponse response) {
+//		UserInfo user = this.getSessionUser(request);
+//		List<AuthResourceGroup> itemgroup = authResourceGroupManager.findAuthResourceGroupList(user.getUid(),new Long(contentid));
+////		Long roleId = authMemberManager.getRoleId(new Long(contentid), user.getUid());
+////		setSessionRoId(request,roleId);
+//		List<Long> roleIds = authMemberManager.getRoleIds(new Long(contentid), user.getUid());
+//		setSessionRoIds(request,roleIds);
+//		//取产品权限
+//		List<CustmAuthResources> item = authResourcesManager.findResourcesByMemberAndContent(user.getUid(),new Long(contentid));
+//		request.getSession().setAttribute(AUTH_RESOURCES_GROUP, itemgroup);
+//		request.getSession().setAttribute(AUTH_RESOURCES, item);
+		return "/left";
+	}
+	@RequestMapping("/left")
+	public String left2(ModelMap model,HttpServletRequest request,HttpServletResponse response) {
+		
+		return "/left";
+	}
+	
+	@RequestMapping("/login")
+	public String input(ModelMap model,HttpServletRequest request,HttpServletResponse response) {
+		
+		return "/login";
+	}
+
+	@RequestMapping(method=RequestMethod.POST, value="/logindo")
+	public ModelAndView login(ModelMap model,UserInfo user,
+			BindingResult errors,
+			HttpServletRequest request,
+			HttpServletResponse response,
+			HttpSession session,
+			String code) 
+			throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		logger.info("用户请求登录： "+user.getLoginName());
+		ModelAndView view = new ModelAndView();
+		String serverValidateCode = (String)session.getAttribute("code");
+//		开发时老输入验证码太烦，先关闭以下代码 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+		if(code!=null){
+			if(!code.equalsIgnoreCase(serverValidateCode)){
+				view.addObject(MSG, "Please enter the correct verification code.");
+				view.setViewName("forward:/login");
+				logger.info("验证码错误： 服务器："+serverValidateCode +", 用户输入：" +code);
+				return view;
+			}
+		}else{
+			view.addObject(MSG, "Please enter the verification code.");
+			view.setViewName("forward:/login");
+			return view;
+		}
+//		↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+		try{
+			Staff staff = staffManager.getByLoginName(user.getLoginName());
+			if(loginValid(staff.getPassword(), user.getPwd())){
+				// 更新用户信息
+				staff.setLastLoginIp(getIpAddr(request));
+				staff.setLastLoginTime(new Date());
+				
+				staffManager.loginSuccess(staff);
+				user.setStaffId(staff.getStaffId());
+				setSessionUser(request, user);
+
+				// 获得菜单，登录用户有权限的菜单才传递给前台显示
+				List<MenuBar> menuBar = staffManager.getMenuBar(staff.getStaffId());
+				List<Menu> menu = new ArrayList<Menu>(); 
+				menuManager.MenuBarListToMenuList(menuBar, menu);
+				List<MenuGroup> menuGroup = menuGroupManager.getByMenuList( menu);
+				request.getSession().setAttribute(AU_MENUP, menuBar);
+				request.getSession().setAttribute(AU_MENU_GROUP, menuGroup);
+				// 根据情况再向前台传递资源列表
+				// request.getSession().setAttribute(AU_RESOURCE, item);
+
+				
+				//将登陆的初始化语言保存到会话中（默认是中文）
+				LanguageUtil.setLanguage(request, LanguageUtil.ZH_CN, true, false);
+				request.getSession().setAttribute("ln",LanguageUtil.ZH_CN);
+				Utils.setSession(request, SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME , LanguageUtil.getLocale(LanguageUtil.ZH_CN));
+				view.setViewName("redirect:/index");
+			}else{
+				view.addObject(MSG, "The user name or password is incorrect.");
+				view.setViewName("forward:/login");
+				logger.warn("密码错误： " +user.getLoginName()+", "+user.getPwd());
+			}
+		}catch(EmptyResultDataAccessException erdae){
+			view.addObject(MSG, "The user name is not exist.");
+			view.setViewName("forward:/login");
+			logger.warn("登录用户名不存在： " +user.getLoginName());
+		}catch(Exception e){
+			logger.error(e.getMessage());
+			logger.error(e.getStackTrace());
+			view.setViewName("forward:/commons/error");
+		}
+		return view;
+	}
+	
+	/**
+	 * 登出
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("/doLogout")
+	public ModelAndView logout(HttpSession session){
+		session.removeAttribute(USER_CONTEXT);
+		ModelAndView view = new ModelAndView();
+		view.setViewName("redirect:/login");
+		return view;
+	}
+	
+	/**
+	 * 设置访问语言
+	 */
+	@RequestMapping(value="/setLanguage")
+	@ResponseBody()
+	public String ajaxSetLanguage(HttpServletRequest request,HttpServletResponse response){
+		String language = request.getParameter("ln");
+		if(null == language || language.trim().equals("")){
+			language = LanguageUtil.ZH_CN;
+		}
+		request.getSession().setAttribute("ln",language);
+		String url = request.getHeader("referer");
+		LanguageUtil.setLanguage(request, language, true, false);
+		Utils.setSession(request, SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, LanguageUtil.getLocale(language));
+		return url;
+	}
+}

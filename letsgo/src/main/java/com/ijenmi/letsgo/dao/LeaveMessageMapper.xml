@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ijenmi.letsgo.dao.LeaveMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.ijenmi.letsgo.model.LeaveMessage" >
+    <id column="leave_id" property="leaveId" jdbcType="INTEGER" />
+    <result column="anonymous" property="anonymous" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    leave_id, anonymous, content, create_date, is_delete, user_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from leave_message
+    where leave_id = #{leaveId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from leave_message
+    where leave_id = #{leaveId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ijenmi.letsgo.model.LeaveMessage" >
+    insert into leave_message (leave_id, anonymous, content, 
+      create_date, is_delete, user_id
+      )
+    values (#{leaveId,jdbcType=INTEGER}, #{anonymous,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ijenmi.letsgo.model.LeaveMessage" >
+    insert into leave_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="leaveId != null" >
+        leave_id,
+      </if>
+      <if test="anonymous != null" >
+        anonymous,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="leaveId != null" >
+        #{leaveId,jdbcType=INTEGER},
+      </if>
+      <if test="anonymous != null" >
+        #{anonymous,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ijenmi.letsgo.model.LeaveMessage" >
+    update leave_message
+    <set >
+      <if test="anonymous != null" >
+        anonymous = #{anonymous,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where leave_id = #{leaveId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ijenmi.letsgo.model.LeaveMessage" >
+    update leave_message
+    set anonymous = #{anonymous,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER}
+    where leave_id = #{leaveId,jdbcType=INTEGER}
+  </update>
+</mapper>

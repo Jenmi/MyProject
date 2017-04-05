@@ -1,0 +1,91 @@
+package com.hiseas.framework.controller;
+
+import java.io.BufferedOutputStream;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.hiseas.herp.model.Atch;
+import com.hiseas.herp.service.AtchManager;
+import com.hiseas.util.PropertiesUtil;
+
+import static cn.org.commonframework.util.ObjectUtils.isEmpty;
+
+/**
+ * 文件下载
+ * @author Wilson
+ * @version 2.0
+ * @since 1.0
+ */
+@Controller
+public class DownloadController {
+	private Logger logger = Logger.getLogger(DownloadController.class);
+	@Autowired
+	AtchManager atchManager;  
+
+	
+	/**
+	 * 根据文件ID从document表中获得文件保存记录。如果记录不存在跳转到404页面
+	 * @param atchId
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+    @RequestMapping(value="/download/{atchId}/file")
+	public String download(@PathVariable Integer atchId,
+			HttpServletRequest request,
+			HttpServletResponse response)
+			throws Exception {
+		response.setContentType("text/html;charset=utf-8");
+        request.setCharacterEncoding("UTF-8");
+        
+        Atch atch = atchManager.getById(atchId);
+        
+        String orgFileName = atch.getOrgFileName();
+        String serverFilePathName = atch.getServerFilePathName();
+
+        java.io.BufferedInputStream bis = null;
+		java.io.BufferedOutputStream bos = null;
+		
+		File file;
+		try {
+			file = new File(serverFilePathName);
+			if(!file.isFile()){
+				return "redirect:/commons/404.jsp";//文件不存在
+			}
+			long fileLength = new File(serverFilePathName).length();
+			response.setContentType("application/x-msdownload;");
+			//response.setContentType("image;");inline
+			//response.setHeader("Content-disposition", "attachment; filename="+ new String(orgFileName.getBytes("utf-8"), "ISO8859-1"));
+			response.addHeader("Content-Disposition","attachment;filename=\""+ new String(orgFileName.getBytes("utf-8"), "ISO8859-1") +"\"");
+			response.setHeader("Content-Length", String.valueOf(fileLength));
+			bis = new BufferedInputStream(new FileInputStream(serverFilePathName));
+			bos = new BufferedOutputStream(response.getOutputStream());
+			byte[] buff = new byte[2048];
+			int bytesRead;
+			while (-1 != (bytesRead = bis.read(buff, 0, buff.length))) {
+				bos.write(buff, 0, bytesRead);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (bis != null)
+				bis.close();
+			if (bos != null)
+				bos.close();
+		}
+        
+		return null;
+		
+	}
+}

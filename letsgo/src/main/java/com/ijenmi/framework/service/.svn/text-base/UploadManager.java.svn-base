@@ -1,0 +1,473 @@
+/*
+ * Powered By [HiSeas]
+ * Web Site: http://www.hiseaseuro.com
+ * Since 2003 - 2015
+ */
+
+package com.hiseas.framework.service;
+
+import com.hiseas.herp.HerpException;
+import com.hiseas.herp.schedule.TaskSchedule;
+import com.hiseas.herp.service.AccountsReceivableManager;
+import com.hiseas.herp.service.AppendixManager;
+import com.hiseas.herp.service.GroupManager;
+import com.hiseas.herp.service.MonthlyTransferManager;
+import com.hiseas.herp.service.PaymentApplyManager;
+import com.hiseas.herp.service.RaReceivableAdjustmentManager;
+import com.hiseas.herp.service.RealIncomeAttchPrecollectionManager;
+import com.hiseas.herp.service.RealIncomeManagementManager;
+
+import static com.hiseas.common.CommonConstant.UPLOAD_PATH;
+import static com.hiseas.common.CommonConstant.USER_CONTEXT;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import cn.org.commonframework.page.Page;
+
+import com.hiseas.base.BaseManager;
+import com.hiseas.base.EntityDao;
+import com.hiseas.framework.controller.UploadController;
+import com.hiseas.framework.vo.UserInfo;
+import com.hiseas.herp.dao.AtchDao;
+import com.hiseas.herp.dao.GroupDocumentDao;
+import com.hiseas.herp.dao.PaymentApplyAtchDao;
+import com.hiseas.herp.model.Appendix;
+import com.hiseas.herp.model.Atch;
+import com.hiseas.herp.model.GroupDocument;
+import com.hiseas.herp.model.Menu;
+import com.hiseas.herp.model.PaymentApplyAtch;
+import com.hiseas.herp.model.RaAnnex;
+import com.hiseas.herp.model.RaReceivableAdjustment;
+import com.hiseas.herp.vo.query.AtchQuery;
+import com.hiseas.util.FileUtil;
+import com.hiseas.util.StringUtil;
+
+/**
+ * @author HiSeas it(a)hiseaseuro.com
+ * @version 2.0
+ * @since 1.0
+ */
+@Service
+@Transactional
+public class UploadManager extends BaseManager<Menu,java.lang.Integer>{
+	private static final Logger logger = Logger.getLogger(UploadController.class);
+	
+	@Autowired
+	GroupManager groupManager;
+	@Autowired
+	private PaymentApplyManager paymentApplyManager;
+	@Autowired
+	private PaymentApplyAtchDao paymentApplyAtchDao;
+	@Autowired
+	private AccountsReceivableManager accountsReceivableManager;
+	@Autowired
+	private AppendixManager appendixManager;
+	@Autowired
+	private RaReceivableAdjustmentManager raReceivableAdjustmentManager;
+	@Autowired
+	private RealIncomeManagementManager realIncomeManagementManager;
+	@Autowired
+	private RealIncomeAttchPrecollectionManager realIncomeAttchPrecollectionManager;
+	@Autowired
+	private AtchDao atchDao;
+	@Autowired
+	private MonthlyTransferManager monthlyTransferManager;
+	
+	
+	@Autowired
+	private GroupDocumentDao groupDocumentDao;
+	
+	public EntityDao getEntityDao() {
+		return this.atchDao;
+	}
+	
+	public EntityDao getHistoryEntityDao() {
+		return null;
+	}
+	
+	@Transactional(readOnly=true)
+	public Page findPage(AtchQuery query) {
+		return atchDao.findPage(query);
+	}
+	
+    ///TODO 请在后面添加你的业务代码
+	public Integer uploadCommonFile(InputStream inputStream, String originalFilename, HttpServletRequest request) throws IOException{
+		// 确定保存路径
+		// 获得项目绝对路径
+		String webPath = FileUtil.getWebPath(UploadManager.class);
+		String saveFolder = UPLOAD_PATH;
+		String serverSavePath = StringUtil.parseToPath(webPath + "/" + saveFolder);
+		String serverSaveFileName = FileUtil.getNameWithoutSuffix( originalFilename)+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);;
+		String serverSaveFilePath = StringUtil.parseToPath(serverSavePath + "/" + serverSaveFileName);
+		// 重复检查
+		if(FileUtil.isExistsFile(serverSaveFilePath))
+			serverSaveFilePath = FileUtil.getNameWithoutSuffix( serverSaveFilePath) + Long.toString(new Date().getTime()) + FileUtil.getSuffix(serverSaveFilePath);
+		logger.info("上传文件："+originalFilename+"  将被保存到：" +serverSavePath);
+		
+		// 创建保存路径
+		File file = new File(serverSavePath);
+		file.mkdirs();
+		
+		// 上传
+		FileUtil.saveFile(inputStream, serverSaveFilePath, 1024 * 4);
+		
+		// 创建附件实体
+		Atch atch = new Atch();
+		atch.setOrgFileName(originalFilename);
+		atch.setServerFilePathName(serverSaveFilePath);
+		atch.setUploadTime(new Date());
+		UserInfo userInfo = (UserInfo) request.getSession().getAttribute(USER_CONTEXT);
+		if(null == userInfo)
+			logger.error("User Session 丢失！！！");
+		else
+			atch.setUploadUserName(userInfo.getLoginName());
+		
+		atchDao.save(atch);
+		
+		return atch.getAtchId();
+	}
+	
+	
+	public Integer uploadGroupFile(InputStream inputStream, String originalFilename, HttpServletRequest request, Integer groupId,Integer routeId, Integer docType) throws IOException, HerpException{
+
+		String serverSavePath = groupManager.getDocumentPath(groupId);
+//		String serverSaveFileName = FileUtil.getNameWithoutSuffix( originalFilename)+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);
+		String serverSaveFileName = "GroupAtch"+"-"+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);;
+		String serverSaveFilePath = StringUtil.parseToPath(serverSavePath + "/" + serverSaveFileName);
+		
+		// 重复检查
+		if(FileUtil.isExistsFile(serverSaveFilePath))
+			serverSaveFilePath = FileUtil.getNameWithoutSuffix( serverSaveFilePath) + Long.toString(new Date().getTime()) + FileUtil.getSuffix(serverSaveFilePath);
+		logger.info("上传文件："+originalFilename+"  将被保存到：" +serverSavePath);
+		// 创建保存路径
+		File file = new File(serverSavePath);
+		file.mkdirs();
+		
+		// 上传
+		FileUtil.saveFile(inputStream, serverSaveFilePath, 1024 * 4);
+		
+		// 创建附件实体
+		Atch atch = new Atch();
+		atch.setOrgFileName(originalFilename);
+		atch.setServerFilePathName(serverSaveFilePath);
+		atch.setUploadTime(new Date());
+		UserInfo userInfo = (UserInfo) request.getSession().getAttribute(USER_CONTEXT);
+		atch.setUploadUserName(userInfo.getLoginName());
+		
+		atchDao.save(atch);
+		
+		// 创建团队文档关联
+		GroupDocument groupDocument = new GroupDocument();
+		groupDocument.setDocumentType(docType);
+		groupDocument.setGroupId(groupId);
+		// routeId == -1 表示这份资料不是某个行程的资料，而是整团的资料
+		if(!routeId.equals(-1))
+			groupDocument.setRouteId(routeId);
+		groupDocument.setAtchId(atch.getAtchId());
+		
+		groupDocumentDao.save(groupDocument);
+		return atch.getAtchId();
+	}
+	
+	/**
+	 * 上传请款附件
+	 * @param inputStream
+	 * @param originalFilename
+	 * @param request
+	 * @param applyId
+	 * @param docType
+	 * @return
+	 * @throws IOException
+	 * @throws HerpException
+	 */
+	public Integer uploadPaymentApplyFile(InputStream inputStream, String originalFilename, HttpServletRequest request, Integer applyId,Integer docType) throws IOException, HerpException{
+
+		String serverSavePath = paymentApplyManager.getApplyDocumentPath(applyId);
+//		String serverSaveFileName = FileUtil.getNameWithoutSuffix( originalFilename)+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);;
+		String serverSaveFileName = "PaymentApply"+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);;
+		String serverSaveFilePath = StringUtil.parseToPath(serverSavePath + "/" + serverSaveFileName);
+		
+		// 重复检查
+		if(FileUtil.isExistsFile(serverSaveFilePath))
+			serverSaveFilePath = FileUtil.getNameWithoutSuffix( serverSaveFilePath) + Long.toString(new Date().getTime()) + FileUtil.getSuffix(serverSaveFilePath);
+		logger.info("上传文件："+originalFilename+"  将被保存到：" +serverSavePath);
+		// 创建保存路径
+		File file = new File(serverSavePath);
+		file.mkdirs();
+		
+		// 上传
+		FileUtil.saveFile(inputStream, serverSaveFilePath, 1024 * 4);
+		
+		// 创建附件实体
+		Atch atch = new Atch();
+		atch.setOrgFileName(originalFilename);
+		atch.setServerFilePathName(serverSaveFilePath);
+		atch.setUploadTime(new Date());
+		UserInfo userInfo = (UserInfo) request.getSession().getAttribute(USER_CONTEXT);
+		atch.setUploadUserName(userInfo.getLoginName());
+		
+		atchDao.save(atch);
+		
+		// 创建请款附件关联
+		if(applyId!=0){
+			PaymentApplyAtch paymentApplyAtch = new PaymentApplyAtch();
+			paymentApplyAtch.setDocumentType(docType);
+			paymentApplyAtch.setApplyId(applyId);
+			paymentApplyAtch.setAtchId(atch.getAtchId());
+			
+			paymentApplyAtchDao.save(paymentApplyAtch);
+		}
+		
+		return atch.getAtchId();
+	}
+	
+	/**
+	 * 上传应收款凭证
+	 * @param inputStream
+	 * @param originalFilename
+	 * @param request
+	 * @param applyId
+	 * @param docType
+	 * @return
+	 * @throws IOException
+	 * @throws HerpException
+	 */
+	public Integer uploadReceivableFile(InputStream inputStream, String originalFilename, HttpServletRequest request, Integer arId) throws IOException, HerpException{
+
+		String serverSavePath = accountsReceivableManager.getReceivableDocumentPath(arId);
+//		String serverSaveFileName = FileUtil.getNameWithoutSuffix( originalFilename)+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);;
+		String serverSaveFileName = "Receivable"+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);;
+		String serverSaveFilePath = StringUtil.parseToPath(serverSavePath + "/" + serverSaveFileName);
+		
+		// 重复检查
+		if(FileUtil.isExistsFile(serverSaveFilePath))
+			serverSaveFilePath = FileUtil.getNameWithoutSuffix( serverSaveFilePath) + Long.toString(new Date().getTime()) + FileUtil.getSuffix(serverSaveFilePath);
+		logger.info("上传文件："+originalFilename+"  将被保存到：" +serverSavePath);
+		// 创建保存路径
+		File file = new File(serverSavePath);
+		file.mkdirs();
+		
+		// 上传
+		FileUtil.saveFile(inputStream, serverSaveFilePath, 1024 * 4);
+		
+		// 创建附件实体
+		Atch atch = new Atch();
+		atch.setOrgFileName(originalFilename);
+		atch.setServerFilePathName(serverSaveFilePath);
+		atch.setUploadTime(new Date());
+		UserInfo userInfo = (UserInfo) request.getSession().getAttribute(USER_CONTEXT);
+		atch.setUploadUserName(userInfo.getLoginName());
+		
+		atchDao.save(atch);
+		
+		// 创建应收附件关联
+		if(arId!=0){
+			Appendix appendix = new Appendix();
+			appendix.setArId(arId);
+			appendix.setAtchId(atch.getAtchId());
+			
+			appendixManager.saveOrUpdate(appendix, null);
+		}
+		
+		return atch.getAtchId();
+	}
+	
+	/**
+	 * 上传应收调整单凭证
+	 * @param inputStream
+	 * @param originalFilename
+	 * @param request
+	 * @param applyId
+	 * @param docType
+	 * @return
+	 * @throws IOException
+	 * @throws HerpException
+	 */
+	public Integer uploadReceivableAdFile(InputStream inputStream, String originalFilename, HttpServletRequest request, Integer arId) throws IOException, HerpException{
+
+		String serverSavePath = accountsReceivableManager.getReceivableDocumentPath(arId);
+//		String serverSaveFileName = FileUtil.getNameWithoutSuffix( originalFilename)+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);;
+		String serverSaveFileName = "Receivable"+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);;
+		String serverSaveFilePath = StringUtil.parseToPath(serverSavePath + "/" + serverSaveFileName);
+		
+		// 重复检查
+		if(FileUtil.isExistsFile(serverSaveFilePath))
+			serverSaveFilePath = FileUtil.getNameWithoutSuffix( serverSaveFilePath) + Long.toString(new Date().getTime()) + FileUtil.getSuffix(serverSaveFilePath);
+		logger.info("上传文件："+originalFilename+"  将被保存到：" +serverSavePath);
+		// 创建保存路径
+		File file = new File(serverSavePath);
+		file.mkdirs();
+		
+		// 上传
+		FileUtil.saveFile(inputStream, serverSaveFilePath, 1024 * 4);
+		
+		// 创建附件实体
+		Atch atch = new Atch();
+		atch.setOrgFileName(originalFilename);
+		atch.setServerFilePathName(serverSaveFilePath);
+		atch.setUploadTime(new Date());
+		UserInfo userInfo = (UserInfo) request.getSession().getAttribute(USER_CONTEXT);
+		atch.setUploadUserName(userInfo.getLoginName());
+		
+		atchDao.save(atch);
+		
+		
+		
+		return atch.getAtchId();
+	}
+	/**
+	 * 上传实收单凭证
+	 * @param inputStream
+	 * @param originalFilename
+	 * @param request
+	 * @param realInmaId
+	 * @return
+	 * @throws IOException
+	 * @throws HerpException
+	 */
+	public Integer uploadPaidFile(InputStream inputStream, String originalFilename, HttpServletRequest request, Integer realInmaId) throws IOException, HerpException{
+		String serverSavePath = realIncomeManagementManager.getRealIncomeDocumentPath(realInmaId);
+//		String serverSaveFileName = FileUtil.getNameWithoutSuffix( originalFilename)+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);;
+		String serverSaveFileName = "Paid"+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);
+		String serverSaveFilePath = StringUtil.parseToPath(serverSavePath + "/" + serverSaveFileName);
+		
+		// 重复检查
+		if(FileUtil.isExistsFile(serverSaveFilePath))
+			serverSaveFilePath = FileUtil.getNameWithoutSuffix( serverSaveFilePath) + Long.toString(new Date().getTime()) + FileUtil.getSuffix(serverSaveFilePath);
+		logger.info("上传文件："+originalFilename+"  将被保存到：" +serverSavePath);
+		// 创建保存路径
+		File file = new File(serverSavePath);
+		file.mkdirs();
+		// 上传
+		FileUtil.saveFile(inputStream, serverSaveFilePath, 1024 * 4);
+		// 创建附件实体
+		Atch atch = new Atch();
+		atch.setOrgFileName(originalFilename);
+		atch.setServerFilePathName(serverSaveFilePath);
+		atch.setUploadTime(new Date());
+		UserInfo userInfo = (UserInfo) request.getSession().getAttribute(USER_CONTEXT);
+		atch.setUploadUserName(userInfo.getLoginName());
+		atchDao.save(atch);
+		
+		return atch.getAtchId();
+	}
+	/**
+	 * 上传实收预付款凭证
+	 * @param inputStream
+	 * @param originalFilename
+	 * @param request
+	 * @param realInmaId
+	 * @return
+	 * @throws IOException
+	 * @throws HerpException
+	 */
+	public Integer uploadPaidPrecollectionFile(InputStream inputStream, String originalFilename, HttpServletRequest request, Integer realInmaId) throws IOException, HerpException{
+		String serverSavePath = realIncomeAttchPrecollectionManager.getRealIncomePrecollectionDocumentPath(realInmaId);
+//		String serverSaveFileName = FileUtil.getNameWithoutSuffix( originalFilename)+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);;
+		String serverSaveFileName = "PaidPrecollection"+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);;
+		String serverSaveFilePath = StringUtil.parseToPath(serverSavePath + "/" + serverSaveFileName);
+		
+		// 重复检查
+		if(FileUtil.isExistsFile(serverSaveFilePath))
+			serverSaveFilePath = FileUtil.getNameWithoutSuffix( serverSaveFilePath) + Long.toString(new Date().getTime()) + FileUtil.getSuffix(serverSaveFilePath);
+		logger.info("上传文件："+originalFilename+"  将被保存到：" +serverSavePath);
+		// 创建保存路径
+		File file = new File(serverSavePath);
+		file.mkdirs();
+		// 上传
+		FileUtil.saveFile(inputStream, serverSaveFilePath, 1024 * 4);
+		// 创建附件实体
+		Atch atch = new Atch();
+		atch.setOrgFileName(originalFilename);
+		atch.setServerFilePathName(serverSaveFilePath);
+		atch.setUploadTime(new Date());
+		UserInfo userInfo = (UserInfo) request.getSession().getAttribute(USER_CONTEXT);
+		atch.setUploadUserName(userInfo.getLoginName());
+		atchDao.save(atch);
+		
+		return atch.getAtchId();
+	}
+	
+	/**
+	 * 上传团队资料
+	 * @param inputStream
+	 * @param originalFilename
+	 * @param request
+	 * @param realInmaId
+	 * @return
+	 * @throws IOException
+	 * @throws HerpException
+	 */
+	public Integer uploadGroupFile(InputStream inputStream, String originalFilename, HttpServletRequest request, Integer realInmaId) throws IOException, HerpException{
+		String serverSavePath = realIncomeAttchPrecollectionManager.getRealIncomePrecollectionDocumentPath(realInmaId);
+//		String serverSaveFileName = FileUtil.getNameWithoutSuffix( originalFilename)+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);;
+		String serverSaveFileName = "GroupAtch"+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);
+		String serverSaveFilePath = StringUtil.parseToPath(serverSavePath + "/" + serverSaveFileName);
+		
+		// 重复检查
+		if(FileUtil.isExistsFile(serverSaveFilePath))
+			serverSaveFilePath = FileUtil.getNameWithoutSuffix( serverSaveFilePath) + Long.toString(new Date().getTime()) + FileUtil.getSuffix(serverSaveFilePath);
+		logger.info("上传文件："+originalFilename+"  将被保存到：" +serverSavePath);
+		// 创建保存路径
+		File file = new File(serverSavePath);
+		file.mkdirs();
+		// 上传
+		FileUtil.saveFile(inputStream, serverSaveFilePath, 1024 * 4);
+		// 创建附件实体【表】
+		Atch atch = new Atch();
+		atch.setOrgFileName(originalFilename);
+		atch.setServerFilePathName(serverSaveFilePath);
+		atch.setUploadTime(new Date());
+		UserInfo userInfo = (UserInfo) request.getSession().getAttribute(USER_CONTEXT);
+		atch.setUploadUserName(userInfo.getLoginName());
+		atchDao.save(atch);
+		return atch.getAtchId();
+	}
+	
+	/**
+	 * 月结转账附件上传
+	 * @param inputStream
+	 * @param originalFilename
+	 * @param request
+	 * @param id
+	 * @return
+	 * @throws IOException
+	 */
+	public Integer uploadMonthlyTransferFile(InputStream inputStream, String originalFilename,HttpServletRequest request, Integer id) throws IOException {
+		String serverSavePath = monthlyTransferManager.getMonthlyTransferFileDocumentPath(id);
+		String serverSaveFileName = "PaidPrecollection"+ Long.toString(new Date().getTime()) + FileUtil.getSuffix(originalFilename);;
+		String serverSaveFilePath = StringUtil.parseToPath(serverSavePath + "/" + serverSaveFileName);
+		// 重复检查
+		if(FileUtil.isExistsFile(serverSaveFilePath))
+			serverSaveFilePath = FileUtil.getNameWithoutSuffix( serverSaveFilePath) + Long.toString(new Date().getTime()) + FileUtil.getSuffix(serverSaveFilePath);
+		logger.info("上传文件："+originalFilename+"  将被保存到：" +serverSavePath);
+		// 创建保存路径
+		File file = new File(serverSavePath);
+		file.mkdirs();
+		// 上传
+		FileUtil.saveFile(inputStream, serverSaveFilePath, 1024 * 4);
+		// 创建附件实体
+		Atch atch = new Atch();
+		atch.setOrgFileName(originalFilename);
+		atch.setServerFilePathName(serverSaveFilePath);
+		atch.setUploadTime(new Date());
+		UserInfo userInfo = (UserInfo) request.getSession().getAttribute(USER_CONTEXT);
+		atch.setUploadUserName(userInfo.getLoginName());
+		atchDao.save(atch);
+		return atch.getAtchId();
+	}
+}

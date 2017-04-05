@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ijenmi.letsgo.dao.LeaveMessageCommentMapper" >
+  <resultMap id="BaseResultMap" type="com.ijenmi.letsgo.model.LeaveMessageComment" >
+    <id column="comment_id" property="commentId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="anonymous" property="anonymous" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="atch_id" property="atchId" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="leave_id" property="leaveId" jdbcType="INTEGER" />
+    <result column="best_up" property="bestUp" jdbcType="INTEGER" />
+    <result column="blong_up" property="blongUp" jdbcType="INTEGER" />
+    <result column="order_index" property="orderIndex" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    comment_id, user_id, anonymous, content, create_date, is_delete, atch_id, type, leave_id, 
+    best_up, blong_up, order_index
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from leave_message_comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from leave_message_comment
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ijenmi.letsgo.model.LeaveMessageComment" >
+    insert into leave_message_comment (comment_id, user_id, anonymous, 
+      content, create_date, is_delete, 
+      atch_id, type, leave_id, 
+      best_up, blong_up, order_index
+      )
+    values (#{commentId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{anonymous,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=INTEGER}, 
+      #{atchId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{leaveId,jdbcType=INTEGER}, 
+      #{bestUp,jdbcType=INTEGER}, #{blongUp,jdbcType=INTEGER}, #{orderIndex,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ijenmi.letsgo.model.LeaveMessageComment" >
+    insert into leave_message_comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        comment_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="anonymous != null" >
+        anonymous,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="atchId != null" >
+        atch_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="leaveId != null" >
+        leave_id,
+      </if>
+      <if test="bestUp != null" >
+        best_up,
+      </if>
+      <if test="blongUp != null" >
+        blong_up,
+      </if>
+      <if test="orderIndex != null" >
+        order_index,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="anonymous != null" >
+        #{anonymous,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="atchId != null" >
+        #{atchId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="leaveId != null" >
+        #{leaveId,jdbcType=INTEGER},
+      </if>
+      <if test="bestUp != null" >
+        #{bestUp,jdbcType=INTEGER},
+      </if>
+      <if test="blongUp != null" >
+        #{blongUp,jdbcType=INTEGER},
+      </if>
+      <if test="orderIndex != null" >
+        #{orderIndex,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ijenmi.letsgo.model.LeaveMessageComment" >
+    update leave_message_comment
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="anonymous != null" >
+        anonymous = #{anonymous,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="atchId != null" >
+        atch_id = #{atchId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="leaveId != null" >
+        leave_id = #{leaveId,jdbcType=INTEGER},
+      </if>
+      <if test="bestUp != null" >
+        best_up = #{bestUp,jdbcType=INTEGER},
+      </if>
+      <if test="blongUp != null" >
+        blong_up = #{blongUp,jdbcType=INTEGER},
+      </if>
+      <if test="orderIndex != null" >
+        order_index = #{orderIndex,jdbcType=INTEGER},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ijenmi.letsgo.model.LeaveMessageComment" >
+    update leave_message_comment
+    set user_id = #{userId,jdbcType=INTEGER},
+      anonymous = #{anonymous,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      atch_id = #{atchId,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      leave_id = #{leaveId,jdbcType=INTEGER},
+      best_up = #{bestUp,jdbcType=INTEGER},
+      blong_up = #{blongUp,jdbcType=INTEGER},
+      order_index = #{orderIndex,jdbcType=INTEGER}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+</mapper>

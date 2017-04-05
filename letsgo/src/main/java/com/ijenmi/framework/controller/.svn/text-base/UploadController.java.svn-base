@@ -1,0 +1,219 @@
+package com.hiseas.framework.controller;
+
+import java.io.InputStream;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.hiseas.framework.service.UploadManager;
+import com.hiseas.util.FileUtil;
+import com.hiseas.util.JsonUtil;
+
+/**
+ * 文件上传公用处理
+ * 
+ * @version 1.0
+ * @since 1.0
+ */
+
+@Controller
+@RequestMapping("/upload")
+public class UploadController {
+	private static final Logger logger = Logger.getLogger(UploadController.class);
+
+	@Autowired
+	private UploadManager uploadManager;
+
+	//	/**
+//	 * 通用文件上传处理
+//	 */
+//	@RequestMapping(method=RequestMethod.POST)
+//	@ResponseBody
+//	public String uploadFile(HttpServletResponse response,HttpServletRequest request,@RequestParam(value="file", required=false) MultipartFile file) 
+//			throws Exception {
+//		String fileName = file.getOriginalFilename();
+//		InputStream inputStream = file.getInputStream();
+//		String jsonResult = "jsonResult";
+//		logger.debug("upload: " + fileName);
+//		Map<String, String> fileInfo = FileUtil.uploadFile(inputStream, fileName,request);
+////
+////		fileInfo.put("fileSize", Long.toString(file.getSize()));
+////		
+////		String contentPath = request.getContextPath();
+////		contentPath = (null==contentPath || contentPath.trim().equals("")) ? "/" : contentPath;
+////		fileInfo.put("contextPath", contentPath);
+////		
+////		jsonResult = JsonUtil.object2Json(fileInfo);
+//		return jsonResult;
+//	}
+
+	/**
+	 * 通用文件上传处理
+	 */
+	@RequestMapping(method=RequestMethod.POST)
+	@ResponseBody
+	public Integer uploadFile(HttpServletResponse response,
+			                  HttpServletRequest request,
+			                  @RequestParam(value="file", required=false) MultipartFile file) throws Exception {
+		InputStream inputStream = file.getInputStream();
+		String originalFilename = file.getOriginalFilename();
+		logger.debug("upload: " + originalFilename);
+		Integer atchId = uploadManager.uploadCommonFile(inputStream, originalFilename,request);
+
+		return atchId;	
+	}
+	
+	/**
+	 * 团队资料上传处理
+	 * routeId，如果不是针对某个行程的资料，routeId 设为-1
+	 * docType，如果是数据字典中没有定义的资料，docType 设为-1，表示其他
+	 */
+	@RequestMapping(value="{groupId}/{routeId}/{docType}/groupdoc",method=RequestMethod.POST)
+	@ResponseBody
+	public Integer uploadGroupFile(@PathVariable Integer groupId, 
+			                       @PathVariable Integer routeId, 
+			                       @PathVariable Integer docType, 
+			                       HttpServletResponse response,
+			                       HttpServletRequest request,
+			                       @RequestParam(value="file", required=false) MultipartFile file) 
+			throws Exception {
+		InputStream inputStream = file.getInputStream();
+		String originalFilename = file.getOriginalFilename();
+		logger.debug("upload: " + originalFilename);
+		Integer atchId = uploadManager.uploadGroupFile(inputStream, originalFilename,request, groupId, routeId, docType);
+
+		return atchId;
+	}
+	
+	/**
+	 * 请款资料上传处理
+	 * docType，如果是数据字典中没有定义的资料，docType 设为-1，表示其他
+	 */
+	@RequestMapping(value="{applyId}/{docType}/applydoc",method=RequestMethod.POST)
+	@ResponseBody
+	public Integer uploadPaymentApplyFile(@PathVariable Integer applyId, 
+			                       @PathVariable Integer docType, 
+			                       HttpServletResponse response,
+			                       HttpServletRequest request,
+			                       @RequestParam(value="file", required=false) MultipartFile file) 
+			throws Exception {
+		InputStream inputStream = file.getInputStream();
+		String originalFilename = file.getOriginalFilename();
+		logger.debug("upload: " + originalFilename);
+		Integer atchId = uploadManager.uploadPaymentApplyFile(inputStream, originalFilename,request, applyId,docType);
+
+		return atchId;
+	}
+	
+	/**
+	 * 应收款凭证上传处理
+	 * docType，如果是数据字典中没有定义的资料，docType 设为-1，表示其他
+	 */
+	@RequestMapping(value="{arId}/receivable",method=RequestMethod.POST)
+	@ResponseBody
+	public Integer uploadReceivableFile(@PathVariable Integer arId,
+									HttpServletResponse response,
+			                       HttpServletRequest request,
+			                       @RequestParam(value="file", required=false) MultipartFile file) 
+			throws Exception {
+		InputStream inputStream = file.getInputStream();
+		String originalFilename = file.getOriginalFilename();
+		logger.debug("upload: " + originalFilename);
+		Integer atchId = uploadManager.uploadReceivableFile(inputStream, originalFilename,request,arId);
+
+		return atchId;
+	}
+	/**
+	 * 应收调整单凭证上传处理
+	 * docType，如果是数据字典中没有定义的资料，docType 设为-1，表示其他
+	 */
+	@RequestMapping(value="{arId}/receivableAd",method=RequestMethod.POST)
+	@ResponseBody
+	public Integer uploadReceivableAdFile(@PathVariable Integer arId,
+									HttpServletResponse response,
+			                       HttpServletRequest request,
+			                       @RequestParam(value="file", required=false) MultipartFile file) 
+			throws Exception {
+		InputStream inputStream = file.getInputStream();
+		String originalFilename = file.getOriginalFilename();
+		logger.debug("upload: " + originalFilename);
+		Integer atchId = uploadManager.uploadReceivableAdFile(inputStream, originalFilename,request,arId);
+
+		return atchId;
+	}
+
+	/**
+	 * 实收单凭证上传处理
+	 * @param realInmaId
+	 * @param response
+	 * @param request
+	 * @param file
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "{realInmaId}/paidFile", method = RequestMethod.POST)
+	@ResponseBody
+	public Integer uploadPaidFile(@PathVariable Integer realInmaId,
+			HttpServletResponse response, HttpServletRequest request,
+			@RequestParam(value = "file", required = false) MultipartFile file)
+			throws Exception {
+		InputStream inputStream = file.getInputStream();
+		String originalFilename = file.getOriginalFilename();
+		logger.debug("upload: " + originalFilename);
+		Integer atchId = uploadManager.uploadPaidFile(inputStream,originalFilename, request, realInmaId);
+		return atchId;
+	}
+	/**
+	 * 实收单预付款凭证上传处理
+	 * @param realInmaId
+	 * @param response
+	 * @param request
+	 * @param file
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "{realInmaId}/paidPreFile", method = RequestMethod.POST)
+	@ResponseBody
+	public Integer uploadPaidPrecollectionFile(@PathVariable Integer realInmaId,
+			HttpServletResponse response, HttpServletRequest request,
+			@RequestParam(value = "file", required = false) MultipartFile file)
+			throws Exception {
+		InputStream inputStream = file.getInputStream();
+		String originalFilename = file.getOriginalFilename();
+		logger.debug("upload: " + originalFilename);
+		Integer atchId = uploadManager.uploadPaidPrecollectionFile(inputStream,originalFilename, request, realInmaId);
+		return atchId;
+	}
+	/**
+	 * 月结转账附件上传
+	 * @param id
+	 * @param response
+	 * @param request
+	 * @param file
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "{id}/uploadMonthlyTransferFile", method = RequestMethod.POST)
+	@ResponseBody
+	public Integer uploadMonthlyTransferFile(@PathVariable Integer id,HttpServletResponse response, HttpServletRequest request,
+			@RequestParam(value = "file", required = false) MultipartFile file)
+			throws Exception {
+		InputStream inputStream = file.getInputStream();
+		String originalFilename = file.getOriginalFilename();
+		logger.debug("upload: " + originalFilename);
+		Integer atchId = uploadManager.uploadMonthlyTransferFile(inputStream,originalFilename, request, id);
+		return atchId;
+	}
+	
+}

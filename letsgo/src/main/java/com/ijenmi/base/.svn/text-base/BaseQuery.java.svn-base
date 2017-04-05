@@ -1,0 +1,20 @@
+package com.hiseas.base;
+
+import org.apache.log4j.Logger;
+
+import cn.org.commonframework.page.PageRequest;
+
+public class BaseQuery extends PageRequest implements java.io.Serializable {
+	private static final long serialVersionUID = -360860474471966681L;
+	private static Logger logger = Logger.getLogger(BaseQuery.class);
+	public static final int DEFAULT_PAGE_SIZE = 20;
+	
+    static {
+    	logger.info("DEFAULT_PAGE_SIZE="+DEFAULT_PAGE_SIZE);
+    }
+    
+	public BaseQuery() {
+		setPageSize(DEFAULT_PAGE_SIZE);
+	}
+	  
+}

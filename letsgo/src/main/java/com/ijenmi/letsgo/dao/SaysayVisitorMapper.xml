@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ijenmi.letsgo.dao.SaysayVisitorMapper" >
+  <resultMap id="BaseResultMap" type="com.ijenmi.letsgo.model.SaysayVisitor" >
+    <id column="visit_id" property="visitId" jdbcType="INTEGER" />
+    <result column="visit_ip" property="visitIp" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="login_id" property="loginId" jdbcType="INTEGER" />
+    <result column="operation" property="operation" jdbcType="INTEGER" />
+    <result column="saysay_id" property="saysayId" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    visit_id, visit_ip, login_name, login_id, operation, saysay_id, create_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from saysay_visitor
+    where visit_id = #{visitId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from saysay_visitor
+    where visit_id = #{visitId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ijenmi.letsgo.model.SaysayVisitor" >
+    insert into saysay_visitor (visit_id, visit_ip, login_name, 
+      login_id, operation, saysay_id, 
+      create_date)
+    values (#{visitId,jdbcType=INTEGER}, #{visitIp,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
+      #{loginId,jdbcType=INTEGER}, #{operation,jdbcType=INTEGER}, #{saysayId,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ijenmi.letsgo.model.SaysayVisitor" >
+    insert into saysay_visitor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="visitId != null" >
+        visit_id,
+      </if>
+      <if test="visitIp != null" >
+        visit_ip,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="loginId != null" >
+        login_id,
+      </if>
+      <if test="operation != null" >
+        operation,
+      </if>
+      <if test="saysayId != null" >
+        saysay_id,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="visitId != null" >
+        #{visitId,jdbcType=INTEGER},
+      </if>
+      <if test="visitIp != null" >
+        #{visitIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginId != null" >
+        #{loginId,jdbcType=INTEGER},
+      </if>
+      <if test="operation != null" >
+        #{operation,jdbcType=INTEGER},
+      </if>
+      <if test="saysayId != null" >
+        #{saysayId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ijenmi.letsgo.model.SaysayVisitor" >
+    update saysay_visitor
+    <set >
+      <if test="visitIp != null" >
+        visit_ip = #{visitIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginName != null" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginId != null" >
+        login_id = #{loginId,jdbcType=INTEGER},
+      </if>
+      <if test="operation != null" >
+        operation = #{operation,jdbcType=INTEGER},
+      </if>
+      <if test="saysayId != null" >
+        saysay_id = #{saysayId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where visit_id = #{visitId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ijenmi.letsgo.model.SaysayVisitor" >
+    update saysay_visitor
+    set visit_ip = #{visitIp,jdbcType=VARCHAR},
+      login_name = #{loginName,jdbcType=VARCHAR},
+      login_id = #{loginId,jdbcType=INTEGER},
+      operation = #{operation,jdbcType=INTEGER},
+      saysay_id = #{saysayId,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP}
+    where visit_id = #{visitId,jdbcType=INTEGER}
+  </update>
+  
+    <select id="selectByIp" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select 
+    	count(visit_Id)
+    from home_visitor
+    where 
+    	visit_ip = #{visitIp,jdbcType=VARCHAR} 
+    and create_date > curdate() and create_date &lt;= now();
+  </select>
+  
+</mapper>

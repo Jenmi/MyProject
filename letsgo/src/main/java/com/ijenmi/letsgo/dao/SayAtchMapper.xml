@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ijenmi.letsgo.dao.SayAtchMapper" >
+  <resultMap id="BaseResultMap" type="com.ijenmi.letsgo.model.SayAtch" >
+    <id column="atch_id" property="atchId" jdbcType="INTEGER" />
+    <result column="org_file_name" property="orgFileName" jdbcType="VARCHAR" />
+    <result column="server_file_path_name" property="serverFilePathName" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="upload_time" property="uploadTime" jdbcType="TIMESTAMP" />
+    <result column="upload_user_name" property="uploadUserName" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    atch_id, org_file_name, server_file_path_name, description, upload_time, upload_user_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from say_atch
+    where atch_id = #{atchId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from say_atch
+    where atch_id = #{atchId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ijenmi.letsgo.model.SayAtch" >
+    insert into say_atch (atch_id, org_file_name, server_file_path_name, 
+      description, upload_time, upload_user_name
+      )
+    values (#{atchId,jdbcType=INTEGER}, #{orgFileName,jdbcType=VARCHAR}, #{serverFilePathName,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{uploadTime,jdbcType=TIMESTAMP}, #{uploadUserName,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ijenmi.letsgo.model.SayAtch" >
+    insert into say_atch
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="atchId != null" >
+        atch_id,
+      </if>
+      <if test="orgFileName != null" >
+        org_file_name,
+      </if>
+      <if test="serverFilePathName != null" >
+        server_file_path_name,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="uploadTime != null" >
+        upload_time,
+      </if>
+      <if test="uploadUserName != null" >
+        upload_user_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="atchId != null" >
+        #{atchId,jdbcType=INTEGER},
+      </if>
+      <if test="orgFileName != null" >
+        #{orgFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="serverFilePathName != null" >
+        #{serverFilePathName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null" >
+        #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploadUserName != null" >
+        #{uploadUserName,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ijenmi.letsgo.model.SayAtch" >
+    update say_atch
+    <set >
+      <if test="orgFileName != null" >
+        org_file_name = #{orgFileName,jdbcType=VARCHAR},
+      </if>
+      <if test="serverFilePathName != null" >
+        server_file_path_name = #{serverFilePathName,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null" >
+        upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uploadUserName != null" >
+        upload_user_name = #{uploadUserName,jdbcType=CHAR},
+      </if>
+    </set>
+    where atch_id = #{atchId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ijenmi.letsgo.model.SayAtch" >
+    update say_atch
+    set org_file_name = #{orgFileName,jdbcType=VARCHAR},
+      server_file_path_name = #{serverFilePathName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      upload_user_name = #{uploadUserName,jdbcType=CHAR}
+    where atch_id = #{atchId,jdbcType=INTEGER}
+  </update>
+</mapper>

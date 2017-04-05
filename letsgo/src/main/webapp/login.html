@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head ></head>
+<script></script>
+<title>商家端登录</title>
+<style type="text/css">
+	/* .center{
+		position: absolute;
+		left: 40%;
+		top: 40%;
+		margin-left:-100px;
+		margin-top:-50px;
+	} */
+	a.c8:hover {
+	background:rgb(0, 160, 234);
+	filter:none;
+	}
+	.c8 ,.c8:hover{
+	border-color:rgb(0, 160, 234);
+	background:linear-gradient(to bottom,rgb(0, 160, 234) 0,rgb(0, 160, 234) 100%);
+	}
+	#eMsg {
+	display:none;
+	}
+</style>
+
+<body style="background:url('/pre-bg.png') no-repeat center center;/* background-size:100% 100% */">
+
+	<div class="easyui-panel center" style="width:305px;background: rgba(255,255,255,0.5);border-radius:16px" data-options="border:false">
+       	<form id="loginForm" method="post" th:action="@{/authentication}">
+	       	<div style="margin: 20px; font-size: 17px; text-align: center;margin-top:30px;color:#000"><span style="display:inline-block; font-size:18px;color:#000" >TRC</span>-商户端登陆</div>
+	       
+	        <div style="margin-bottom:15px;margin-left:25px;">
+	            <input class="easyui-textbox easyui-validatebox" id="j_username" name="j_username" placeholder="请输入您的账号" style="width:255px;height:40px;padding:12px" data-options="iconCls:'icon-man',iconAlign:'left',iconWidth:38,required:true,validateOnCreate:false,missingMessage:'用户名不能为空'" value="18380426135"/>
+	        </div>
+	        
+	        <div style="margin-bottom:30px;margin-left:25px;">
+	            <input class="easyui-textbox easyui-validatebox" id="j_password" name="j_password" type="password" placeholder="请输入您的密码" style="width:255px;height:40px;padding:12px" data-options="iconCls:'icon-lock',iconAlign:'left',iconWidth:38,required:true,validateOnCreate:false,missingMessage:'密码不能为空'" value="111111"/>
+	        </div>
+	        
+	         <!-- <div style="margin-bottom:20px;">
+	            <input type="checkbox" name="rmbUser" id="rmbUser" style="margin: 0px;zoom:0.9;vertical-align: middle;"/>
+	            <label style="vertical-align: middle;">记住我</label>
+	        </div>  -->
+	        
+	        <div style="margin-bottom: 60px;margin-left:25px;">
+	        	<p id="eMsg" style="color: red;margin: 5px 5px;position: absolute;margin-top:-20px;">用户名或密码错误</p>
+	            <a id="login" href="javascript:" class="easyui-linkbutton c8" style="padding:5px 0px;width:255px;background-color:#00a0ea;">
+	                <span style="font-size:20px;">登 陆</span>
+	            </a>
+	            
+	        	<span style="margin-top:10px ;color:#000">*如无法登陆，请联系TRC管理员</span>
+	        </div>
+	    </form>
+    </div>	`
+</body>
+
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+	$(function(){
+		$('body').css('height',$(window).height());
+		$('.center').css({'marginTop':($(window).height()-$('.center').height())*0.5,'marginLeft':($(window).width()-$('.center').width())*0.5,'position':'absolute'})
+		
+		//错误信息
+		var eFlag = window.location.href.split("?").length > 1;
+		if(eFlag){
+			$("#eMsg").show();
+			$.cookie("rmbUserTrc", "false", {expires : -1});
+			$.cookie("userName", '', {expires : -1});
+			$.cookie("passWord", '', {expires : -1});
+		}
+		
+		$("#login").click(function(){
+			var form = $("#loginForm");
+			$("#j_username").textbox({required:true});
+			$("#j_password").textbox({required:true});
+			if(form.form("validate")){
+				/* saveUserInfo();  */
+				form.submit();
+			}
+		});
+		
+		/* if ($.cookie("rmbUserTrc") == "true") {
+			$("#rmbUser").attr("checked", true);
+			$("#j_username").textbox("setText",$.cookie("userName"));
+			$("#j_password").textbox("setText",$.cookie("passWord"));
+		} */
+	});
+	
+	/* function saveUserInfo() {
+		if (document.getElementById("rmbUser").checked == true) {
+			var userName = $("#j_username").val();
+			var passWord = $("#j_password").val();
+			$.cookie("rmbUserTrc", "true", {expires : 7}); // 存储一个带7天期限的 cookie
+			$.cookie("userName", userName, {expires : 7}); // 存储一个带7天期限的 cookie
+			$.cookie("passWord", passWord, {expires : 7}); // 存储一个带7天期限的 cookie
+		} else {
+			$.cookie("rmbUserTrc", "false", {expires : -1});
+			$.cookie("userName", '', {expires : -1});
+			$.cookie("passWord", '', {expires : -1});
+		}
+	} */
+/*]]>*/
+</script>
+</html>

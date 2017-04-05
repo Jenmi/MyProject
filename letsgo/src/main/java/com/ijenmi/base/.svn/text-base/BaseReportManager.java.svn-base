@@ -1,0 +1,26 @@
+package com.hiseas.base;
+
+
+import org.springframework.dao.DataAccessException;
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional
+public abstract class BaseReportManager <E>{
+
+	/**
+	 * 
+	 * @param id document表中的ID
+	 * @return
+	 * @throws DataAccessException
+	 */
+	public abstract E loadReport(Integer id);
+
+	public abstract void printReport(E report,String url);
+	
+	public void printCount(Integer id) {
+		///TODO 更改资料的打印记录
+		
+	}
+	
+	
+}

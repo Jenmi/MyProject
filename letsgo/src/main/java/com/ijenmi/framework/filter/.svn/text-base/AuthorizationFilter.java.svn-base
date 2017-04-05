@@ -1,0 +1,255 @@
+/*
+ * Powered By [Hiseas]
+ * Web Site: http://www.hiseaseuro.com
+ * Since 2008 - 2015
+ */
+package com.hiseas.framework.filter;
+
+import static cn.org.commonframework.util.ObjectUtils.isNotEmpty;
+
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.MDC;
+import org.apache.log4j.Logger;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import cn.org.commonframework.util.holder.ApplicationContextHolder;
+
+import com.hiseas.common.CommonConstant;
+import com.hiseas.framework.vo.UserInfo;
+import com.hiseas.herp.service.ResourceManager;
+import com.hiseas.herp.service.StaffManager;
+
+/**
+ * 权限控制器
+ * 
+ * @author Wilson
+ * @version 1.1
+ * @since 1.0
+ */
+public class AuthorizationFilter extends OncePerRequestFilter {
+	private Logger logger = Logger.getLogger(AuthorizationFilter.class);
+	
+	private static DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ");
+//	private static boolean debug = false;
+	private static final String DEFAULT_EXECUDE_EXTENTIONS = "js,css,bmp,png,gif,jpg,xls,doc,png";
+	// 排除前缀
+	private String[] excludePrefixes = new String[0];
+	// 排除后缀
+	private Set<String> excludeExtentions = new HashSet<String>();
+
+	@Override
+	protected void initFilterBean() throws ServletException {
+
+		initParameter(getFilterConfig());
+	}
+
+	@Override
+	protected void doFilterInternal(HttpServletRequest request,
+			HttpServletResponse response, FilterChain chain)
+			throws ServletException, IOException {
+		
+		
+		try {
+			// log日志
+			MDC.put("loginUserId", "登录用户名：");
+			
+			MDC.put("loginName", this.getLoginUser(request)==null?"":this.getLoginUser(request).getLoginName());
+			
+			MDC.put("req.requestURI",
+					StringUtils.defaultString(request.getRequestURI()));
+			MDC.put("req.queryString",
+					StringUtils.defaultString(request.getQueryString()));
+			MDC.put("req.requestURIWithQueryString",
+					request.getRequestURI()
+							+ (request.getQueryString() == null ? "" : "?"
+									+ request.getQueryString()));
+			MDC.put("req.remoteAddr",StringUtils.defaultString(request.getRemoteAddr()));
+
+			// 为每一个请求创建一个ID，方便查找日志时可以根据ID查找出一个http请求所有相关日志
+			MDC.put("req.id",StringUtils.remove(UUID.randomUUID().toString(), "-"));
+
+			String url = request.getRequestURI();
+
+			// 替换contextPath
+			url = StringUtils.replaceOnce(url, request.getContextPath(), "");
+
+			// 将'/+' 替换成 '/'
+			url = url.replaceAll("[/]+", "/");
+
+			// 该资源是否能访问
+			boolean result = verifyAuthentication(url, request);
+			if (!result) {
+				// 获得上一页面来源
+				String referer = request.getHeader("Referer");
+
+				UserInfo userDetails = getLoginUser(request);
+				if (isNotEmpty(referer) && userDetails != null) {
+					request.setAttribute("referer", referer);
+				} else {
+					request.setAttribute("referer", null);
+				}
+
+				// Redirect
+				RequestDispatcher rd = getServletContext()
+						.getRequestDispatcher("/commons/authorizationError.jsp");
+				rd.forward(request, response);
+				return;
+			}
+			chain.doFilter(request, response);
+
+		} finally {
+			cleanMDC();
+		}
+
+	}
+
+	private void initParameter(FilterConfig filterConfig) {
+	//	debug = getBooleanParameter(filterConfig, "debug", false);
+		String excludeExtentionsString = getStringParameter(filterConfig, "excludeExtentions", DEFAULT_EXECUDE_EXTENTIONS);
+		excludeExtentions = new HashSet<String>((Arrays.asList(excludeExtentionsString.split(","))));
+
+		String excludePrefixsString = getStringParameter(filterConfig,"excludePrefixes", null);
+		if (org.springframework.util.StringUtils.hasText(excludePrefixsString)) {
+			excludePrefixes = excludePrefixsString.split(",");
+		}
+		logger.info("excludeExtentions=["+ excludeExtentionsString + "]");
+		logger.info("excludePrefixes=["+ excludePrefixsString + "]");
+	}
+	
+	/**
+	 * 是否为排除请求。排除请求不受权限过滤器限制
+	 */
+	@SuppressWarnings("deprecation")
+	protected boolean shouldNotFilter(HttpServletRequest request)
+			throws ServletException {
+		String url = request.getRequestURI();
+		url = url.replace(request.getContextPath(), "");
+		url = url.replaceAll("[/]+", "/");
+		boolean result = excludeURL(url);
+
+		if (result) {
+			logger.info( "exclude request: " + url);
+		}
+		return result;
+	}
+
+	/**
+	 * 判断url是否是排除URL（不受权限过滤器限制的url）
+	 * @param url
+	 * @return
+	 */
+	protected boolean excludeURL(String url) {
+		if (url.equals("/") 
+				|| url.equals("/index.jsp")
+				|| url.equals("/index.htm")
+				|| url.equals("/index.html")) {
+			return true;
+		}
+
+		for (String excludePrefix : excludePrefixes) {
+			if (url.startsWith(excludePrefix)) {
+				return true;
+			}
+		}
+
+		String extension = org.springframework.util.StringUtils
+				.getFilenameExtension(url);
+		if (isNotEmpty(extension) && excludeExtentions.contains(extension)) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * 验证权限
+	 * 
+	 * @param url
+	 * @param request
+	 * @return 返回true为用户拥有该权限
+	 */
+	@SuppressWarnings("deprecation")
+	private boolean verifyAuthentication(String url, HttpServletRequest request) {
+
+		ResourceManager resourceManager =  (ResourceManager) ApplicationContextHolder.getBean("resourceManager");
+		StaffManager staffManager = (StaffManager) ApplicationContextHolder.getBean("staffManager");
+		UserInfo userInfo = getLoginUser(request);
+		boolean result = true;
+
+		// 是否公共页面{用户未登录可访问，或不需要权限就可以访问的页面}
+		boolean isPublicResources = resourceManager.isPublicResources(url);
+		if(!isPublicResources){
+			// 超时
+			if(null == userInfo)
+				return false;
+			
+			//用户是否有权限
+			result = staffManager.hasPermission(userInfo.getStaffId(),url);
+		}
+		
+		// 如果没有权限
+		if (!result) {
+			logger.info("用户["+userInfo.getLoginName()+"]正在尝试请求没有权限的页面: "+url);
+		}
+		return result;
+	}
+
+	/**
+	 * 获得登录用户
+	 * 
+	 * @param request
+	 * @param loginName
+	 * @return
+	 */
+	private UserInfo getLoginUser(HttpServletRequest request) {
+		UserInfo currentUser = null;
+		// 取得登录用户信息
+		currentUser = CommonConstant.getSessionUser(request);
+		return currentUser;
+	}
+	
+	private Long getRoleId(HttpServletRequest request){
+		return CommonConstant.getSessionRoleId(request);
+	}
+	
+	private List<Long> getRoleIds(HttpServletRequest request){
+		return CommonConstant.getSessionRoleIds(request);
+	}
+	
+	private boolean getBooleanParameter(FilterConfig filterConfig, String name,	boolean defaultValue) {
+		String value = getStringParameter(filterConfig, name, String.valueOf(defaultValue));
+		return Boolean.parseBoolean(value);
+	}
+
+	private String getStringParameter(FilterConfig filterConfig, String name,String defaultValue) {
+		String value = filterConfig.getInitParameter(name);
+		if (value == null || "".equals(value.trim())) {
+			return defaultValue;
+		}
+		return value;
+	}
+
+	private void cleanMDC() {
+		Map map = MDC.getContext();
+		if (map != null) {
+			map.clear();
+		}
+	}
+}
