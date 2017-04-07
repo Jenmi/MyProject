@@ -42,11 +42,11 @@
 			<bean class="com.ijenmi.interceptor.SharedRenderVariableInterceptor"/>
 		</property>
 	</bean> -->
-	<mvc:interceptors> 
-	    <mvc:interceptor>  
+	 <!-- <mvc:interceptor>  
         	<mvc:mapping path="/**"/>  
 			<bean class="com.ijenmi.interceptor.LoginInterceptor" />  
-		</mvc:interceptor>
+		</mvc:interceptor> -->
+	<mvc:interceptors> 
 		<mvc:interceptor>  
         	<mvc:mapping path="/**"/>  
 			<bean class="com.ijenmi.interceptor.SharedRenderVariableInterceptor" />  
@@ -63,7 +63,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
     
-    <mvc:resources mapping="/" location="/"></mvc:resources>
+   <!--  <mvc:resources mapping="/" location="/"></mvc:resources> -->
     <mvc:resources mapping="/scripts/**" location="/scripts/"></mvc:resources>
     <mvc:resources mapping="/images/**" location="/images/"></mvc:resources>
     <mvc:resources mapping="/style/**" location="/style/"></mvc:resources>

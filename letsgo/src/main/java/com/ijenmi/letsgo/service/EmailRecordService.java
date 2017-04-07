@@ -93,7 +93,7 @@ public class EmailRecordService {
 		}*/
 		try {
 			simpleMailMessage.setText(record.getEamilContent());
-			simpleMailMessage.setTo("1462105019@qq.com");//ijenmi@foxmail.com
+			simpleMailMessage.setTo("ijenmi@foxmail.com");//
 			simpleMailMessage.setSubject(record.getEmailTitle());
 			mailSender.send(simpleMailMessage);
 		}catch (Exception e) {

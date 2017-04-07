@@ -10,19 +10,19 @@
 							<div class="col-md-6">
 								<div class="row control-group">
 									<div class="form-group col-xs-12 controls">
-										<input class="form-control" name="emailName" placeholder="Name" id="name" required="" data-validation-required-message="Please enter your name." type="text">
+										<input class="form-control" name="emailName" placeholder="Name" id="emailName" required="" data-validation-required-message="Please enter your name." type="text">
 										<p class="help-block"></p>
 									</div>
 								</div>
 								<div class="row control-group">
 									<div class="form-group col-xs-12 controls">
-										<input class="form-control" name="emailAddress" placeholder="Email Address" id="email" required="" data-validation-required-message="Please enter your email address." type="email">
+										<input class="form-control" name="emailAddress" placeholder="Email Address" id="emailAddress" required="" data-validation-required-message="Please enter your email address." type="email">
 										<p class="help-block"></p>
 									</div>
 								</div>
 								<div class="row control-group">
 									<div class="form-group col-xs-12  controls">
-										<input class="form-control" name="emailPhone" placeholder="Phone Number" id="phone" required="" data-validation-required-message="Please enter your phone number." type="tel">
+										<input class="form-control" name="emailPhone" placeholder="Phone Number" id="emailPhone" required="" data-validation-required-message="Please enter your phone number." type="tel">
 										<p class="help-block"></p>
 									</div>
 								</div>
@@ -30,7 +30,7 @@
 							<div class="col-md-6">
 								<div class="row control-group">
 									<div class="form-group col-xs-12 controls">
-										<textarea rows="7" name="eamilContent" class="form-control" placeholder="Message" id="message" required="" data-validation-required-message="Please enter a message."></textarea>
+										<textarea rows="7" name="eamilContent" class="form-control" placeholder="Message" id="eamilContent" required="" data-validation-required-message="Please enter a message."></textarea>
 										<p class="help-block"></p>
 									</div>
 								</div>
@@ -38,7 +38,7 @@
 						</div>
 						<div class="row">
 							<div class="form-group col-xs-12">
-								<button type="submit" onclick="contactSub()" class="btn btn-primary">Send Message</button>
+								<button type="button" onclick="contactSub()" class="btn btn-primary">Send Message</button>
 							</div>
 						</div>
 					</form>

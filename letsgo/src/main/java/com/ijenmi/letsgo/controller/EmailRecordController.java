@@ -46,6 +46,7 @@ public class EmailRecordController {
 	}
 	
 	@RequestMapping(value="/send")
+	@ResponseBody
 	public String sendEmail(EmailRecord emailRecord,HttpServletRequest request, HttpServletResponse response){
 		String err = emailRecordService.validEmail(emailRecord);
 		if(!"".equals(emailRecordService.validEmail(emailRecord))){

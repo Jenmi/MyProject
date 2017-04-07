@@ -72,7 +72,7 @@
 				<ul>
 					<!-- SLIDE  -->
 					<li data-transition="fade" data-slotamount="1" data-masterspeed="1500" data-thumb="" data-delay="13000"  data-saveperformance="off"  data-title="Our Workplace">
-						<img src="images/slider/1/1.jpg"   alt="kenburns1"  data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center">
+						<img src="${ctx }/images/slider/1/1.jpg"   alt="kenburns1"  data-bgposition="left center" data-kenburns="on" data-duration="14000" data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130" data-bgpositionend="right center">
 						<div class="tp-caption customin customout tp-resizeme"
 							data-x="left" data-hoffset="60"
 							data-y="170"
@@ -123,7 +123,7 @@
 					<!-- SLIDE  -->
 					<li data-transition="fade" data-slotamount="7" data-masterspeed="2000" data-saveperformance="on"  data-title="Ken Burns Slide">
 						<!-- MAIN IMAGE -->
-						<img src="images/dummy.png" tppabs="http://ckthemes.com/html/maxima/maxima/images/dummy.png"  alt="2" data-lazyload="images/slider/1/2.jpg" data-bgposition="right top" data-kenburns="on" data-duration="12000" data-ease="Power0.easeInOut" data-bgfit="115" data-bgfitend="100" data-bgpositionend="center bottom">
+						<img src="${ctx }/images/dummy.png"  alt="2" data-lazyload="${ctx }/images/slider/1/2.jpg" data-bgposition="right top" data-kenburns="on" data-duration="12000" data-ease="Power0.easeInOut" data-bgfit="115" data-bgfitend="100" data-bgpositionend="center bottom">
 						<!-- LAYERS -->
 						<!-- LAYER NR. 1 -->
 						<div class="tp-caption small_text lft tp-resizeme rs-parallaxlevel-0"
@@ -276,7 +276,7 @@
 	</div>
 
 	<div class="clearfix"></div>
-	<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
+	<div class="copyrights">Collect from <a href="javascript:" >企业网站模板</a></div>
 	<div class="padding80 border-top">
 		<div class="container" id="2">
 			<div class="col-md-8 col-md-offset-2 text-center space50">
@@ -737,17 +737,18 @@
 <script src="<c:url value='/js/gmaps/greyscale.js'/>"></script>
 <script type="text/javascript">
 	function contactSub(){
-		//var emailTitle = $("#emailTitle").val;
-		var eamilContent = $("#eamilContent").val
-		var emailName = $("#emailName").val
-		var emailAddress = $("#emailAddress").val
-		var emailPhone = $("#emailPhone").val
-		/* $.post("${ctx }/email/send",{'emailTitle':emailTitle,'eamilContent':emailContent,'emailName':emailName,'emailAddress':emailAddress,'emailPhone':emailPhone},
+		//var emailTitle = $("#emailTitle").val();
+		var eamilContent = $("#eamilContent").val();
+		var emailName = $("#emailName").val();
+		var emailAddress = $("#emailAddress").val();
+		var emailPhone = $("#emailPhone").val();
+		//emailTitle:emailTitle,
+		/* */ $.post("${ctx }/email/send",{eamilContent:eamilContent,emailName:emailName,emailAddress:emailAddress,emailPhone:emailPhone},
 		function(data){
 			if(data!=""){
 				alert(data);
 			}
-		}); */
+		});
 	}
 </script>
 

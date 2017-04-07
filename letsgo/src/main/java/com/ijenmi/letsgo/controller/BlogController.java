@@ -85,7 +85,9 @@ public class BlogController extends BaseController{
 	}
 	@RequestMapping(value="/doadd",method=RequestMethod.POST)
 	public String doAdd(ModelMap model, Blog blog, HttpServletRequest request, HttpServletResponse response){
+		UserInfo user= UserAndAuthorityUtil.getSessionUser(request);
 		blog.setCreateDate(new Date());
+		blog.setUserId(user.getStaffId());
 		 StringBuffer sb = new StringBuffer();
 		 if(blog.getContent()!=null){
 			 int length = blog.getContent().length();
@@ -100,7 +102,7 @@ public class BlogController extends BaseController{
 		 }
 		boolean status = blogService.doAdd(blog);
 		this.getMsg(status, "对不起，添加失败！");
-		return "/letsgo/blog/blog-add";
+		return "forward:/blog";
 	}
 	
 	@RequestMapping(value="/editlist")
