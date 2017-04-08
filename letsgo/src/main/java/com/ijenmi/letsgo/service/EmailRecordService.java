@@ -98,6 +98,7 @@ public class EmailRecordService {
 			mailSender.send(simpleMailMessage);
 		}catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			return "消息发送失败！";
 		}
 		return "";

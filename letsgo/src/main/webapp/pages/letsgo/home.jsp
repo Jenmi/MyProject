@@ -83,8 +83,8 @@
 							data-easing="Back.easeInOut"
 							data-endspeed="300"
 							style="font-size:80px;color:#fff;text-transform:uppercase;font-weight: 800 !important;letter-spacing: 0px;line-height: 120% !important;"
-							>Creative <br>
-							Clean Design
+							>Creative <br> 
+							 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;miracles
 						</div>
 						<div class="tp-caption light_title customin customout tp-resizeme"
 							data-x="left" data-hoffset="60"
@@ -96,8 +96,8 @@
 							data-easing="Back.easeInOut"
 							data-endspeed="300" 
 							style="font-size:18px;color:#fff;"
-							>Your website should look great across all devices, no matter how big <br>
-							or small. Take control of your contentâ€™s presentation.
+							>I can because i think i can.<br>
+								 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Believe in yourself.
 						</div>
 						<!-- <a href="#" class="tp-caption small_title  customin customout tp-resizeme"
 							data-x="left" data-hoffset="60"
@@ -281,7 +281,7 @@
 		<div class="container" id="2">
 			<div class="col-md-8 col-md-offset-2 text-center space50">
 				<h2>励志格言</h2>
-				<p>Sed dapibus, leo ut placerat bibendum, ligula ligula consectetur eros, sed efficitur justo ex ut risus. Integer nec eros non elit finibus dictum quis sit amet augue.</p>
+				<p>志向是天才的幼苗，经过热爱劳动的双手培育，在肥田沃土里将成长为粗壮的大树。不热爱劳动，不进行自我教育，志向这棵幼苗也会连根枯死。确定个人志向，选好专业，这是幸福的源泉。</p>
 			</div>
 		</div></div>
 	<div class="pattern-grey">
@@ -291,28 +291,28 @@
 					<div class="stats1-info">
 						<a href="${ctx }/blog"><i class="icon-trophy"></i></a>
 						<p><span class="count count1">187</span></p>
-						<h2>Competitions</h2>
+						<h2>博客</h2>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="stats1-info">
 						<a href="javascript:"><i class="icon-lock"></i></a>
 						<p><span class="count count1">123</span></p>
-						<h2>New Members</h2>
+						<h2>说说</h2>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="stats1-info">
 						<a href="${ctx }/photo"><i class=" icon-camera"></i></a>
 						<p><span class="count count1">499</span></p>
-						<h2>Photos Taken</h2>
+						<h2>照片</h2>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="stats1-info">
 						<a href="javascript:"><i class="icon-telescope"></i></a>
 						<p><span class="count count1">923</span></p>
-						<h2>Job Openings</h2>
+						<h2>随笔</h2>
 					</div>
 				</div>
 
@@ -324,46 +324,91 @@
 		<div class="container home-blog" id="5">
 			<div class="text-center space40">
 				<h2 class="title uppercase">我的博客</h2>
-				<p>Sed laoreet libero eget tempus blandit praesent eu erat sed sem facilisis rutrum metus<br>facilisis eros justo non ipsum aliquam lacinia non eu ex.</p>
+				<p>记录生活的点点滴滴，让生活更加充实。让博客记录岁月的消磨，过往不流逝</p>
 			</div>
 			<div class="row">
 				<div class="col-md-4">
 					<div class="hb-info">
-						<div class="hb-thumb">
+						<div class="hb-thumb" title="经典博客">
 							<img src="<c:url value='/images/blog/1.jpg'/>" class="img-responsive" alt="经典博客"/>
 							<div class="date-meta">
 								<fmt:formatDate  value="${blog.createDate }" pattern="yyyy"/><span><fmt:formatDate  value="${blog.createDate }" pattern="MM"/></span><fmt:formatDate  value="${blog.createDate}" pattern="dd"/>
 							</div>
 						</div>
-						<h4><a href="${ctx}/blog/${blog.blogId}/show" target="_blank">${blog.title}-Climb the mountain</a></h4>
-						<p>${blog.contentVice}Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque volutpat mi tellus, euismod viverra dolor ultrices sit amet.</p>
-						<a href="${ctx}/blog/${blog.blogId}/show" target="_blank" class="readmore">Read more...</a>
+						<h4>
+							<c:choose>
+								<c:when test="${not empty blog.title}"><a href="${ctx}/blog/${blog.blogId}/show" target="_blank">${blog.title}</a></c:when>
+								<c:otherwise>
+									<a href="${ctx}/blog" target="_blank"> ——经典博客</a>
+								</c:otherwise>
+							</c:choose>
+						</h4>
+						<c:choose>
+								<c:when test="${not empty blog.title}">
+									<p>${blog.contentVice}</p>
+									<a href="${ctx}/blog/${blog.blogId}/show" target="_blank" class="readmore">Read more...</a>
+								</c:when>
+								<c:otherwise>
+									<p>世上最快乐的事，莫过于为理想而奋斗。 —— 苏格拉底</p>
+									<a href="${ctx}/blog" target="_blank" class="readmore">Read more...</a>
+								</c:otherwise>
+							</c:choose>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="hb-info">
-						<div class="hb-thumb">
+						<div class="hb-thumb" title="生活博客">
 							<img src="<c:url value='/images/blog/3.jpg'/>" class="img-responsive" alt="生活博客"/>
 							<div class="date-meta">
 								<fmt:formatDate  value="${liveBlog.createDate }" pattern="yyyy"/><span><fmt:formatDate  value="${liveBlog.createDate }" pattern="MM"/></span><fmt:formatDate  value="${liveBlog.createDate}" pattern="dd"/>
 							</div>
 						</div>
-						<h4><a href="${ctx}/blog/${liveBlog.blogId}/show" target="_blank">${liveBlog.title}-Girl showing stats</a></h4>
-						<p>${liveBlog.contentVice}Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque volutpat mi tellus, euismod viverra dolor ultrices sit amet.</p>
-						<a href="${ctx}/blog/${liveBlog.blogId}/show" target="_blank" class="readmore">Read more...</a>
+						<h4>
+							<c:choose>
+								<c:when test="${not empty blog.title}"><a href="${ctx}/blog/${liveBlog.blogId}/show" target="_blank">-${blog.title}</a></c:when>
+								<c:otherwise>
+									<a href="${ctx}/blog" target="_blank"> ——生活博客</a>
+								</c:otherwise>
+							</c:choose>
+						</h4>
+						<c:choose>
+								<c:when test="${not empty liveBlog.title}">
+									<p>${liveBlog.contentVice}</p>
+									<a href="${ctx}/blog/${liveBlog.blogId}/show" target="_blank" class="readmore">Read more...</a>
+								</c:when>
+								<c:otherwise>
+									<p>每个人都必须按自己心灵的良心来生活，但不是按任何理想。使良心屈从于信条，或理念，或传统，甚至是内在冲动，那是我们的堕落。 —— 劳伦斯</p>
+									<a href="${ctx}/blog" target="_blank" class="readmore">Read more...</a>
+								</c:otherwise>
+							</c:choose>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="hb-info">
-						<div class="hb-thumb">
+						<div class="hb-thumb" title="工作博客">
 							<img src="<c:url value='/images/blog/2.jpg'/>" class="img-responsive" alt="项目博客"/>
 							<div class="date-meta">
 								<fmt:formatDate  value="${proBlog.createDate }" pattern="yyyy"/><span><fmt:formatDate  value="${proBlog.createDate }" pattern="MM"/></span><fmt:formatDate  value="${proBlog.createDate}" pattern="dd"/>
 							</div>
 						</div>
-						<h4><a href="${ctx}/blog/${proBlog.blogId}/show" target="_blank">${proBlog.title }--A photographers heart</a></h4>
-						<p>${proBlog.contentVice }---Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque volutpat mi tellus, euismod viverra dolor ultrices sit amet.</p>
-						<a href="${ctx}/blog/${proBlog.blogId}/show" target="_blank" class="readmore">Read more...</a>
+						<h4>
+							<c:choose>
+								<c:when test="${not empty blog.title}"><a href="${ctx}/blog/${proBlog.blogId}/show" target="_blank">-${blog.title}</a></c:when>
+								<c:otherwise>
+									<a href="${ctx}/blog" target="_blank"> ——项目博客</a>
+								</c:otherwise>
+							</c:choose>
+						</h4>
+						<c:choose>
+								<c:when test="${not empty proBlog.title}">
+									<p>${proBlog.contentVice}</p>
+									<a href="${ctx}/blog/${proBlog.blogId}/show" target="_blank" class="readmore">Read more...</a>
+								</c:when>
+								<c:otherwise>
+									<p>在当前现实的狭隘基础上，有高尚理想，全面的计划；在一步一步行动上，想到远大前途，脚踏实地地稳步前进，才能有所成就。 —— 徐特立</p>
+									<a href="${ctx}/blog" target="_blank" class="readmore">Read more...</a>
+								</c:otherwise>
+							</c:choose>
 					</div>
 				</div>
 			</div>
@@ -379,7 +424,7 @@
 					<h3 class="uppercase text-center">我的图片</h3>
 				</div>
 				<ul class="filter" data-option-key="filter">
-					<li><a class="selected" href="#filter" data-option-value="*">All</a></li>
+					<li><a class="selected" href="#filter" data-option-value="*">全部</a></li>
 					<li><a href="#" data-option-value=".branding">Branding</a></li>
 					<li><a href="#" data-option-value=".illustration">Illustration</a></li>
 					<li><a href="#" data-option-value=".web-design">Web Design</a></li>
@@ -475,7 +520,7 @@
 		<div class="container padding80">
 			<div class="col-md-8 col-md-offset-2 text-center space50" id="1">
 				<h2 class="uppercase">What we do?</h2>
-				<p>我是一名软件开发工程师，目前主流开发于java /Lorem ipsum dolor sit amet, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>
+				<p>我是一名软件开发工程师，目前主流开发于Java Web，开发一些企业级web项目</p>
 			</div>
 			<div class="container">
 				<div class="section-info ">
@@ -487,15 +532,16 @@
 								<div class="panel-heading">
 									<h4 class="panel-title">
 										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne1">
-											Lorem ipsum dolor sit amet consectetur adipiscing elit
+											Java EE
 											<span class="fa fa-plus"></span>
 										</a>
 									</h4>
 								</div>
 								<div id="collapseOne1" class="panel-collapse collapse">
 									<div class="panel-body">
-										<p>Etiam cursus pellentesque neque, eget ullamcorper augue eleifend a. In sit amet pulvinar purus. Ut in nibh tortor. Nullam quis magna sed nunc facilisis blandit vel at erat. Donec blandit et nulla sed lacinia. Quisque ullamcorper tincidunt ante, ut feugiat felis consectetur ut.</p>
-									</div>
+										<p>Java是一门面向对象编程语言,Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程.
+										Java可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统应用程序等</p>
+										</div>
 								</div>
 							</div>
 							<div class="clearfix space10"></div>
@@ -503,14 +549,36 @@
 								<div class="panel-heading">
 									<h4 class="panel-title">
 										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo1">
-											Curabitur et diam vitae dolor aliquet et in massa
+											HTML/CSS
 											<span class="fa fa-plus"></span>
 										</a>
 									</h4>
 								</div>
 								<div id="collapseTwo1" class="panel-collapse collapse">
 									<div class="panel-body">
-										<p>Nam ullamcorper imperdiet luctus. Vestibulum tincidunt malesuada mi, in posuere augue cursus nec. Morbi et vehicula risus, fermentum lacinia justo. Etiam tellus arcu, eleifend tristique enim rutrum iaculis risus, id tincidunt dui fringilla sed bibendum lorem.</p>
+										<p>
+											HTML是网页内容的载体。内容就是网页制作者放在页面上想要让用户浏览的信息，可以包含文字、图片、视频等。
+												CSS样式是表现。就像网页的外衣。比如，标题字体、颜色变化，或为标题加入背景图片、边框等。所有这些用来改变内容外观的东西称之为表现。
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">
+										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive1">
+											Javascript/JQuery
+											<span class="fa fa-plus"></span>
+										</a>
+									</h4>
+								</div>
+								<div id="collapseFive1" class="panel-collapse collapse">
+									<div class="panel-body">
+										<p>
+											javascript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型
+											 是可插入 HTML 页面的编程代码。插入 HTML 页面后，可由所有的现代浏览器执行。
+											 jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（或JavaScript框架）
+										</p>
 									</div>
 								</div>
 							</div>
@@ -519,14 +587,14 @@
 								<div class="panel-heading">
 									<h4 class="panel-title">
 										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree1">
-											Proin faucibus sem sed dapibus dapibus
+											MySql
 											<span class="fa fa-plus"></span>
 										</a>
 									</h4>
 								</div>
 								<div id="collapseThree1" class="panel-collapse collapse">
 									<div class="panel-body">
-										<p>Etiam cursus pellentesque neque, eget ullamcorper augue eleifend a. In sit amet pulvinar purus. Ut in nibh tortor. Nullam quis magna sed nunc facilisis blandit vel at erat. Donec blandit et nulla sed lacinia. Quisque ullamcorper tincidunt ante, ut feugiat felis consectetur ut.</p>
+										<p>MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下产品。MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面，MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件。</p>
 									</div>
 								</div>
 							</div>
@@ -535,14 +603,14 @@
 								<div class="panel-heading">
 									<h4 class="panel-title">
 										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour1">
-											Lorem ipsum dolor sit amet consectetur adipiscing elit
+											Maven
 											<span class="fa fa-plus"></span>
 										</a>
 									</h4>
 								</div>
 								<div id="collapseFour1" class="panel-collapse collapse">
 									<div class="panel-body">
-										<p>Etiam cursus pellentesque neque, eget ullamcorper augue eleifend a. In sit amet pulvinar purus. Ut in nibh tortor. Nullam quis magna sed nunc facilisis blandit vel at erat. Donec blandit et nulla sed lacinia. Quisque ullamcorper tincidunt ante, ut feugiat felis consectetur ut.</p>
+										<p>Maven项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具</p>
 									</div>
 								</div>
 							</div>
@@ -565,15 +633,21 @@
 								</div>
 							</div>
 							<div class="b-progress-bar" data-capacity="100" data-value="78">
-								<div class="progress-label">Graphic Design - 78%</div>
+								<div class="progress-label">Javascript/Jquery - 78%</div>
 								<div class="progress-scale">
 									<div style="width: 78%;" class="progress-line m-3"></div>
+								</div>
+							</div>
+							<div class="b-progress-bar" data-capacity="100" data-value="78">
+								<div class="progress-label">Graphic Design - 78%</div>
+								<div class="progress-scale">
+									<div style="width: 78%;" class="progress-line m-4"></div>
 								</div>
 							</div>
 							<div class="b-progress-bar" data-capacity="100" data-value="65">
 								<div class="progress-label">WordPress - 65%</div>
 								<div class="progress-scale">
-									<div style="width: 65%;" class="progress-line m-4"></div>
+									<div style="width: 65%;" class="progress-line m-5"></div>
 								</div>
 							</div>
 						</div>
@@ -589,7 +663,7 @@
 	<div class="container padding70" >
 		<div class="text-center space40" id="4">
 			<h2 class="title uppercase">个人爱好</h2>
-			<p>Sed laoreet libero eget tempus blandit praesent eu erat sed sem facilisis rutrum metus<br>facilisis eros justo non ipsum aliquam lacinia non eu ex.</p>
+			<p>做一个有爱好的人，我认为对于一切情况，只有“热爱”才是最好的老师。</p>
 		</div>
 		<div class="row">
 			<div class="col-sm-4">
@@ -598,17 +672,17 @@
 					<li>
 						<i class="icon-mobile"></i>
 						<h3>打篮球</h3>
-						<p> Sed suscipit, nisl sed auctor justo ante rhoncus ullamcorper justo quam non venenatis elit eget enim pharetra iaculis</p>
+						<p> 身体虚弱，它将永远不全培养有活力的灵魂和智慧。</p>
 					</li>
 					<li>
 						<i class="icon-hazardous"></i>
 						<h3>健身</h3>
-						<p> Sed suscipit, nisl sed auctor justo ante rhoncus ullamcorper justo quam non venenatis elit eget enim pharetra iaculis</p>
+						<p> 世界上没有比结实的肌肉和新鲜的皮肤更美丽的衣服</p>
 					</li>
 					<li>
 						<i class="icon-lock"></i>
 						<h3>编程 </h3>
-						<p> Sed suscipit, nisl sed auctor justo ante rhoncus ullamcorper justo quam non venenatis elit eget enim pharetra iaculis</p>
+						<p> 有两种生成一个软件设计方案的途径。一个是把它做得如此简单，以致于明显不会有漏洞存在。另一个是把它做的如此复杂，以致于不会有明显的漏洞存在。</p>
 					</li>
 				</ul>
 			</div>
@@ -617,18 +691,18 @@
 				<ul class="features-right">
 					<li>
 						<i class="icon-lightbulb"></i>
-						<h3>Pure &amp; Simple</h3>
-						<p> Sed suscipit, nisl sed auctor justo ante rhoncus ullamcorper justo quam non venenatis elit eget enim pharetra iaculis</p>
+						<h3>看书</h3>
+						<p> 读书使人充实，讨论使人机智，笔记使人准确，读史使人明智，读诗使人灵秀，数学使人周密，科学使人深刻，伦理使人庄重，逻辑修辞使人善辩。凡有所学，皆成性格。</p>
 					</li>
 					<li>
 						<i class="icon-strategy"></i>
 						<h3>旅游</h3>
-						<p> Sed suscipit, nisl sed auctor justo ante rhoncus ullamcorper justo quam non venenatis elit eget enim pharetra iaculis</p>
+						<p> 人之所以爱旅行，不是为了抵达目的地，而是为了享受旅途中的种种乐趣。</p>
 					</li>
 					<li>
 						<i class="icon-globe"></i>
 						<h3>交友</h3>
-						<p> Sed suscipit, nisl sed auctor justo ante rhoncus ullamcorper justo quam non venenatis elit eget enim pharetra iaculis</p>
+						<p>人之相识,贵在相知,人之相知,贵在知心。</p>
 					</li>
 				</ul>
 			</div>
@@ -658,6 +732,7 @@
 	<div class="container home-blog padding80">
 		<div class="text-center space40" id="6">
 			<h2 class="title uppercase">做过的项目</h2>
+			<p>项目是工作的成果，事业的基础，能力的证明</p>
 		</div>
 		<div class="row">
 			<ul class="shop-grid">
@@ -719,7 +794,7 @@
 		<div>
 			<div class="text-center">
 				<h2 class="title uppercase">Contact Us</h2>
-				<p>Sed laoreet libero eget tempus blandit praesent eu erat sed sem facilisis rutrum metus<br>facilisis eros justo non ipsum aliquam lacinia non eu ex.</p>
+				<p>人，真是奇怪，没有外人来证明你，就往往看不出自己的价值。我，需要你的来信，无论对与否</p>
 			</div>
 			<div class="space40"></div>
 		</div>

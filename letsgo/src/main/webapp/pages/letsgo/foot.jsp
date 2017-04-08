@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- INNER CONTENT -->
 <div class="inner-content">
@@ -10,19 +11,19 @@
 							<div class="col-md-6">
 								<div class="row control-group">
 									<div class="form-group col-xs-12 controls">
-										<input class="form-control" name="emailName" placeholder="Name" id="emailName" required="" data-validation-required-message="Please enter your name." type="text">
+										<input class="form-control" name="emailName" placeholder="请输入您的名字" id="emailName" required="" data-validation-required-message="请输入您的名字" type="text">
 										<p class="help-block"></p>
 									</div>
 								</div>
 								<div class="row control-group">
 									<div class="form-group col-xs-12 controls">
-										<input class="form-control" name="emailAddress" placeholder="Email Address" id="emailAddress" required="" data-validation-required-message="Please enter your email address." type="email">
+										<input class="form-control" name="emailAddress" placeholder="请输入您的地址" id="emailAddress" required="" data-validation-required-message="请输入您的地址" type="email">
 										<p class="help-block"></p>
 									</div>
 								</div>
 								<div class="row control-group">
 									<div class="form-group col-xs-12  controls">
-										<input class="form-control" name="emailPhone" placeholder="Phone Number" id="emailPhone" required="" data-validation-required-message="Please enter your phone number." type="tel">
+										<input class="form-control" name="emailPhone" placeholder="请输入您的电话" id="emailPhone" required="" data-validation-required-message="请输入您的电话" type="tel">
 										<p class="help-block"></p>
 									</div>
 								</div>
@@ -30,7 +31,7 @@
 							<div class="col-md-6">
 								<div class="row control-group">
 									<div class="form-group col-xs-12 controls">
-										<textarea rows="7" name="eamilContent" class="form-control" placeholder="Message" id="eamilContent" required="" data-validation-required-message="Please enter a message."></textarea>
+										<textarea rows="7" name="eamilContent" class="form-control" placeholder="请输入内容" id="eamilContent" required="" data-validation-required-message="请输入内容"></textarea>
 										<p class="help-block"></p>
 									</div>
 								</div>
@@ -38,7 +39,7 @@
 						</div>
 						<div class="row">
 							<div class="form-group col-xs-12">
-								<button type="button" onclick="contactSub()" class="btn btn-primary">Send Message</button>
+								<button type="button" onclick="contactSub()" class="btn btn-primary">发送消息</button>
 							</div>
 						</div>
 					</form>
@@ -46,21 +47,21 @@
 				<!--contact form-->
 			</div>
 			<div class="col-md-4">
-				<h3 class="no-margin">Contact info</h3>
+				<h3 class="no-margin">联系信息</h3>
 				<div class="space20"></div>
 				<ul class="contact-info">
 					<li>
-						<p><strong><i class="fa fa-map-marker"></i> Address:</strong> No 123 , Wallstreet, Newyork NY123456</p>
+						<p><strong><i class="fa fa-map-marker"></i> 地址:</strong>成都市高新区天府五街</p>
 					</li>
 					<li>
-						<p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">Support@website.com</a></p>
+						<p><strong><i class="fa fa-envelope"></i> 邮箱:</strong> <a href="#">ijenmi@foxmail.com</a></p>
 					</li>
 					<li>
-						<p><strong><i class="fa fa-phone"></i> Phone:</strong> +91 1800 2345 2132</p>
+						<p><strong><i class="fa fa-phone"></i> 电话:</strong> +182****3388</p>
 					</li>
-					<li>
+					<!-- <li>
 						<p><strong><i class="fa fa-print"></i> Fax:</strong> +91 2345 2132</p>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 		</div>

@@ -26,7 +26,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h3><span>Blog</span>Lorem ipsum dolor <br>amet iplus</h3>
+					<h3><span>博客</span>生活有度，人生添寿。 <br> 
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       
+					—— 书摘</h3>
 				</div>
 			</div>
 		</div>
@@ -52,11 +54,11 @@
 		<div class="row">
 			<!-- Sidebar -->
 			<aside class="col-sm-3 ">
-				<div class="side-widget space50">
+			<%-- 	<div class="side-widget space50">
 					<h4>Search</h4>
 					<form role="" action="${ctx }/blog" class="" method="post">
-						<input type="text" style="height:30px;" class="datepicker form-control" id="beginDate"  name="beginDate" value="<fmt:formatDate value="${query.beginDate }" pattern="yyyy-MM-dd"/>" placeholder="1Start date">
-						<input type="text" style="height:30px;" class="datepicker form-control" id="endDate" name="endDate" value="<fmt:formatDate value="${query.endDate }" pattern="yyyy-MM-dd"/>"  placeholder="End date">
+						<input type="text" style="height:30px;width:250px;" class="datepicker form-control" id="beginDate"  name="beginDate" value="<fmt:formatDate value="${query.beginDate }" pattern="yyyy-MM-dd"/>" placeholder="Start date">
+						<input type="text" style="height:30px;width:250px;" class="datepicker form-control" id="endDate" name="endDate" value="<fmt:formatDate value="${query.endDate }" pattern="yyyy-MM-dd"/>"  placeholder="End date">
 						<input class="form-control" type="text " placeholder="请输入内容">&nbsp;
 						<input type="hidden" name="type" value="${query.type}"/>
 						<input type="hidden" name="type_child" value="${query.type}"/>
@@ -65,9 +67,9 @@
 						<button type="submit" class="btn btn-primary">
 							Search
 						</button>
-						<%--<button type="submit" class="btn btn-primary">Search</button>--%>
+						<button type="submit" class="btn btn-primary">Search</button>
 					</form>
-				</div>
+				</div> --%>
 				<div class="side-widget space50">
 					<h4>博客 &nbsp;&nbsp;<a href="${ctx }/blog"><i class="icon-plus2"></i></a></h4>
 					<ul class="list-unstyled cat-list">
@@ -79,7 +81,7 @@
 					</ul>
 				</div>
 				<div class="side-widget space50">
-					<h4>Popular Post</h4>
+					<h4>热门文章</h4>
 					<ul class="list-unstyled popular-post">
 						<li>
 							<div class="popular-img">
@@ -134,8 +136,24 @@
 				</div>
 			</aside>
 			<div class="col-md-9 blog-content">
+			<article class="blogpost">
+				<h4>搜索文章</h4>
+					<form role="" action="${ctx }/blog" class="" method="post">
+						<span><input type="text" style="height:30px;width:250px; display: inline-block;margin-bottom:10px;" class="datepicker form-control" id="beginDate"  name="beginDate" value="<fmt:formatDate value="${query.beginDate }" pattern="yyyy-MM-dd"/>" placeholder="开始日期"> </span>
+						<span><input type="text" style="height:30px;width:250px; display:inline-block;margin-bottom:10px; " class="datepicker form-control" id="endDate" name="endDate" value="<fmt:formatDate value="${query.endDate }" pattern="yyyy-MM-dd"/>"  placeholder="结束日期"></span>
+						<input class="form-control" type="text" placeholder="请输入内容" style="margin-bottom:10px;">&nbsp;
+						<input type="hidden" name="type" value="${query.type}"/>
+						<input type="hidden" name="type_child" value="${query.type}"/>
+
+						<!--icon-search icon-white  -->
+						<button type="submit" class="btn btn-primary">
+							搜索
+						</button>
+						<%--<button type="submit" class="btn btn-primary">Search</button>--%>
+					</form>
+			</article>
 				<article class="blogpost">
-					<h2 class="post-title"><a href="#">Post with media gallery</a></h2>
+					<h2 class="post-title"><a href="#">最新文章</a></h2>
 					<div class="post-meta">
 						<span><a href="#"><i class="icon-clock2"></i> 23 May</a></span>
 						<span><a href="#"><i class="icon-user"></i> John Doe</a></span>
@@ -147,13 +165,13 @@
 					<div class="post-media">
 						<div id="blog-slider" class="owl-carousel owl-theme">
 							<div class="item">
-								<img src="<c:url value='/images/blog/1.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/blog/1.jpg" class="img-responsive" alt="">
+								<img src="<c:url value='/images/blog/1.jpg'/>" tppabs="" class="img-responsive" alt="">
 							</div>
 							<div class="item">
-								<img src="<c:url value='/images/blog/2.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/blog/2.jpg" class="img-responsive" alt="">
+								<img src="<c:url value='/images/blog/2.jpg'/>" tppabs="" class="img-responsive" alt="">
 							</div>
 							<div class="item">
-								<img src="<c:url value='/images/blog/3.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/blog/3.jpg"  class="img-responsive" alt="">
+								<img src="<c:url value='/images/blog/3.jpg'/>" tppabs=""  class="img-responsive" alt="">
 							</div>
 						</div>
 					</div>
@@ -273,22 +291,22 @@
 	<hr class="dashed" style="margin: 15px 0px;">
 	<h5>Color Scheme</h5>
 	<div class="settings-section color-list">
-		<div data-src="<c:url value='/css/color-scheme/moderate-green.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/moderate-green.css" style="background: #8ec249"></div>
-		<div data-src="<c:url value='/css/color-scheme/vivid-blue.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/vivid-blue.css" style="background: #228dff"></div>
-		<div data-src="<c:url value='/css/color-scheme/orange.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/orange.css" style="background: #fa6900"></div>
-		<div data-src="<c:url value='/css/color-scheme/brown.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/brown.css" style="background: #a68c69"></div>
-		<div data-src="<c:url value='/css/color-scheme/yellow.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/yellow.css" style="background: #fabe28"></div>
-		<div data-src="<c:url value='/css/color-scheme/violet.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/violet.css" style="background: #ba01ff"></div>
-		<div data-src="<c:url value='/css/color-scheme/strong-cyan.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/strong-cyan.css" style="background: #00b9bd"></div>
-		<div data-src="<c:url value='/css/color-scheme/soft-cyan.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/soft-cyan.css" style="background: #4bd5ea"></div>
-		<div data-src="<c:url value='/css/color-scheme/red.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/red.css" style="background: #ff0104"></div>
-		<div data-src="<c:url value='/css/color-scheme/lite-brown.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/lite-brown.css" style="background: #f3a76d"></div>
-		<div data-src="<c:url value='/css/color-scheme/lime-green.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/lime-green.css" style="background: #3bdbad"></div>
-		<div data-src="<c:url value='/css/color-scheme/light-voilet.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/light-voilet.css" style="background: #aaa5ff"></div>
-		<div data-src="<c:url value='/css/color-scheme/gray-green.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/gray-green.css" style="background: #697060"></div>
-		<div data-src="<c:url value='/css/color-scheme/gray-cyan.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/gray-cyan.css" style="background: #aeced2"></div>
-		<div data-src="<c:url value='/css/color-scheme/de-green.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/de-green.css" style="background: #b6cd71"></div>
-		<div data-src="<c:url value='/css/color-scheme/cream.css'/>" tppabs="http://ckthemes.com/html/maxima/maxima/css/color-scheme/cream.css" style="background: #e0d6b2"></div>
+		<div data-src="<c:url value='/css/color-scheme/moderate-green.css'/>"  style="background: #8ec249"></div>
+		<div data-src="<c:url value='/css/color-scheme/vivid-blue.css'/>" style="background: #228dff"></div>
+		<div data-src="<c:url value='/css/color-scheme/orange.css'/>" style="background: #fa6900"></div>
+		<div data-src="<c:url value='/css/color-scheme/brown.css'/>" style="background: #a68c69"></div>
+		<div data-src="<c:url value='/css/color-scheme/yellow.css'/>"  style="background: #fabe28"></div>
+		<div data-src="<c:url value='/css/color-scheme/violet.css'/>" style="background: #ba01ff"></div>
+		<div data-src="<c:url value='/css/color-scheme/strong-cyan.css'/>" style="background: #00b9bd"></div>
+		<div data-src="<c:url value='/css/color-scheme/soft-cyan.css'/>"  style="background: #4bd5ea"></div>
+		<div data-src="<c:url value='/css/color-scheme/red.css'/>" style="background: #ff0104"></div>
+		<div data-src="<c:url value='/css/color-scheme/lite-brown.css'/>" style="background: #f3a76d"></div>
+		<div data-src="<c:url value='/css/color-scheme/lime-green.css'/>" style="background: #3bdbad"></div>
+		<div data-src="<c:url value='/css/color-scheme/light-voilet.css'/>"style="background: #aaa5ff"></div>
+		<div data-src="<c:url value='/css/color-scheme/gray-green.css'/>" style="background: #697060"></div>
+		<div data-src="<c:url value='/css/color-scheme/gray-cyan.css'/>" style="background: #aeced2"></div>
+		<div data-src="<c:url value='/css/color-scheme/de-green.css'/>" style="background: #b6cd71"></div>
+		<div data-src="<c:url value='/css/color-scheme/cream.css'/>" style="background: #e0d6b2"></div>
 
 	</div>
 	<div class="btn-settings"></div>
