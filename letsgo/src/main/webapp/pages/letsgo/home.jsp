@@ -420,21 +420,27 @@
 	<section id="portfolio-section">
 		<div class="container container-full" id="3">
 			<section id="portfolio-section">
-				<div class="container">
-					<h3 class="uppercase text-center">我的图片</h3>
+				<div class="text-center space40">
+					<h2 class="title uppercase">我的图片</h2>
+					<p>沿途中的风景生活的事物，随手一拍</p>
 				</div>
+				<!-- <div class="container">
+					<h3 class="uppercase text-center">我的图片</h3>
+					
+					<p>旅途中的风景生活的事物，随手一拍</p>
+				</div> -->
 				<ul class="filter" data-option-key="filter">
-					<li><a class="selected" href="#filter" data-option-value="*">全部</a></li>
-					<li><a href="#" data-option-value=".branding">Branding</a></li>
-					<li><a href="#" data-option-value=".illustration">Illustration</a></li>
-					<li><a href="#" data-option-value=".web-design">Web Design</a></li>
-					<li><a href="#" data-option-value=".print">Print</a></li>
+					<li><a class="selected" href="#filter" data-option-value="*">全&nbsp;&nbsp;部</a></li>
+					<li><a href="#" data-option-value=".branding">美&nbsp;&nbsp;景</a></li>
+					<li><a href="#" data-option-value=".illustration">人&nbsp;&nbsp;物</a></li>
+					<li><a href="#" data-option-value=".web-design">物&nbsp;&nbsp;品</a></li>
+					<li><a href="#" data-option-value=".print">其&nbsp;&nbsp;他</a></li>
 				</ul>
 				<div id="portfolio-home" class="isotope folio-boxed-3col" style="position: relative; height: 867px;">
 					<div class="project-item branding" style="position: absolute; left: 0px; top: 0px;">
-						<a href="${ctx}/photo">
+						<a href="${ctx}/photo" target="_blank">
 							<div class="project-gal">
-								<img src="<c:url value='/images/projects/1.jpg'/>" class="img-responsive" alt="">
+								<img src="<c:url value='/images/projects/1.jpg'/>"   class="img-responsive" alt="">
 								<div class="overlay-folio2">
 									<div class="project-info">
 										<h2>Aliquam tincidunt risus.</h2>
@@ -445,7 +451,7 @@
 						</a>
 					</div>
 					<div class="project-item illustration web-design illustration" style="position: absolute; left: 449px; top: 0px;">
-						<a href="./portfolio-single-slider.html">
+						<a href="javascript:" target="_blank">
 							<div class="project-gal">
 								<img src="<c:url value='/images/projects/2.jpg'/>" class="img-responsive" alt="">
 								<div class="overlay-folio2">
@@ -731,7 +737,7 @@
 
 	<div class="container home-blog padding80">
 		<div class="text-center space40" id="6">
-			<h2 class="title uppercase">做过的项目</h2>
+			<h2 class="title uppercase">项目</h2>
 			<p>项目是工作的成果，事业的基础，能力的证明</p>
 		</div>
 		<div class="row">
@@ -740,15 +746,15 @@
 					<div class="product">
 						<div class="text-center">
 							<div class="product-thumbnail">
-								<img src="<c:url value='/images/shop/1.jpg'/>" class="img-responsive" alt="">
+								<img src="<c:url value='/images/shop/1.png'/>" class="img-responsive" alt="">
 								<div class="product-overlay">
 									<a class="product-overlay-link" href="#"><i class="fa fa-search-plus"></i></a>
-									<a class="product-overlay-cart" href="#"><i class="fa fa-cart-plus"></i></a>
+									<!-- <a class="product-overlay-cart" href="#"><i class="fa fa-cart-plus"></i></a> -->
 								</div>
 							</div>
-							<h3 class="product-title"><a href="#">Grey jacket</a></h3>
-							<span class="product-price">£ 69.99</span>
-							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">Add to cart</a>
+							<h3 class="product-title"><a href="#">ERP项目</a></h3>
+							<span class="product-price"  style="font-size:1px;color:#878787">四川远海国际旅行社，根据公司业务做得一套项目</span>
+							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
 						</div>
 					</div>
 				</li>
@@ -757,15 +763,15 @@
 						<span class="badge blue"><span>50%</span><br>Off</span>
 						<div class="text-center">
 							<div class="product-thumbnail">
-								<img src="<c:url value='/images/shop/2.jpg'/>" class="img-responsive" alt="">
-								<!-- <div class="product-overlay">
+								<img src="<c:url value='/images/shop/letsgo.png'/>" class="img-responsive" alt="">
+								<div class="product-overlay">
 									<a class="product-overlay-link" href="#"><i class="fa fa-search-plus"></i></a>
 									<a class="product-overlay-cart" href="#"><i class="fa fa-cart-plus"></i></a>
-								</div> -->
+								</div>
 							</div>
-							<h3 class="product-title"><a href="#">Leather bag</a></h3>
-							<span class="product-price">£ 119.99</span>
-							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">Add to cart</a>
+							<h3 class="product-title"><a href="#">个人博客</a></h3>
+							<span class="product-price" style="font-size:1px;color:#878787">属于自己的个人主页</span>
+							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
 						</div>
 					</div>
 				</li>
@@ -773,15 +779,15 @@
 					<div class="product">
 						<div class="text-center">
 							<div class="product-thumbnail">
-								<img src="<c:url value='/images/shop/3.jpg'/>" class="img-responsive" alt="">
+								<img src="<c:url value='/images/shop/letsgo_img.png'/>" class="img-responsive" alt="">
 								<!-- <div class="product-overlay">
 									<a class="product-overlay-link" href="#"><i class="fa fa-search-plus"></i></a>
 									<a class="product-overlay-cart" href="#"><i class="fa fa-cart-plus"></i></a>
 								</div> -->
 							</div>
-							<h3 class="product-title"><a href="#">Checked Shirt</a></h3>
-							<span class="product-price">£ 39.99</span>
-							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">Add to cart</a>
+							<h3 class="product-title"><a href="#">个人博客</a></h3>
+							<span class="product-price" style="font-size:1px;color:#878787">属于自己的个人主页</span>
+							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
 						</div>
 					</div>
 				</li>
