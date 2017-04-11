@@ -45,11 +45,11 @@
 		<div class="container container-full">
 			<section id="portfolio-section">
 				<ul class="filter no-margin-top" data-option-key="filter">
-					<li><a class="selected" href="#filter" data-option-value="*">All</a></li>
-					<li><a href="#" data-option-value=".branding">Branding</a></li>
-					<li><a href="#" data-option-value=".illustration">Illustration</a></li>
-					<li><a href="#" data-option-value=".web-design">Web Design</a></li>
-					<li><a href="#" data-option-value=".print">Print</a></li>
+					<li><a class="selected" href="#filter" data-option-value="*">全&nbsp;&nbsp;部</a></li>
+					<li><a href="#" data-option-value=".branding">美&nbsp;&nbsp;景</a></li>
+					<li><a href="#" data-option-value=".illustration">人&nbsp;&nbsp;物</a></li>
+					<li><a href="#" data-option-value=".web-design">物&nbsp;&nbsp;品</a></li>
+					<li><a href="#" data-option-value=".print">其&nbsp;&nbsp;他</a></li>
 				</ul>
 				<div id="portfolio-home" class="isotope folio-boxed-4col ">
 					<div class="project-item branding">
