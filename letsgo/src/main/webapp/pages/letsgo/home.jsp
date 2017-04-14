@@ -31,7 +31,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a href="index.html" class="navbar-brand"><img src="<c:url value='/images/basic/logo.png'/>" width="40" alt=""/></a>
+						<a href="index.html" class="navbar-brand"><img src="<c:url value='/images/basic/JENMI.png'/>" width="40" alt=""/></a>
 					</div>
 
 					<!-- SEARCH -->
@@ -787,7 +787,7 @@
 							</div>
 							<h3 class="product-title"><a href="#">个人博客</a></h3>
 							<span class="product-price" style="font-size:1px;color:#878787">属于自己的个人主页</span>
-							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
+							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>...
 						</div>
 					</div>
 				</li>
