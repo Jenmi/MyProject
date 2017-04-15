@@ -84,10 +84,10 @@ public class HomeController extends BaseController{
 		userInfo.setPwd(user.getPassword());
 		request.getSession().setAttribute(USER_CONTENT, userInfo);
 		
-		if(uriPath!=null){
+		/*if(uriPath!=null){
 			//return "forward:"+uriPath;  bug//
 			response.sendRedirect(uriPath);
-		}
+		}*/
 		return "/letsgo/home";
 	}
 	
