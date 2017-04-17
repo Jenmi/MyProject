@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ijenmi.base.BaseController;
 import com.ijenmi.letsgo.model.Blog;
 import com.ijenmi.letsgo.model.BlogComment;
@@ -35,7 +37,9 @@ public class BlogController extends BaseController{
 	
 	@RequestMapping
 	public String index(ModelMap model, BlogQuery query, HttpServletRequest request, HttpServletResponse response){
+		PageHelper.startPage(0, 10);
 		List<Blog> blogs =blogService.query(query);
+		PageInfo pageInfo = new PageInfo(blogs);
 		model.addAttribute("query", query);
 		model.addAttribute("blogs", blogs);
 		
