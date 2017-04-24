@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-	<title>${blog.title }</title>
+	<title>Maxima | Responsive Multipurpose Bootstrap Theme</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
@@ -83,25 +83,6 @@
 							<div class="space30"></div>
 							<p>
 								${blog.content }
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non laoreet dui. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa.
-							</p>
-							<p>
-								Fusce non ante sed lorem rutrum feugiat. Vestibulum pellentesque, purus ut&nbsp;dignissim consectetur, nulla erat ultrices purus, ut&nbsp;consequat sem elit non sem.
-								Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa.
-								Fusce non ante sed lorem rutrum feugiat.
-							</p>
-							<blockquote class="style1">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem ipsum dolor sit amet. Integer posuere erat a ante.</p>
-								<small><b>Author Name</b></small>
-							</blockquote>
-							<p>
-								Praesent ultricies ut ipsum non laoreet. Nunc ac <a href="#">ultricies</a> leo. Nulla ac ultrices arcu. Nullam adipiscing lacus in consectetur posuere. Nunc malesuada tellus turpis, ac pretium orci molestie vel.
-								Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa.
-								Fusce non ante sed lorem rutrum feugiat.
-							</p>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non laoreet dui. Morbi lacus massa, euismod ut turpis molestie, tristique sodales est. Integer sit amet mi id sapien tempor molestie in nec massa.
-								Fusce non ante sed lorem rutrum feugiat. Vestibulum pellentesque, purus ut&nbsp;dignissim consectetur, nulla erat ultrices purus, ut&nbsp;consequat sem elit non sem.
 							</p>
 						</article>
 						<div style="width: auto;margin-top:10px; text-align: center">
@@ -119,11 +100,11 @@
 									<a href="#">John Doe</a>
 									<span>
 									<em>Feb 17, 2015, at 11:34</em>
-									<a href="#" class="button btn-xs reply"><i class="fa fa-comment"></i>&nbsp;Reply</a>
+									<a href="#" class="button btn-xs reply"><i class="fa fa-comment"></i>&nbsp;回复</a>
 									</span>
 								</div>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sit amet urna nec tempor. Nullam pellentesque in orci in luctus. Sed convallis tempor tellus a faucibus. Suspendisse et quam eu velit commodo tempus.
+									希望你再接再厉，更加努力
 								</p>
 							</li>
 							<li class="comment-sub">
@@ -132,11 +113,11 @@
 									<a href="#">John Doe</a>
 									<span>
 									<em>March 08, 2015, at 03:34</em>
-									<a href="#" class="button btn-xs reply"><i class="fa fa-comment"></i>&nbsp;Reply</a>
+									<a href="#" class="button btn-xs reply"><i class="fa fa-comment"></i>&nbsp;回复</a>
 									</span>
 								</div>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor sit amet urna nec tempor. Nullam pellentesque in orci in luctus. Sed convallis tempor tellus a faucibus. Suspendisse et quam eu velit commodo tempus.
+									不错写的很好，我很赞赏你
 								</p>
 							</li>
 							<li>
@@ -145,7 +126,7 @@
 									<a href="#">John Doe</a>
 									<span>
 									<em>June 11, 2015, at 07:34</em>
-									<a href="#" class="button btn-xs reply"><i class="fa fa-comment"></i>&nbsp;Reply</a>
+									<a href="#" class="button btn-xs reply"><i class="fa fa-comment"></i>&nbsp;回复</a>
 									</span>
 								</div>
 								<p>
