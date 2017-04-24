@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<title>Home</title>
+	<title>Jenmi 主页</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
@@ -339,7 +339,7 @@
 							<c:choose>
 								<c:when test="${not empty blog.title}"><a href="${ctx}/blog/${blog.blogId}/show" target="_blank">${blog.title}</a></c:when>
 								<c:otherwise>
-									<a href="${ctx}/blog" target="_blank"> ——经典博客</a>
+									<a href="${ctx}/blog" target="_blank"> —经典博客</a>
 								</c:otherwise>
 							</c:choose>
 						</h4>
@@ -367,7 +367,7 @@
 							<c:choose>
 								<c:when test="${not empty blog.title}"><a href="${ctx}/blog/${liveBlog.blogId}/show" target="_blank">-${blog.title}</a></c:when>
 								<c:otherwise>
-									<a href="${ctx}/blog" target="_blank"> ——生活博客</a>
+									<a href="${ctx}/blog" target="_blank"> —生活博客</a>
 								</c:otherwise>
 							</c:choose>
 						</h4>
@@ -395,7 +395,7 @@
 							<c:choose>
 								<c:when test="${not empty blog.title}"><a href="${ctx}/blog/${proBlog.blogId}/show" target="_blank">-${blog.title}</a></c:when>
 								<c:otherwise>
-									<a href="${ctx}/blog" target="_blank"> ——项目博客</a>
+									<a href="${ctx}/blog" target="_blank"> —项目博客</a>
 								</c:otherwise>
 							</c:choose>
 						</h4>

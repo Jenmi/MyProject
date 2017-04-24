@@ -21,7 +21,7 @@
     blog_id, title, content, blog_blong, type, status, zan_num, bad_num, see_num, create_date, update_date,
     comment_num, user_id, content_vice
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey"  resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from blog
@@ -213,6 +213,85 @@
       <if test="type != null">
          and type = #{type,jdbcType=Integer}
       </if>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
   </select>
   <select id="getBestNewBlogByTypeId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
     select
