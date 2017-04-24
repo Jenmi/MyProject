@@ -11,7 +11,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a href="index.html" class="navbar-brand"><img src="<c:url value='/images/basic/logo.png'/>" width="40" alt=""/></a>
+						<a href="index.html" class="navbar-brand"><img src="<c:url value='/images/basic/JENMI.png'/>" width="40" alt=""/></a>
 					</div>
 
 					<!-- SEARCH -->
