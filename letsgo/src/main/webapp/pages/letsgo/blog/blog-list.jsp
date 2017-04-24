@@ -122,10 +122,10 @@
 					</ul>
 				</div>
 				<div class="side-widget">
-					<h4>Tag Cloud</h4>
+					<h4>标签</h4>
 					<div class="tag-list">
-						<a href="#">Design</a>
-						<a href="#">Photo</a>
+						<a href="#">java</a>
+						<a href="#">web</a>
 						<a href="#">News</a>
 						<a href="#">Fashion</a>
 						<a href="#">Marketing</a>
@@ -178,7 +178,7 @@
 					<div class="post-excerpt">
 						<p>Morbi interdum, lectus eget mattis vehicula, est nisi dapibus risus, a vestibulum enim leo sed velit. Etiam rhoncus dui quis tellus consectetur laoreet et a nulla. Suspendisse eleifend velit vitae lectus faucibus, vel consectetur magna pellentesque. Aliquam a efficitur ipsum.</p>
 					</div>
-					<a href="#" class="button btn-xs">Read More&nbsp;&nbsp;<i class="fa fa-angle-right"></i></a>
+					<a href="#" class="button btn-xs">阅　读&nbsp;&nbsp;<i class="fa fa-angle-right"></i></a>
 				</article>
 				<div class="blog-sep"></div>
 
@@ -204,7 +204,7 @@
 							${fn:trim(blog.contentVice)}
 						</p>
 					</div>
-					<a href="${ctx }/blog/${blog.blogId }/show" target="_blank" class="button btn-xs">Read More&nbsp;&nbsp;<i class="fa fa-angle-right"></i></a>
+					<a href="${ctx }/blog/${blog.blogId }/show" target="_blank" class="button btn-xs">阅　读&nbsp;&nbsp;<i class="fa fa-angle-right"></i></a>
 
 				</article>
 				<div class="blog-sep">

@@ -787,7 +787,7 @@
 							</div>
 							<h3 class="product-title"><a href="#">个人博客</a></h3>
 							<span class="product-price" style="font-size:1px;color:#878787">属于自己的个人主页</span>
-							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>...
+							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
 						</div>
 					</div>
 				</li>

@@ -23,6 +23,7 @@ import com.ijenmi.letsgo.service.BlogService;
 import com.ijenmi.letsgo.vo.UserInfo;
 import com.ijenmi.letsgo.vo.query.BlogQuery;
 import com.ijenmi.letsgo.vo.query.CurrPage;
+import com.ijenmi.util.StringUtils;
 import com.ijenmi.util.UserAndAuthorityUtil;
 
 @Controller
@@ -100,7 +101,7 @@ public class BlogController extends BaseController{
 					 sb.append(content.charAt(i));
 				 }
 			 }
-			 blog.setContentVice(sb.toString());
+			 blog.setContentVice(sb.toString().substring(0, sb.toString().length()<20?sb.toString().length():20));
 		 }
 		boolean status = blogService.doAdd(blog);
 		this.getMsg(status, "对不起，添加失败！");
