@@ -31,7 +31,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a href="index.html" class="navbar-brand"><img src="<c:url value='/images/basic/logo.png'/>" width="40" alt=""/></a>
+						<a href="index.html" class="navbar-brand"><img src="<c:url value='/images/basic/JENMI.png'/>" width="40" alt=""/></a>
 					</div>
 
 					<!-- SEARCH -->
@@ -346,11 +346,11 @@
 						<c:choose>
 								<c:when test="${not empty blog.title}">
 									<p>${blog.contentVice}</p>
-									<a href="${ctx}/blog/${blog.blogId}/show" target="_blank" class="readmore">Read more...</a>
+									<a href="${ctx}/blog/${blog.blogId}/show" target="_blank" class="readmore">查&nbsp;&nbsp;看...</a>
 								</c:when>
 								<c:otherwise>
 									<p>世上最快乐的事，莫过于为理想而奋斗。 —— 苏格拉底</p>
-									<a href="${ctx}/blog" target="_blank" class="readmore">Read more...</a>
+									<a href="${ctx}/blog" target="_blank" class="readmore">查&nbsp;&nbsp;看...</a>
 								</c:otherwise>
 							</c:choose>
 					</div>
@@ -374,11 +374,11 @@
 						<c:choose>
 								<c:when test="${not empty liveBlog.title}">
 									<p>${liveBlog.contentVice}</p>
-									<a href="${ctx}/blog/${liveBlog.blogId}/show" target="_blank" class="readmore">Read more...</a>
+									<a href="${ctx}/blog/${liveBlog.blogId}/show" target="_blank" class="readmore">查&nbsp;&nbsp;看...</a>
 								</c:when>
 								<c:otherwise>
 									<p>每个人都必须按自己心灵的良心来生活，但不是按任何理想。使良心屈从于信条，或理念，或传统，甚至是内在冲动，那是我们的堕落。 —— 劳伦斯</p>
-									<a href="${ctx}/blog" target="_blank" class="readmore">Read more...</a>
+									<a href="${ctx}/blog" target="_blank" class="readmore">查&nbsp;&nbsp;看...</a>
 								</c:otherwise>
 							</c:choose>
 					</div>
@@ -402,11 +402,11 @@
 						<c:choose>
 								<c:when test="${not empty proBlog.title}">
 									<p>${proBlog.contentVice}</p>
-									<a href="${ctx}/blog/${proBlog.blogId}/show" target="_blank" class="readmore">Read more...</a>
+									<a href="${ctx}/blog/${proBlog.blogId}/show" target="_blank" class="readmore">查&nbsp;&nbsp;看...</a>
 								</c:when>
 								<c:otherwise>
 									<p>在当前现实的狭隘基础上，有高尚理想，全面的计划；在一步一步行动上，想到远大前途，脚踏实地地稳步前进，才能有所成就。 —— 徐特立</p>
-									<a href="${ctx}/blog" target="_blank" class="readmore">Read more...</a>
+									<a href="${ctx}/blog" target="_blank" class="readmore">查&nbsp;&nbsp;看...</a>
 								</c:otherwise>
 							</c:choose>
 					</div>

@@ -78,7 +78,7 @@ public class BlogController extends BaseController{
 		UserInfo user= UserAndAuthorityUtil.getSessionUser(request);
 		boolean status = blogService.update(blog);
 		
-		this.getMsg(status, "修改失败，或许您在进行非法操作！");
+		this.getMsg(status, "淇敼澶辫触锛屾垨璁告偍鍦ㄨ繘琛岄潪娉曟搷浣滐紒");
 		return "redirect:/blog";
 	}
 	
@@ -105,7 +105,7 @@ public class BlogController extends BaseController{
 					 sb.append(content.charAt(i));
 				 }
 			 }
-			 blog.setContentVice(sb.toString());
+			 blog.setContentVice(sb.toString().substring(0, sb.toString().length()<20?sb.toString().length():20));
 		 }
 		boolean status = blogService.doAdd(blog);
 		this.getMsg(status, "对不起，添加失败！");
@@ -119,7 +119,7 @@ public class BlogController extends BaseController{
 	}
 	
 	/**
-	 * 赞获取反赞
+	 * 璧炶幏鍙栧弽璧�
 	 * @param model
 	 * @param id
 	 * @param type

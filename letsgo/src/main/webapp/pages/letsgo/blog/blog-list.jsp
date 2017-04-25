@@ -38,8 +38,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					<ul class="bcrumbs">
-						<li><a href="${ctx}/home"><i class="fa fa-home"></i> Home</a></li>
-						<li>BLog</li>
+						<li><a href="${ctx}/home"><i class="fa fa-home"></i>主页</a></li>
+						<li>博客</li>
 					</ul>
 					<div class="clearfix"></div>
 				</div>
@@ -122,7 +122,7 @@
 					</ul>
 				</div>
 				<div class="side-widget">
-					<h4>Tag Cloud</h4>
+					<h4>标签</h4>
 					<div class="tag-list">
 						<a href="#">Design</a>
 						<a href="#">Photo</a>
@@ -178,7 +178,7 @@
 					<div class="post-excerpt">
 						<p>Morbi interdum, lectus eget mattis vehicula, est nisi dapibus risus, a vestibulum enim leo sed velit. Etiam rhoncus dui quis tellus consectetur laoreet et a nulla. Suspendisse eleifend velit vitae lectus faucibus, vel consectetur magna pellentesque. Aliquam a efficitur ipsum.</p>
 					</div>
-					<a href="#" class="button btn-xs">Read More&nbsp;&nbsp;<i class="fa fa-angle-right"></i></a>
+					<a href="#" class="button btn-xs">查&nbsp;&nbsp;看&nbsp;&nbsp;<i class="fa fa-angle-right"></i></a>
 				</article>
 				<div class="blog-sep"></div>
 
@@ -204,7 +204,7 @@
 							${fn:trim(blog.contentVice)}
 						</p>
 					</div>
-					<a href="${ctx }/blog/${blog.blogId }/show" target="_blank" class="button btn-xs">Read More&nbsp;&nbsp;<i class="fa fa-angle-right"></i></a>
+					<a href="${ctx }/blog/${blog.blogId }/show" target="_blank" class="button btn-xs">查&nbsp;&nbsp;看&nbsp;&nbsp;<i class="fa fa-angle-right"></i></a>
 
 				</article>
 				<div class="blog-sep">
