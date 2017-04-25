@@ -213,11 +213,25 @@
 				<!-- Pagination -->
 				<div class="page_nav">
 					<a href=""><i class="fa fa-angle-left"></i></a>
-					<a href="" class="active">1</a>
+					<c:choose>
+						<c:when test="${pageInfo.pages > 10}" >
+							<c:forEach var="index" begin="${pageInfo.pageNum }" end="${pageInfo.pageNum+5 }" varStatus="status">  
+								<a href="" class="active">${index}</a>
+							</c:forEach>
+							<a class="no-active">...</a>
+							<a class="active">${pageInfo.pages}</a>
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="index" begin="${pageInfo.pageNum }" end="${pageInfo.pages }" varStatus="status">  
+								<a href="" class="active">${index}</a>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+					<!-- <a href="" class="active">1</a>
 					<a href="">2</a>
-					<a href="">3</a>
+					<a href="">3</a> 
 					<a class="no-active">...</a>
-					<a href="">9</a>
+					<a href="">9</a>-->
 					<a href=""><i class="fa fa-angle-right"></i></a>
 				</div>
 				<!-- End Pagination -->

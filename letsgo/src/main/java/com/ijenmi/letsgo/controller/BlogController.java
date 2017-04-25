@@ -37,11 +37,12 @@ public class BlogController extends BaseController{
 	
 	@RequestMapping
 	public String index(ModelMap model, BlogQuery query, HttpServletRequest request, HttpServletResponse response){
-		PageHelper.startPage(0, 10);
+		PageHelper.startPage(1, 1);
 		List<Blog> blogs =blogService.query(query);
 		PageInfo pageInfo = new PageInfo(blogs);
 		model.addAttribute("query", query);
 		model.addAttribute("blogs", blogs);
+		model.addAttribute("pageInfo", pageInfo);
 		
 		UserInfo user = UserAndAuthorityUtil.getSessionUser(request);
 		Boolean canedit = (Boolean) request.getAttribute("canedit");
