@@ -152,7 +152,7 @@
 					<form role="" action="${ctx }/blog" class="" method="post">
 						<span><input type="text" style="height:30px;width:250px; display: inline-block;margin-bottom:10px;" class="datepicker form-control" id="beginDate"  name="beginDate"  value="<fmt:formatDate value="${query.beginDate }" pattern="yyyy-MM-dd"/>" placeholder="开始日期"> </span>
 						<span><input type="text" style="height:30px;width:250px; display:inline-block;margin-bottom:10px; " class="datepicker form-control" id="endDate" name="endDate" value="<fmt:formatDate value="${query.endDate }" pattern="yyyy-MM-dd"/>"  placeholder="结束日期"></span>
-						<input class="form-control" type="text" placeholder="请输入内容" style="margin-bottom:10px;">&nbsp;
+					<!-- 	<input class="form-control" type="text" placeholder="请输入内容" style="margin-bottom:10px;" name="content">&nbsp; -->
 						<input type="hidden" name="type" value="${query.type}"/>
 						<input type="hidden" name="type_child" value="${query.type}"/>
 

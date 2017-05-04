@@ -16,6 +16,9 @@
 	<%@ include file="/commons/taglib.jsp" %>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>" type="text/css">
+	<!-- 音乐 -->
+	<link rel="stylesheet" href="<c:url value='/utils/music/APlayer.min.css'/>" type="text/css">
+	<script src="<c:url value="/utils/music/APlayer.min.js"/>" type="text/javascript"></script>
 </head>
 <body id="header6">
 <div id="page-top"></div>
@@ -33,7 +36,10 @@
 						</button>
 						<a href="index.html" class="navbar-brand"><img src="<c:url value='/images/basic/JENMI.png'/>" width="40" alt=""/></a>
 					</div>
-
+					<div class="navbar-header">
+							<div id="player" class="aplayer"></div>
+					</div>
+				
 					<!-- SEARCH -->
 					<div class="header-x pull-right">
 						<div class="s-search">
@@ -806,7 +812,6 @@
 		</div>
 	</div>
 </div>
-
 <!-- INNER CONTENT -->
 <!-- STYLE SWITCHER
 ============================================= -->
@@ -831,6 +836,24 @@
 			}
 		});
 	}
+	
+	var ap2 = new APlayer({
+        element: document.getElementById('player'),
+        narrow: true,
+        autoplay: false,
+        showlrc: false,
+        music: {
+            title: 'Sugar',
+            author: 'Maroon 5',
+            url: '${ctx}/utils/music/Sugar.mp3',
+            pic: '${ctx}/utils/music/pf1.jpg',
+            height:5,
+            width:5
+        }
+    });
+    ap2.init();
+	
+	
 </script>
 
 
