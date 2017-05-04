@@ -36,6 +36,10 @@ public class BlogService {
 	public boolean doAdd(Blog blog) {
 		return blogMapper.insert(blog) > 0;
 	}
+	public List getBestHotBlog() {
+		return blogMapper.getBestHotBlog();
+	}
+	
 	
 	/**
 	 * 用于拜访者点赞、访问次数、鄙视等操作计数存储

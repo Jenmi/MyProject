@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-	<title>Maxima | Responsive Multipurpose Bootstrap Theme</title>
+	<title>Jenmi博客 | ${blog.title }</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
@@ -23,7 +23,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h3><span>Blog</span>Lorem ipsum dolor</h3>
+						<h3><span>博客</span>一个人的豁达，体现在落魄</h3>
 					</div>
 				</div>
 			</div>
@@ -33,9 +33,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="bcrumbs">
-							<li><a href="${ctx}/home"><i class="fa fa-home"></i> Home</a></li>
-							<li><a href="${ctx}/blog">BLog</a></li>
-							<li>show</li>
+							<li><a href="${ctx}/home"><i class="fa fa-home"></i> 主页</a></li>
+							<li><a href="${ctx}/blog">博客</a></li>
+							<li>详情</li>
 						</ul>
 						<div class="clearfix"></div>
 					</div>

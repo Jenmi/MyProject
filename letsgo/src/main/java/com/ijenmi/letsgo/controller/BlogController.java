@@ -44,6 +44,8 @@ public class BlogController extends BaseController{
 		model.addAttribute("blogs", blogs);
 		model.addAttribute("pageInfo", pageInfo);
 		
+		List hotList = blogService.getBestHotBlog();
+		model.addAttribute("hotList", hotList);
 		UserInfo user = UserAndAuthorityUtil.getSessionUser(request);
 		Boolean canedit = (Boolean) request.getAttribute("canedit");
 		if(canedit!=null && canedit){
