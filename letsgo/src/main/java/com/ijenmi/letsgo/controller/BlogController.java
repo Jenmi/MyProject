@@ -37,7 +37,7 @@ public class BlogController extends BaseController{
 	
 	@RequestMapping
 	public String index(ModelMap model, BlogQuery query, HttpServletRequest request, HttpServletResponse response){
-		PageHelper.startPage(query.getCurrPage()==null?1:query.getCurrPage(), 1);
+		PageHelper.startPage(query.getCurrPage()==null?1:query.getCurrPage(), 10);
 		List<Blog> blogs =blogService.query(query);
 		PageInfo pageInfo = new PageInfo(blogs);
 		model.addAttribute("query", query);

@@ -752,9 +752,9 @@
 									<!-- <a class="product-overlay-cart" href="#"><i class="fa fa-cart-plus"></i></a> -->
 								</div>
 							</div>
-							<h3 class="product-title"><a href="#">ERP项目</a></h3>
+							<h3 class="product-title"><a href="${ctx}/herp/login" target="_blank">ERP项目</a></h3>
 							<span class="product-price"  style="font-size:1px;color:#878787">四川远海国际旅行社，根据公司业务做得一套项目</span>
-							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
+							<a href="${ctx}/herp/login" target="_blank" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
 						</div>
 					</div>
 				</li>
@@ -763,15 +763,15 @@
 						<span class="badge blue"><span>50%</span><br>Off</span>
 						<div class="text-center">
 							<div class="product-thumbnail">
-								<img src="<c:url value='/images/shop/letsgo.png'/>" class="img-responsive" alt="">
+								<img src="<c:url value='/images/shop/oa.png'/>" class="img-responsive" alt="">
 								<div class="product-overlay">
 									<a class="product-overlay-link" href="#"><i class="fa fa-search-plus"></i></a>
 									<a class="product-overlay-cart" href="#"><i class="fa fa-cart-plus"></i></a>
 								</div>
 							</div>
-							<h3 class="product-title"><a href="#">个人博客</a></h3>
-							<span class="product-price" style="font-size:1px;color:#878787">属于自己的个人主页</span>
-							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
+							<h3 class="product-title"><a href="${ctx}/oa" target="_blank">OA项目</a></h3>
+							<span class="product-price" style="font-size:1px;color:#878787">四川天纵科技</span>
+							<a href="${ctx}/oa" target="_blank" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
 						</div>
 					</div>
 				</li>
