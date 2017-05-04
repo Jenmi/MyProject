@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>HOME</title>
+<title>博客</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -38,8 +38,8 @@
 			<div class="row">
 				<div class="col-md-12">
 					<ul class="bcrumbs">
-						<li><a href="${ctx}/home"><i class="fa fa-home"></i> Home</a></li>
-						<li>BLog</li>
+						<li><a href="${ctx}/home"><i class="fa fa-home"></i>主页</a></li>
+						<li>博客</li>
 					</ul>
 					<div class="clearfix"></div>
 				</div>
@@ -73,17 +73,28 @@
 				<div class="side-widget space50">
 					<h4>博客 &nbsp;&nbsp;<a href="${ctx }/blog"><i class="icon-plus2"></i></a></h4>
 					<ul class="list-unstyled cat-list">
-						<li> <a href="${ctx }/blog">java博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
-						<li> <a href="${ctx }/blog">mysql博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
-						<li> <a href="${ctx }/blog">jquery博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
-						<li> <a href="${ctx }/blog">项目博客</a><a href="${ctx }/blog/add"> <i class="icon-plus2"></i></a></li>
-						<li> <a href="${ctx }/blog">生活博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
+						<li> <a href="${ctx }/blog?type=3">java博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
+						<li> <a href="${ctx }/blog?type=7">mysql博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
+						<li> <a href="${ctx }/blog?type=2">jquery博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
+						<li> <a href="${ctx }/blog?type=10">项目博客</a><a href="${ctx }/blog/add"> <i class="icon-plus2"></i></a></li>
+						<li> <a href="${ctx }/blog?type=10">生活博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
 					</ul>
 				</div>
 				<div class="side-widget space50">
 					<h4>热门文章</h4>
 					<ul class="list-unstyled popular-post">
-						<li>
+						<c:forEach var="item" items="${hotList }" varStatus="index">
+							<li>
+								<div class="popular-img">
+									<a href="#"> <img src="<c:url value='/images/blog/1/${index.index+1 }.jpg'/>"  class="img-responsive" alt=""></a>
+								</div>
+								<div class="popular-desc">
+									<h5> <a href="${ctx }/blog/${item.blogId}/show" target="_blank">${item.title }</a></h5>
+									<span>Jenmi</span>
+								</div>
+							</li>
+						</c:forEach>
+						<%-- <li>
 							<div class="popular-img">
 								<a href="#"> <img src="<c:url value='/images/blog/1/1.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/blog/1/1.jpg" class="img-responsive" alt=""></a>
 							</div>
@@ -109,7 +120,7 @@
 								<h5> <a href="#">Cras vulputate dolor</a></h5>
 								<span>By Admin</span>
 							</div>
-						</li>
+						</li> --%>
 					</ul>
 				</div>
 				<div class="side-widget space50">
@@ -139,9 +150,9 @@
 			<article class="blogpost">
 				<h4>搜索文章</h4>
 					<form role="" action="${ctx }/blog" class="" method="post">
-						<span><input type="text" style="height:30px;width:250px; display: inline-block;margin-bottom:10px;" class="datepicker form-control" id="beginDate"  name="beginDate" value="<fmt:formatDate value="${query.beginDate }" pattern="yyyy-MM-dd"/>" placeholder="开始日期"> </span>
+						<span><input type="text" style="height:30px;width:250px; display: inline-block;margin-bottom:10px;" class="datepicker form-control" id="beginDate"  name="beginDate"  value="<fmt:formatDate value="${query.beginDate }" pattern="yyyy-MM-dd"/>" placeholder="开始日期"> </span>
 						<span><input type="text" style="height:30px;width:250px; display:inline-block;margin-bottom:10px; " class="datepicker form-control" id="endDate" name="endDate" value="<fmt:formatDate value="${query.endDate }" pattern="yyyy-MM-dd"/>"  placeholder="结束日期"></span>
-						<input class="form-control" type="text" placeholder="请输入内容" style="margin-bottom:10px;">&nbsp;
+					<!-- 	<input class="form-control" type="text" placeholder="请输入内容" style="margin-bottom:10px;" name="content">&nbsp; -->
 						<input type="hidden" name="type" value="${query.type}"/>
 						<input type="hidden" name="type_child" value="${query.type}"/>
 
@@ -178,7 +189,11 @@
 					<div class="post-excerpt">
 						<p>Morbi interdum, lectus eget mattis vehicula, est nisi dapibus risus, a vestibulum enim leo sed velit. Etiam rhoncus dui quis tellus consectetur laoreet et a nulla. Suspendisse eleifend velit vitae lectus faucibus, vel consectetur magna pellentesque. Aliquam a efficitur ipsum.</p>
 					</div>
+<<<<<<< HEAD
 					<a href="#" class="button btn-xs">阅　读&nbsp;&nbsp;<i class="fa fa-angle-right"></i></a>
+=======
+					<a href="#" class="button btn-xs">查&nbsp;&nbsp;看&nbsp;&nbsp;<i class="fa fa-angle-right"></i></a>
+>>>>>>> branch 'master' of https://github.com/Jenmi/MyProject.git
 				</article>
 				<div class="blog-sep"></div>
 
@@ -201,11 +216,10 @@
 					<div class="space20"></div>
 					<div class="post-excerpt">
 						<p><%-- Morbi interdum, lectus eget mattis vehicula, est nisi dapibus risus, a vestibulum enim leo sed velit. Etiam rhoncus dui quis tellus consectetur laoreet et a nulla. Suspendisse eleifend velit vitae lectus faucibus, vel consectetur magna pellentesque. Aliquam a efficitur ipsum. --%>
-							${fn:trim(blog.contentVice)}
+							${fn:trim(blog.contentVice)}...
 						</p>
 					</div>
 					<a href="${ctx }/blog/${blog.blogId }/show" target="_blank" class="button btn-xs">阅　读&nbsp;&nbsp;<i class="fa fa-angle-right"></i></a>
-
 				</article>
 				<div class="blog-sep">
 				</div>
@@ -213,11 +227,25 @@
 				<!-- Pagination -->
 				<div class="page_nav">
 					<a href=""><i class="fa fa-angle-left"></i></a>
-					<a href="" class="active">1</a>
+					<c:choose>
+						<c:when test="${pageInfo.pages > 10}" >
+							<c:forEach var="index" begin="${pageInfo.pageNum }" end="${pageInfo.pageNum+5 }" varStatus="status">  
+								<a href="${ctx }/blog?currPage=${index}" class="active">${index}</a>
+							</c:forEach>
+							<a class="no-active">...</a>
+							<a class="active">${pageInfo.pages}</a>
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="index" begin="${pageInfo.pageNum }" end="${pageInfo.pages }" varStatus="status">  
+								<a href="${ctx }/blog?currPage=${index}" class="active">${index}</a>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+					<!-- <a href="" class="active">1</a>
 					<a href="">2</a>
-					<a href="">3</a>
+					<a href="">3</a> 
 					<a class="no-active">...</a>
-					<a href="">9</a>
+					<a href="">9</a>-->
 					<a href=""><i class="fa fa-angle-right"></i></a>
 				</div>
 				<!-- End Pagination -->

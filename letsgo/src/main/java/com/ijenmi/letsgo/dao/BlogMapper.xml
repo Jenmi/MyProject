@@ -21,7 +21,7 @@
     blog_id, title, content, blog_blong, type, status, zan_num, bad_num, see_num, create_date, update_date,
     comment_num, user_id, content_vice
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey"  resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from blog
@@ -211,7 +211,7 @@
           and content like #{content_,jdbcType=VARCHAR}
       </if>
       <if test="type != null">
-         and type = #{type,jdbcType=Integer}
+         and type = #{type,jdbcType=INTEGER}
       </if>
   </select>
   <select id="getBestNewBlogByTypeId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
@@ -220,6 +220,13 @@
     from blog
     where type = #{typeId}
     ORDER BY create_date  desc LIMIT 0,1
+  </select>
+    <select id="getBestHotBlog" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List"/>
+    from blog
+   <!--  where type = #{typeId} -->
+    ORDER BY zan_num  desc LIMIT 0,3
   </select>
   
    <select id="getBlogCount"  resultType="java.lang.Integer" parameterType="java.lang.Integer">

@@ -23,4 +23,5 @@ public interface BlogMapper {
     Blog getBestNewBlogByTypeId(Integer typeId);
     
     int getBlogCount(Integer typeId);
+    List getBestHotBlog();
 }

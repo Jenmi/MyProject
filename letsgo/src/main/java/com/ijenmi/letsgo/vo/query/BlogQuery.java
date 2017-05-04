@@ -29,7 +29,22 @@ public class BlogQuery extends CurrPage{//extends BaseQuery
     private Date endDate;//结束时间
     private String content;//内容
     private Integer type;//博客类型
+    private Integer zanNum;
+    private String orderColum;
     
+    
+	public String getOrderColum() {
+		return orderColum;
+	}
+	public void setOrderColum(String orderColum) {
+		this.orderColum = orderColum;
+	}
+	public Integer getZanNum() {
+		return zanNum;
+	}
+	public void setZanNum(Integer zanNum) {
+		this.zanNum = zanNum;
+	}
 	public Integer getType() {
 		return type;
 	}

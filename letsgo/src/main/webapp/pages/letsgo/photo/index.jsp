@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>PHOTO</title>
+<title>图片</title>
 <%@ include file="/commons/taglib.jsp" %>
 </head>
 <body id="header6">

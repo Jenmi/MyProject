@@ -23,7 +23,8 @@ public class CurrPage {//extends BaseQuery
 	private String pageName; //当前页面
     private Integer operation;//0表示主页   1、表示add 2、表示edit  3表示show
     private Integer type;//类型
-    
+    private Integer currPage;
+    private Integer rowNum;
     public CurrPage(){}
     
     public CurrPage(String pageName, Integer operation, Integer type) {
@@ -50,6 +51,21 @@ public class CurrPage {//extends BaseQuery
 	}
 	public void setOperation(Integer operation) {
 		this.operation = operation;
+	}
+	public Integer getCurrPage() {
+		return currPage;
+	}
+
+	public void setCurrPage(Integer currPage) {
+		this.currPage = currPage;
+	}
+
+	public Integer getRowNum() {
+		return rowNum;
+	}
+
+	public void setRowNum(Integer rowNum) {
+		this.rowNum = rowNum;
 	}
 }
 

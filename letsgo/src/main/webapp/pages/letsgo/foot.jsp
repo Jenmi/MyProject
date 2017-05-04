@@ -73,7 +73,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8">
-				<p>&copy; Copyright 2016. Jenmi </p>
+				<p>&copy;  2016. Jenmi 蜀ICP备17011406号 </p>
 			</div>
 			<div class="col-md-4">
 				<div class="f-social pull-right">

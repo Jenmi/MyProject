@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ijenmi.base.BaseController;
 import com.ijenmi.letsgo.model.Blog;
 import com.ijenmi.letsgo.model.BlogComment;
@@ -36,10 +38,15 @@ public class BlogController extends BaseController{
 	
 	@RequestMapping
 	public String index(ModelMap model, BlogQuery query, HttpServletRequest request, HttpServletResponse response){
+		PageHelper.startPage(query.getCurrPage()==null?1:query.getCurrPage(), 10);
 		List<Blog> blogs =blogService.query(query);
+		PageInfo pageInfo = new PageInfo(blogs);
 		model.addAttribute("query", query);
 		model.addAttribute("blogs", blogs);
+		model.addAttribute("pageInfo", pageInfo);
 		
+		List hotList = blogService.getBestHotBlog();
+		model.addAttribute("hotList", hotList);
 		UserInfo user = UserAndAuthorityUtil.getSessionUser(request);
 		Boolean canedit = (Boolean) request.getAttribute("canedit");
 		if(canedit!=null && canedit){
@@ -74,7 +81,7 @@ public class BlogController extends BaseController{
 		UserInfo user= UserAndAuthorityUtil.getSessionUser(request);
 		boolean status = blogService.update(blog);
 		
-		this.getMsg(status, "修改失败，或许您在进行非法操作！");
+		this.getMsg(status, "淇敼澶辫触锛屾垨璁告偍鍦ㄨ繘琛岄潪娉曟搷浣滐紒");
 		return "redirect:/blog";
 	}
 	
@@ -115,7 +122,7 @@ public class BlogController extends BaseController{
 	}
 	
 	/**
-	 * 赞获取反赞
+	 * 璧炶幏鍙栧弽璧�
 	 * @param model
 	 * @param id
 	 * @param type

@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<title>Home</title>
+	<title>Jenmi 主页</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
@@ -16,6 +16,9 @@
 	<%@ include file="/commons/taglib.jsp" %>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>" type="text/css">
+	<!-- 音乐 -->
+	<link rel="stylesheet" href="<c:url value='/utils/music/APlayer.min.css'/>" type="text/css">
+	<script src="<c:url value="/utils/music/APlayer.min.js"/>" type="text/javascript"></script>
 </head>
 <body id="header6">
 <div id="page-top"></div>
@@ -33,7 +36,10 @@
 						</button>
 						<a href="index.html" class="navbar-brand"><img src="<c:url value='/images/basic/JENMI.png'/>" width="40" alt=""/></a>
 					</div>
-
+					<div class="navbar-header">
+							<div id="player" class="aplayer"></div>
+					</div>
+				
 					<!-- SEARCH -->
 					<div class="header-x pull-right">
 						<div class="s-search">
@@ -339,18 +345,18 @@
 							<c:choose>
 								<c:when test="${not empty blog.title}"><a href="${ctx}/blog/${blog.blogId}/show" target="_blank">${blog.title}</a></c:when>
 								<c:otherwise>
-									<a href="${ctx}/blog" target="_blank"> ——经典博客</a>
+									<a href="${ctx}/blog" target="_blank"> —经典博客</a>
 								</c:otherwise>
 							</c:choose>
 						</h4>
 						<c:choose>
 								<c:when test="${not empty blog.title}">
 									<p>${blog.contentVice}</p>
-									<a href="${ctx}/blog/${blog.blogId}/show" target="_blank" class="readmore">Read more...</a>
+									<a href="${ctx}/blog/${blog.blogId}/show" target="_blank" class="readmore">查&nbsp;&nbsp;看...</a>
 								</c:when>
 								<c:otherwise>
 									<p>世上最快乐的事，莫过于为理想而奋斗。 —— 苏格拉底</p>
-									<a href="${ctx}/blog" target="_blank" class="readmore">Read more...</a>
+									<a href="${ctx}/blog" target="_blank" class="readmore">查&nbsp;&nbsp;看...</a>
 								</c:otherwise>
 							</c:choose>
 					</div>
@@ -367,18 +373,18 @@
 							<c:choose>
 								<c:when test="${not empty blog.title}"><a href="${ctx}/blog/${liveBlog.blogId}/show" target="_blank">-${blog.title}</a></c:when>
 								<c:otherwise>
-									<a href="${ctx}/blog" target="_blank"> ——生活博客</a>
+									<a href="${ctx}/blog" target="_blank"> —生活博客</a>
 								</c:otherwise>
 							</c:choose>
 						</h4>
 						<c:choose>
 								<c:when test="${not empty liveBlog.title}">
 									<p>${liveBlog.contentVice}</p>
-									<a href="${ctx}/blog/${liveBlog.blogId}/show" target="_blank" class="readmore">Read more...</a>
+									<a href="${ctx}/blog/${liveBlog.blogId}/show" target="_blank" class="readmore">查&nbsp;&nbsp;看...</a>
 								</c:when>
 								<c:otherwise>
 									<p>每个人都必须按自己心灵的良心来生活，但不是按任何理想。使良心屈从于信条，或理念，或传统，甚至是内在冲动，那是我们的堕落。 —— 劳伦斯</p>
-									<a href="${ctx}/blog" target="_blank" class="readmore">Read more...</a>
+									<a href="${ctx}/blog" target="_blank" class="readmore">查&nbsp;&nbsp;看...</a>
 								</c:otherwise>
 							</c:choose>
 					</div>
@@ -395,18 +401,18 @@
 							<c:choose>
 								<c:when test="${not empty blog.title}"><a href="${ctx}/blog/${proBlog.blogId}/show" target="_blank">-${blog.title}</a></c:when>
 								<c:otherwise>
-									<a href="${ctx}/blog" target="_blank"> ——项目博客</a>
+									<a href="${ctx}/blog" target="_blank"> —项目博客</a>
 								</c:otherwise>
 							</c:choose>
 						</h4>
 						<c:choose>
 								<c:when test="${not empty proBlog.title}">
 									<p>${proBlog.contentVice}</p>
-									<a href="${ctx}/blog/${proBlog.blogId}/show" target="_blank" class="readmore">Read more...</a>
+									<a href="${ctx}/blog/${proBlog.blogId}/show" target="_blank" class="readmore">查&nbsp;&nbsp;看...</a>
 								</c:when>
 								<c:otherwise>
 									<p>在当前现实的狭隘基础上，有高尚理想，全面的计划；在一步一步行动上，想到远大前途，脚踏实地地稳步前进，才能有所成就。 —— 徐特立</p>
-									<a href="${ctx}/blog" target="_blank" class="readmore">Read more...</a>
+									<a href="${ctx}/blog" target="_blank" class="readmore">查&nbsp;&nbsp;看...</a>
 								</c:otherwise>
 							</c:choose>
 					</div>
@@ -752,9 +758,9 @@
 									<!-- <a class="product-overlay-cart" href="#"><i class="fa fa-cart-plus"></i></a> -->
 								</div>
 							</div>
-							<h3 class="product-title"><a href="#">ERP项目</a></h3>
+							<h3 class="product-title"><a href="${ctx}/herp/login" target="_blank">ERP项目</a></h3>
 							<span class="product-price"  style="font-size:1px;color:#878787">四川远海国际旅行社，根据公司业务做得一套项目</span>
-							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
+							<a href="${ctx}/herp/login" target="_blank" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
 						</div>
 					</div>
 				</li>
@@ -763,15 +769,15 @@
 						<span class="badge blue"><span>50%</span><br>Off</span>
 						<div class="text-center">
 							<div class="product-thumbnail">
-								<img src="<c:url value='/images/shop/letsgo.png'/>" class="img-responsive" alt="">
+								<img src="<c:url value='/images/shop/oa.png'/>" class="img-responsive" alt="">
 								<div class="product-overlay">
 									<a class="product-overlay-link" href="#"><i class="fa fa-search-plus"></i></a>
 									<a class="product-overlay-cart" href="#"><i class="fa fa-cart-plus"></i></a>
 								</div>
 							</div>
-							<h3 class="product-title"><a href="#">个人博客</a></h3>
-							<span class="product-price" style="font-size:1px;color:#878787">属于自己的个人主页</span>
-							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
+							<h3 class="product-title"><a href="${ctx}/oa" target="_blank">OA项目</a></h3>
+							<span class="product-price" style="font-size:1px;color:#878787">四川天纵科技</span>
+							<a href="${ctx}/oa" target="_blank" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
 						</div>
 					</div>
 				</li>
@@ -806,7 +812,6 @@
 		</div>
 	</div>
 </div>
-
 <!-- INNER CONTENT -->
 <!-- STYLE SWITCHER
 ============================================= -->
@@ -831,6 +836,24 @@
 			}
 		});
 	}
+	
+	var ap2 = new APlayer({
+        element: document.getElementById('player'),
+        narrow: true,
+        autoplay: false,
+        showlrc: false,
+        music: {
+            title: 'Sugar',
+            author: 'Maroon 5',
+            url: '${ctx}/utils/music/Sugar.mp3',
+            pic: '${ctx}/utils/music/pf1.jpg',
+            height:5,
+            width:5
+        }
+    });
+    ap2.init();
+	
+	
 </script>
 
 
