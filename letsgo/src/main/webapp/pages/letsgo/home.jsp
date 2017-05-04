@@ -19,6 +19,7 @@
 	<!-- 音乐 -->
 	<link rel="stylesheet" href="<c:url value='/utils/music/APlayer.min.css'/>" type="text/css">
 	<script src="<c:url value="/utils/music/APlayer.min.js"/>" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" href="<c:url value="/utils/musicMax/css/main.css"/>">
 </head>
 <body id="header6">
 <div id="page-top"></div>
@@ -719,7 +720,40 @@
 				</ul>
 			</div>
 			<div class="col-sm-4 col-sm-pull-4">
-				<div> <img src="<c:url value='/images/other/3.png'/>" class="img-responsive center-block" alt=""> </div>
+				<div> <%-- <img src="<c:url value='/images/other/3.png'/>" class="img-responsive center-block" alt="">  --%>
+					<div class='jAudio--player'>
+					<audio></audio>
+					<div class='jAudio--ui'>
+					  <div class='jAudio--thumb'></div>
+					  <div class='jAudio--status-bar'>
+						<div class='jAudio--details'></div>
+						<div class='jAudio--volume-bar'></div>
+						<div class='jAudio--progress-bar'>
+						  <div class='jAudio--progress-bar-wrapper'>
+							<div class='jAudio--progress-bar-played'>
+							  <span class='jAudio--progress-bar-pointer'></span>
+							</div>
+						  </div>
+						</div>
+						<div class='jAudio--time'>
+						  <span class='jAudio--time-elapsed'>00:00</span>
+						  <span class='jAudio--time-total'>00:00</span>
+						</div>
+					  </div>
+					</div>
+					
+					<div class='jAudio--playlist'>
+					</div>
+					<div class='jAudio--controls'>
+					  <ul>
+						<li><button class='btn' data-action='prev' id='btn-prev'><span></span></button></li>
+						<li><button class='btn' data-action='play' id='btn-play'><span></span></button></li>
+						<li><button class='btn' data-action='next' id='btn-next'><span></span></button></li>
+					  </ul>
+					</div>
+					
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -853,9 +887,42 @@
     });
     ap2.init();
 	
+    
+    
 	
 </script>
+<script src='<c:url value='/utils/musicMax/js/jquery-2.1.4.min.js'/>'></script>
+<script src='<c:url value='/utils/musicMax/js/jaudio.js'/>'></script>
+<script>
+var t = {
+	playlist:[
+		{
+		  file: "utils/musicMax/tracks/01.mp3",
+		  thumb: "utils/musicMax/thumbs/01.jpg",
+		  trackName: "Dusk",
+		  trackArtist: "Tobu & Syndec",
+		  trackAlbum: "Single",
+		},
+		{
+		  file: "utils/musicMax/tracks/02.mp3",
+		  thumb: "utils/musicMax/thumbs/02.jpg",
+		  trackName: "Blank",
+		  trackArtist: "Disfigure",
+		  trackAlbum: "Single",
+		},
+		{
+		  file: "utils/musicMax/tracks/03.mp3",
+		  thumb: "utils/musicMax/thumbs/03.jpg",
+		  trackName: "Fade",
+		  trackArtist: "Alan Walker",
+		  trackAlbum: "Single",
+		}
+	],
+	autoPlay:true
+}
 
+$(".jAudio--player").jAudio(t);
+</script>
 
 </body>
 </html>
