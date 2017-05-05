@@ -17,9 +17,10 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>" type="text/css">
 	<!-- 音乐 -->
-	<link rel="stylesheet" href="<c:url value='/utils/music/APlayer.min.css'/>" type="text/css">
-	<script src="<c:url value="/utils/music/APlayer.min.js"/>" type="text/javascript"></script>
-	<link rel="stylesheet" type="text/css" href="<c:url value="/utils/musicMax/css/main.css"/>">
+	<%-- <link rel="stylesheet" href="<c:url value='/utils/music/APlayer.min.css'/>" type="text/css">
+	<script src="<c:url value="/utils/music/APlayer.min.js"/>" type="text/javascript"></script> --%>
+	<script src='<c:url value='/utils/musicMax/js/jaudio.js'/>'></script>
+	<link rel="stylesheet" type="text/css" href="<c:url value="/utils/musicMax/css/main.css"/>" />
 </head>
 <body id="header6">
 <div id="page-top"></div>
@@ -721,7 +722,7 @@
 			</div>
 			<div class="col-sm-4 col-sm-pull-4">
 				<div> <%-- <img src="<c:url value='/images/other/3.png'/>" class="img-responsive center-block" alt="">  --%>
-					<div class='jAudio--player'>
+					<div class='jAudio--player .progress-line'>
 					<audio></audio>
 					<div class='jAudio--ui'>
 					  <div class='jAudio--thumb'></div>
@@ -871,7 +872,7 @@
 		});
 	}
 	
-	var ap2 = new APlayer({
+/* 	var ap2 = new APlayer({
         element: document.getElementById('player'),
         narrow: true,
         autoplay: false,
@@ -885,43 +886,47 @@
             width:5
         }
     });
-    ap2.init();
+    ap2.init(); */
 	
     
     
 	
 </script>
-<script src='<c:url value='/utils/musicMax/js/jquery-2.1.4.min.js'/>'></script>
-<script src='<c:url value='/utils/musicMax/js/jaudio.js'/>'></script>
-<script>
-var t = {
-	playlist:[
-		{
-		  file: "utils/musicMax/tracks/01.mp3",
-		  thumb: "utils/musicMax/thumbs/01.jpg",
-		  trackName: "Dusk",
-		  trackArtist: "Tobu & Syndec",
-		  trackAlbum: "Single",
-		},
-		{
-		  file: "utils/musicMax/tracks/02.mp3",
-		  thumb: "utils/musicMax/thumbs/02.jpg",
-		  trackName: "Blank",
-		  trackArtist: "Disfigure",
-		  trackAlbum: "Single",
-		},
-		{
-		  file: "utils/musicMax/tracks/03.mp3",
-		  thumb: "utils/musicMax/thumbs/03.jpg",
-		  trackName: "Fade",
-		  trackArtist: "Alan Walker",
-		  trackAlbum: "Single",
-		}
-	],
-	autoPlay:true
-}
+<%-- <script src='<c:url value='/utils/musicMax/js/jquery-2.1.4.min.js'/>'></script> --%>
 
-$(".jAudio--player").jAudio(t);
+<script>
+
+//setTimeout("",5000);
+$(function(){
+	var t = {
+			playlist:[
+				{
+				  file: "utils/musicMax/tracks/01.mp3",
+				  thumb: "utils/musicMax/thumbs/01.jpg",
+				  trackName: "Dusk",
+				  trackArtist: "Tobu & Syndec",
+				  trackAlbum: "Single",
+				},
+				{
+				  file: "utils/musicMax/tracks/02.mp3",
+				  thumb: "utils/musicMax/thumbs/02.jpg",
+				  trackName: "Blank",
+				  trackArtist: "Disfigure",
+				  trackAlbum: "Single",
+				},
+				{
+				  file: "utils/musicMax/tracks/03.mp3",
+				  thumb: "utils/musicMax/thumbs/03.jpg",
+				  trackName: "Fade",
+				  trackArtist: "Alan Walker",
+				  trackAlbum: "Single",
+				} 
+			],
+			autoPlay:true
+		}
+	var a = $('.jAudio--player').jAudio(t);
+});
+	
 </script>
 
 </body>

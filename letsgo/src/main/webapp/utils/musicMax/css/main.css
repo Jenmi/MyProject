@@ -5,11 +5,10 @@
   box-sizing: border-box;
   font-family: "Open Sans";
   font-weight: 300;
-  color: #888;
   outline: none;
 }
 
-li {
+.jAudio--controls li {
   float: left;
   list-style: none;
 }
@@ -23,18 +22,18 @@ body {
   font-size: 1rem;
 }
 
-html {
+/* html {
   background: #383B44;
-}
+} */
 
 .jAudio--player {
-  display: table;
+ 
   overflow: hidden;
   background: #fff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
   margin: 30px auto;
-  width: 352px;
-}
+ 
+}/*  display: table; width: 352px; */
 .jAudio--player:after {
   content: " ";
   display: block;
@@ -146,7 +145,7 @@ html {
 }
 .jAudio--player .jAudio--progress-bar .jAudio--progress-bar-played {
   height: 10px;
-  background: #FF6666;
+  background: #a1ccea;
   position: relative;
   border-radius: 10px;
 }
@@ -174,7 +173,7 @@ html {
   clear: both;
 }
 .jAudio--player .jAudio--playlist .jAudio--playlist-item.active {
-  background: #f55c5c;
+  background: #a1ccea;
   border-bottom-color: #f55c5c;
 }
 .jAudio--player .jAudio--playlist .jAudio--playlist-item.active * {
@@ -282,7 +281,7 @@ html {
 #btn-pause span:before, #btn-pause span:after {
   width: 5px;
   height: 15px;
-  background: #FF6666;
+  background: rgba(2, 121, 206, 0.36);
   border: 0;
 }
 #btn-pause span:before {

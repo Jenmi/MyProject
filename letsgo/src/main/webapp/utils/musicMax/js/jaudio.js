@@ -13,7 +13,7 @@
 
 // # ----- License Info
 // - Released under the GPL v3 license.
-
+var radioObj;
 (function($){
 
   var pluginName = "jAudio",
@@ -26,7 +26,7 @@
 
         autoPlay: false,
 
-        debug: false
+        debug: true
       };
 
   function Plugin( $context, options )
@@ -75,13 +75,13 @@
     {
       var self        = this,
           playButton  = self.$domControls.find("#btn-play");
-
+      //setTimeout("alert(1)",5000);
+      //self.domAudio.pause();
       self.domAudio.play();
-
       if(self.currentState === "play") return;
 
       clearInterval(self.timer);
-      self.timer = setInterval( self.run.bind(self), 50 );
+      self.timer = setInterval( self.run.bind(self), 100);
 
       self.currentState = "play";
 
@@ -167,7 +167,9 @@
       self.currentTrack  = index;
       self.domAudio.src  = self.settings.playlist[index].file;
 
-      if(self.currentState === "play" || self.settings.autoPlay) self.play();
+      if(self.currentState === "play" || self.settings.autoPlay) {
+    	  self.play();
+      }
 
       self.highlightTrack();
 
@@ -184,7 +186,6 @@
       self.$domControls.on("click", "button", function()
       {
         var action = $(this).data("action");
-
         switch( action )
         {
           case "prev": self.prev.call(self); break;
@@ -312,7 +313,9 @@
       var self = this,
           template = "";
 
-
+      if(self.settings.playlist==undefined || self.settings.playlist.length==0){
+    	  return;
+      }
       $.each(self.settings.playlist, function(i, a)
       {
         var file          = a["file"],
@@ -430,6 +433,5 @@
 
     $(this).each(instantiate);
   }
-
 })(jQuery)
 
