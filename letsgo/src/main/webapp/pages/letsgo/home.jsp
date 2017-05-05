@@ -900,7 +900,7 @@
 $(function(){
 	var t = {
 			playlist:[
-				{
+				/* {
 				  file: "utils/musicMax/tracks/01.mp3",
 				  thumb: "utils/musicMax/thumbs/01.jpg",
 				  trackName: "Dusk",
@@ -921,6 +921,31 @@ $(function(){
 				  trackArtist: "Alan Walker",
 				  trackAlbum: "Single",
 				} 
+				, */
+				{
+				  file: "utils/musicMax/tracks/ItsOnTonight.mp3",
+				  thumb: "utils/musicMax/thumbs/02.jpg",
+				  trackName: "Fade",
+				  trackArtist: "Alan Walker",
+				  trackAlbum: "Single",
+				} 
+				,
+				{
+				  file: "utils/musicMax/tracks/MyHeart.mp3",
+				  thumb: "utils/musicMax/thumbs/01.jpg",
+				  trackName: "Fade",
+				  trackArtist: "Alan Walker",
+				  trackAlbum: "Single",
+				} 
+				,
+				{
+				  file: "utils/musicMax/tracks/M80.mp3",
+				  thumb: "utils/musicMax/thumbs/03.jpg",
+				  trackName: "Fade",
+				  trackArtist: "Alan Walker",
+				  trackAlbum: "Single",
+				} 
+				
 			],
 			autoPlay:true
 		}

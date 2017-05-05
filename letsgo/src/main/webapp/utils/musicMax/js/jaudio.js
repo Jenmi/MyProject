@@ -81,7 +81,7 @@ var radioObj;
       if(self.currentState === "play") return;
 
       clearInterval(self.timer);
-      self.timer = setInterval( self.run.bind(self), 100);
+      self.timer = setInterval( self.run.bind(self), 50);
 
       self.currentState = "play";
 
