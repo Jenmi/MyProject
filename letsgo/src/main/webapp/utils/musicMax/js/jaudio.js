@@ -24,7 +24,7 @@ var radioObj;
         defaultArtist: undefined,
         defaultTrack: 0,
 
-        autoPlay: false,
+        autoPlay: true,
 
         debug: true
       };
@@ -47,13 +47,14 @@ var radioObj;
     this.$domTotalTime    = this.$context.find(".jAudio--time-total");
     this.$domThumb        = this.$context.find(".jAudio--thumb");
 
-    this.currentState       = "pause";
+    this.currentState       = "play";
     this.currentTrack       = this.settings.defaultTrack;
     this.currentElapsedTime = undefined;
 
     this.timer              = undefined;
 
     this.init();
+    this.play();
   }
 
   Plugin.prototype = {
