@@ -15,7 +15,7 @@
 			<br>
 			图片内容
 			<div style="">
-				<textarea rows="5" id="blogContent" name="photoContent" class="form-control" cols="100%" value="${photo.photoContent }" ></textarea>
+				<textarea rows="5" id="photoContent" name="photoContent" class="form-control" cols="100%" value="${photo.photoContent }" ></textarea>
 			</div>
 			<br>
 			上传
@@ -32,11 +32,8 @@
 			</div>
 			<br>
 			<div class="contact-but">
-				<input name="blogId" type="hidden" value="${photo.photoId }"/>
-				<input name="status" type="hidden" value="${photo.status }"/>
-				<input name="zanNum" type="hidden" value="${photo.zanNum }"/>
+				<input name="photoId" type="hidden" value="${photo.photoId }"/>
 				<input name="createDate" type="hidden" value='<fmt:formatDate value="${photo.createDate }"/>'/>
-				<input name="commentNum" type="hidden" value="${photo.commentNum }"/>
 				<input name="userId" type="hidden" value="${photo.userId }"/>
 				<input type="submit" value="发表文章" class="btn btn-primary" />
 				<input type="button" value="取消" class="btn btn-default" /> 
