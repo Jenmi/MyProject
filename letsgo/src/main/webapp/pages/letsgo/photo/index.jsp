@@ -21,7 +21,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h3><span>Portfolio</span>Lorem ipsum dolor <br>amet iplus</h3>
+						<h3><span>  孔丘</span>知者乐水，仁者乐山。<br></h3>
 					</div>
 				</div>
 			</div>
@@ -31,8 +31,8 @@
 				<div class="row">
 					<div class="col-md-12">
 						<ul class="bcrumbs">
-							<li><a href="${ctx }/home"><i class="fa fa-home"></i> Home</a></li>
-							<li>Picture</li>
+							<li><a href="${ctx }/home"><i class="fa fa-home"></i> 主页</a></li>
+							<li>图片</li>
 						</ul>
 						<div class="clearfix"></div>
 					</div>
@@ -46,16 +46,16 @@
 			<section id="portfolio-section">
 				<ul class="filter no-margin-top" data-option-key="filter">
 					<li><a class="selected" href="#filter" data-option-value="*">全&nbsp;&nbsp;部</a></li>
-					<li><a href="#" data-option-value=".branding">美&nbsp;&nbsp;景</a></li>
-					<li><a href="#" data-option-value=".illustration">人&nbsp;&nbsp;物</a></li>
-					<li><a href="#" data-option-value=".web-design">物&nbsp;&nbsp;品</a></li>
-					<li><a href="#" data-option-value=".print">其&nbsp;&nbsp;他</a></li>
+					<li><a href="#" data-option-value=".photoType1">美&nbsp;&nbsp;景</a></li>
+					<li><a href="#" data-option-value=".photoType2">人&nbsp;&nbsp;物</a></li>
+					<li><a href="#" data-option-value=".photoType3">物&nbsp;&nbsp;品</a></li>
+					<li><a href="#" data-option-value=".photoType9">其&nbsp;&nbsp;他</a></li>
 				</ul>
 				<div id="portfolio-home" class="isotope folio-boxed-4col ">
-					<div class="project-item branding">
-						<a href="<c:url value='/images/projects/1.jpg'/>" class="mp-lightbox" tppabs="http://ckthemes.com/html/maxima/maxima/portfolio-single-slider.html">
+					<div class="project-item photoType1">
+						<a href="<c:url value='/images/projects/1.jpg'/>" class="mp-lightbox" >
 							<div class="project-gal">
-								<img src="<c:url value='/images/projects/1.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/projects/1.jpg" class="img-responsive" alt="">
+								<img src="<c:url value='/images/projects/1.jpg'/>" class="img-responsive" alt="">
 								<div class="overlay-folio2">
 									<div class="project-info">
 										<h2>Aliquam tincidunt risus.</h2>
@@ -65,10 +65,10 @@
 							</div>
 						</a>
 					</div>
-					<div class="project-item illustration web-design illustration">
-						<a href="<c:url value='/images/projects/2.jpg'/>" class="mp-lightbox" tppabs="http://ckthemes.com/html/maxima/maxima/portfolio-single-slider.html">
+					<div class="project-item photoType2 photoType3 photoType2">
+						<a href="<c:url value='/images/projects/2.jpg'/>" class="mp-lightbox" >
 							<div class="project-gal">
-								<img src="<c:url value='/images/projects/2.jpg'/>"  tppabs="http://ckthemes.com/html/maxima/maxima/images/projects/2.jpg" class="img-responsive" alt="">
+								<img src="<c:url value='/images/projects/2.jpg'/>"  class="img-responsive" alt="">
 								<div class="overlay-folio2">
 									<div class="project-info">
 										<h2>Vestibulum auctor</h2>
@@ -78,10 +78,10 @@
 							</div>
 						</a>
 					</div>
-					<div class="project-item illustration print">
+					<div class="project-item photoType2 photoType9">
 						<a href="<c:url value='/images/projects/3.jpg'/>" class="mp-lightbox" tppabs="http://ckthemes.com/html/maxima/maxima/portfolio-single-slider.html">
 							<div class="project-gal">
-								<img src="<c:url value='/images/projects/3.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/projects/3.jpg" class="img-responsive" alt="">
+								<img src="<c:url value='/images/projects/3.jpg'/>" class="img-responsive" alt="">
 								<div class="overlay-folio2">
 									<div class="project-info">
 										<h2>Vestibulum auctor</h2>
@@ -91,10 +91,10 @@
 							</div>
 						</a>
 					</div>
-					<div class="project-item web-design">
-						<a href="<c:url value='/images/projects/4.jpg'/>" class="mp-lightbox" tppabs="http://ckthemes.com/html/maxima/maxima/portfolio-single-slider.html">
+					<div class="project-item photoType3">
+						<a href="<c:url value='/images/projects/4.jpg'/>" class="mp-lightbox">
 							<div class="project-gal">
-								<img src="<c:url value='/images/projects/4.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/projects/4.jpg" class="img-responsive" alt="">
+								<img src="<c:url value='/images/projects/4.jpg'/>"  class="img-responsive" alt="">
 								<div class="overlay-folio2">
 									<div class="project-info">
 										<h2>Vestibulum auctor</h2>
@@ -104,10 +104,10 @@
 							</div>
 						</a>
 					</div>
-					<div class="project-item branding">
-						<a href="<c:url value='/images/projects/5.jpg'/>" class="mp-lightbox" tppabs="http://ckthemes.com/html/maxima/maxima/portfolio-single-slider.html">
+					<div class="project-item photoType1">
+						<a href="<c:url value='/images/projects/5.jpg'/>"  class="mp-lightbox"  class="mp-lightbox">
 							<div class="project-gal">
-								<img src="<c:url value='/images/projects/5.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/projects/5.jpg" class="img-responsive" alt="">
+								<img src="<c:url value='/images/projects/5.jpg'/>"class="img-responsive" alt="">
 								<div class="overlay-folio2">
 									<div class="project-info">
 										<h2>Vestibulum auctor</h2>
@@ -117,10 +117,10 @@
 							</div>
 						</a>
 					</div>
-					<div class="project-item illustration web-design print">
-						<a href="<c:url value='/images/projects/6.jpg'/>" class="mp-lightbox" tppabs="http://ckthemes.com/html/maxima/maxima/portfolio-single-slider.html">
+					<div class="project-item photoType2 photoType3 photoType9">
+						<a href="<c:url value='/images/projects/6.jpg'/>" class="mp-lightbox">
 							<div class="project-gal">
-								<img src="<c:url value='/images/projects/6.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/projects/6.jpg" class="img-responsive" alt="">
+								<img src="<c:url value='/images/projects/6.jpg'/>"  class="img-responsive" alt="">
 								<div class="overlay-folio2">
 									<div class="project-info">
 										<h2>Vestibulum auctor</h2>
@@ -130,10 +130,10 @@
 							</div>
 						</a>
 					</div>
-					<div class="project-item branding illustration">
-						<a href="portfolio-single-slider.html" tppabs="http://ckthemes.com/html/maxima/maxima/portfolio-single-slider.html">
+					<div class="project-item photoType1 photoType2">
+						<a href="portfolio-single-slider.html"  class="mp-lightbox"  >
 							<div class="project-gal">
-								<img src="<c:url value='/images/projects/7.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/projects/7.jpg" class="img-responsive" alt="">
+								<img src="<c:url value='/images/projects/7.jpg'/>" class="img-responsive" alt="">
 								<div class="overlay-folio2">
 									<div class="project-info">
 										<h2>Vestibulum auctor</h2>
@@ -143,10 +143,10 @@
 							</div>
 						</a>
 					</div>
-					<div class="project-item illustration web-design">
-						<a href="portfolio-single-slider.html" tppabs="http://ckthemes.com/html/maxima/maxima/portfolio-single-slider.html">
+					<div class="project-item photoType2 photoType3">
+						<a href="portfolio-single-slider.html"  class="mp-lightbox" >
 							<div class="project-gal">
-								<img src="<c:url value='/images/projects/8.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/projects/8.jpg" class="img-responsive" alt="">
+								<img src="<c:url value='/images/projects/8.jpg'/>" class="img-responsive" alt="">
 								<div class="overlay-folio2">
 									<div class="project-info">
 										<h2>Vestibulum auctor</h2>
@@ -156,10 +156,10 @@
 							</div>
 						</a>
 					</div>
-					<div class="project-item branding web-design print">
-						<a href="portfolio-single-slider.html" tppabs="http://ckthemes.com/html/maxima/maxima/portfolio-single-slider.html">
+					<div class="project-item photoType1 photoType3 photoType9">
+						<a href="portfolio-single-slider.html"  class="mp-lightbox"  >
 							<div class="project-gal">
-								<img src="<c:url value='/images/projects/9.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/projects/9.jpg" class="img-responsive" alt="">
+								<img src="<c:url value='/images/projects/9.jpg'/>"  class="img-responsive" alt="">
 								<div class="overlay-folio2">
 									<div class="project-info">
 										<h2>Vestibulum auctor</h2>
@@ -169,10 +169,10 @@
 							</div>
 						</a>
 					</div>
-					<div class="project-item branding">
-						<a href="portfolio-single-slider.html" tppabs="http://ckthemes.com/html/maxima/maxima/portfolio-single-slider.html">
+					<div class="project-item photoType1">
+						<a href="portfolio-single-slider.html"  class="mp-lightbox"  >
 							<div class="project-gal">
-								<img src="<c:url value='/images/projects/10.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/projects/10.jpg" class="img-responsive" alt="">
+								<img src="<c:url value='/images/projects/10.jpg'/>"  class="img-responsive" alt="">
 								<div class="overlay-folio2">
 									<div class="project-info">
 										<h2>Vestibulum auctor</h2>
@@ -182,10 +182,10 @@
 							</div>
 						</a>
 					</div>
-					<div class="project-item branding web-design">
-						<a href="portfolio-single-slider.html" tppabs="http://ckthemes.com/html/maxima/maxima/portfolio-single-slider.html">
+					<div class="project-item photoType1 photoType3">
+						<a href="portfolio-single-slider.html"  class="mp-lightbox"   >
 							<div class="project-gal">
-								<img src="<c:url value='/images/projects/11.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/projects/11.jpg" class="img-responsive" alt="">
+								<img src="<c:url value='/images/projects/11.jpg'/>"  class="img-responsive" alt="">
 								<div class="overlay-folio2">
 									<div class="project-info">
 										<h2>Vestibulum auctor</h2>
@@ -195,10 +195,10 @@
 							</div>
 						</a>
 					</div>
-					<div class="project-item branding">
-						<a href="portfolio-single-slider.html" tppabs="http://ckthemes.com/html/maxima/maxima/portfolio-single-slider.html">
+					<div class="project-item photoType1">
+						<a href="portfolio-single-slider.html"  class="mp-lightbox"   >
 							<div class="project-gal">
-								<img src="<c:url value='/images/projects/12.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/projects/12.jpg" class="img-responsive" alt="">
+								<img src="<c:url value='/images/projects/12.jpg'/>"  class="img-responsive" alt="">
 								<div class="overlay-folio2">
 									<div class="project-info">
 										<h2>Vestibulum auctor</h2>
@@ -208,6 +208,21 @@
 							</div>
 						</a>
 					</div>
+					<c:forEach var="item" items="${photos }">
+							<div class="project-item photoType${item.type }">
+						<a href="<c:url value='${item.photoPath }'/>"  class="mp-lightbox" >
+							<div class="project-gal">
+								<img src="<c:url value='${item.photoPath }'/>"  class="img-responsive" alt="">
+								<div class="overlay-folio2">
+									<div class="project-info">
+										<h2>${item.photoTitle }</h2>
+										<p>${item.photoContent }</p>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					</c:forEach>
 				</div>
 			</section>
 		</div>

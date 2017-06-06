@@ -2,6 +2,8 @@ package com.ijenmi.letsgo.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Photo {
     private Integer photoId;
 
@@ -10,14 +12,24 @@ public class Photo {
     private String photoTitle;
 
     private String photoContent;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createDate;
 
     private Integer isDelete;
 
     private Integer userId;
 
-    public Integer getPhotoId() {
+    private Integer type;
+    
+    public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
+	public Integer getPhotoId() {
         return photoId;
     }
 
