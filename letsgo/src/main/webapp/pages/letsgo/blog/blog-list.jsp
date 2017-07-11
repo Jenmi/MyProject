@@ -189,11 +189,6 @@
 					<div class="post-excerpt">
 						<p>Morbi interdum, lectus eget mattis vehicula, est nisi dapibus risus, a vestibulum enim leo sed velit. Etiam rhoncus dui quis tellus consectetur laoreet et a nulla. Suspendisse eleifend velit vitae lectus faucibus, vel consectetur magna pellentesque. Aliquam a efficitur ipsum.</p>
 					</div>
-<<<<<<< HEAD
-					<a href="#" class="button btn-xs">阅　读&nbsp;&nbsp;<i class="fa fa-angle-right"></i></a>
-=======
-					<a href="#" class="button btn-xs">查&nbsp;&nbsp;看&nbsp;&nbsp;<i class="fa fa-angle-right"></i></a>
->>>>>>> branch 'master' of https://github.com/Jenmi/MyProject.git
 				</article>
 				<div class="blog-sep"></div>
 
