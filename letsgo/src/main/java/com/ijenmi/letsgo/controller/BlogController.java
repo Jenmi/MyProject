@@ -79,6 +79,7 @@ public class BlogController extends BaseController{
 	@RequestMapping(value="/doedit")
 	public String doEdit(ModelMap model, Blog blog, HttpServletRequest request, HttpServletResponse response){
 		UserInfo user= UserAndAuthorityUtil.getSessionUser(request);
+		user.getStaffId();
 		boolean status = blogService.update(blog);
 		
 		this.getMsg(status, "淇敼澶辫触锛屾垨璁告偍鍦ㄨ繘琛岄潪娉曟搷浣滐紒");
