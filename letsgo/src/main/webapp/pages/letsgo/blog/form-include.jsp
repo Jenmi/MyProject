@@ -1,6 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ include file="/commons/taglib.jsp" %>
 
+
+<link href="<c:url value="/utils/bootstrap-fileupload/fileinput.css" />"  />
+<script src="<c:url value="/utils/bootstrap-fileupload/fileinput.js" />"></script>
+<script href="<c:url value="/utils/bootstrap-fileupload/fileinput_locale_zh.js" />"></script>
 <div class="content-message" style="">
 		<script type="text/javascript">
 			$(function(){/* 初始化值 */
@@ -10,6 +13,11 @@
 			});
 		</script>
 		<div style="padding:5px 10px;height:100%">
+			<div>
+				<div class="form-group">
+					<input id="blogImg" type="file" multiple="multiple"  data-overwrite-initial="false" data-min-file-count="2">
+				</div>
+			</div>
 			文章标题 &nbsp;
 			<div style="">
 				<select class="chzn-select-deselect" id="blogBlong" name="blogBlong" style="width: 80px; float:left;"
@@ -53,8 +61,27 @@
 				<input name="userId" type="hidden" value="${blog.userId }"/>
 				<input type="submit" onclick="blogSubmit()" value="发表文章" class="btn btn-primary" />
 				<input type="submit" value="保存草稿" class="btn btn-primary" />
-				<input type="submit" value="取消" class="btn btn-default" /> 
+				<input type="submit" value="取消" class="btn btn-default" />
 			</div>
-			
+
 		</div>
 	</div>
+	<script>
+            $("#blogImg").fileinput({
+                language: 'zh',
+                uploadUrl: '#', // you must set a valid URL here else you will get an error
+                allowedFileExtensions : ['jpg', 'png','gif'],
+                overwriteInitial: false,
+                showUpload: false,
+                showCaption: false,
+                showRemove: false,
+                maxFileSize: 1000,
+				maxFilesNum: 10,
+                //allowedFileTypes: ['image', 'video', 'flash'],
+                /*slugCallback: function(filename) {
+                    return filename.replace('(', '_').replace(']', '_');
+                }*/
+            });
+
+
+	</script>

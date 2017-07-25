@@ -70,7 +70,7 @@ editor.render("editor");
 	<div class="container"  style="height:1024px;">
 	<%@ include file="blog-head.jsp" %>
 	<!-- 内容 -->
-	<form action="${ctx }/blog/doadd" id="blogForm" method="POST">
+	<form action="${ctx }/blog/doadd" id="blogForm" method="POST" enctype="multipart/form-data">
 		<%@ include file="form-include.jsp" %>
 	</form>
 	<script type="text/javascript">

@@ -225,13 +225,13 @@
 					<c:choose>
 						<c:when test="${pageInfo.pages > 10}" >
 							<c:forEach var="index" begin="${pageInfo.pageNum }" end="${pageInfo.pageNum+5 }" varStatus="status">  
-								<a href="${ctx }/blog?currPage=${index}" class="active">${index}</a>
+								<a href="${ctx }/blog?currPage=${index}" class="active">${index}2</a>
 							</c:forEach>
 							<a class="no-active">...</a>
 							<a class="active">${pageInfo.pages}</a>
 						</c:when>
 						<c:otherwise>
-							<c:forEach var="index" begin="${pageInfo.pageNum }" end="${pageInfo.pages }" varStatus="status">  
+							<c:forEach var="index" begin="1" end="${pageInfo.pages }" varStatus="status">
 								<a href="${ctx }/blog?currPage=${index}" class="active">${index}</a>
 							</c:forEach>
 						</c:otherwise>
