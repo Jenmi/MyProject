@@ -1,5 +1,6 @@
 package com.ijenmi.letsgo.controller;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -13,7 +14,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -25,7 +28,7 @@ import com.ijenmi.letsgo.service.BlogService;
 import com.ijenmi.letsgo.vo.UserInfo;
 import com.ijenmi.letsgo.vo.query.BlogQuery;
 import com.ijenmi.letsgo.vo.query.CurrPage;
-import com.ijenmi.util.StringUtils;
+import com.ijenmi.util.UploadFile;
 import com.ijenmi.util.UserAndAuthorityUtil;
 
 @Controller
@@ -151,5 +154,17 @@ public class BlogController extends BaseController{
 		}
 		UserInfo user = UserAndAuthorityUtil.getSessionUser(request);
 		return blogService.visitorOp(user, ip, id, 3)+"";
+	}
+	@RequestMapping(value="/uploadImg",method=RequestMethod.POST)
+	@ResponseBody
+	public String upload(ModelMap model,@RequestParam("files") MultipartFile[] files, HttpServletRequest request, HttpServletResponse response){
+		try {
+			UploadFile.upload(files, request.getSession().getServletContext().getRealPath("/")+"/images/blog");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return "上传失败";
+		}
+		return "12312312";
 	}
 }

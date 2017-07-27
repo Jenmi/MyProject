@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 
-<link href="<c:url value="/utils/bootstrap-fileupload/fileinput.css" />"  />
+<link href="<c:url value="/utils/bootstrap-fileupload/fileinput.css" />" rel="stylesheet" type="text/css"  />
 <script src="<c:url value="/utils/bootstrap-fileupload/fileinput.js" />"></script>
 <script href="<c:url value="/utils/bootstrap-fileupload/fileinput_locale_zh.js" />"></script>
 <div class="content-message" style="">
@@ -15,7 +15,7 @@
 		<div style="padding:5px 10px;height:100%">
 			<div>
 				<div class="form-group">
-					<input id="blogImg" type="file" multiple="multiple"  data-overwrite-initial="false" data-min-file-count="2">
+					<input id="blogImg" type="file" name="files" multiple="multiple"  data-overwrite-initial="false" data-min-file-count="2">
 				</div>
 			</div>
 			文章标题 &nbsp;
@@ -69,18 +69,18 @@
 	<script>
             $("#blogImg").fileinput({
                 language: 'zh',
-                uploadUrl: '#', // you must set a valid URL here else you will get an error
+                uploadUrl: "${ctx}/blog/uploadImg", // you must set a valid URL here else you will get an error
                 allowedFileExtensions : ['jpg', 'png','gif'],
                 overwriteInitial: false,
-                showUpload: false,
+                showUpload: true,
                 showCaption: false,
                 showRemove: false,
                 maxFileSize: 1000,
 				maxFilesNum: 10,
                 //allowedFileTypes: ['image', 'video', 'flash'],
-                /*slugCallback: function(filename) {
+                slugCallback: function(filename) {
                     return filename.replace('(', '_').replace(']', '_');
-                }*/
+                }
             });
 
 
