@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ijenmi.letsgo.dao.BlogMapper;
 import com.ijenmi.letsgo.model.Blog;
+import com.ijenmi.letsgo.model.BlogImg;
 import com.ijenmi.letsgo.model.BlogVisitor;
 import com.ijenmi.letsgo.vo.UserInfo;
 import com.ijenmi.letsgo.vo.query.BlogQuery;
@@ -87,5 +88,13 @@ public class BlogService {
 		return blogMapper.getBlogCount(typeId);
 	}
 
+	public int  uploadImg(BlogImg img){
+		return blogMapper.uploadImg(img);
+	}
+	
+	public int updateBlogIdByImgId(Integer blogId,String imgIds){
+		
+		return blogMapper.updateBlogIdByImgId(blogId, imgIds);
+	}
 }
 

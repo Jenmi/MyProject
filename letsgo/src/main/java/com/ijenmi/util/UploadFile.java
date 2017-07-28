@@ -28,7 +28,7 @@ public class UploadFile {
 			map.put("size", f.getSize()+"");
 			map.put("type", f.getContentType());
 			map.put("realName", realName);
-			map.put("url", path+"upload/"+realName);
+			map.put("url", path+realName);
 			list.add(map);
 			
 			File file = new File(path,realName);

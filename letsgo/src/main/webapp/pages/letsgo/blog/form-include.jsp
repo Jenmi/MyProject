@@ -56,6 +56,7 @@
 				<input name="blogId" type="hidden" value="${blog.blogId }"/>
 				<input name="status" type="hidden" value="${blog.status }"/>
 				<input name="zanNum" type="hidden" value="${blog.zanNum }"/>
+				<input name="blogImgId" type="hidden" value="0"/>
 				<input name="createDate" type="hidden" value='<fmt:formatDate value="${blog.createDate }"/>'/>
 				<input name="commentNum" type="hidden" value="${blog.commentNum }"/>
 				<input name="userId" type="hidden" value="${blog.userId }"/>
@@ -81,7 +82,12 @@
                 slugCallback: function(filename) {
                     return filename.replace('(', '_').replace(']', '_');
                 }
-            });
+                
+            }).on("fileuploaded", function(event, data) {
+            	alert(data.response);
+            	
+            	$("#blogImgId").val($("#blogImgId").val()+","+data.response);
+             });
 
 
 	</script>

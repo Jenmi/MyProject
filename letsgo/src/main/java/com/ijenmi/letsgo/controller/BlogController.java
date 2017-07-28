@@ -3,6 +3,7 @@ package com.ijenmi.letsgo.controller;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,7 @@ import com.github.pagehelper.PageInfo;
 import com.ijenmi.base.BaseController;
 import com.ijenmi.letsgo.model.Blog;
 import com.ijenmi.letsgo.model.BlogComment;
+import com.ijenmi.letsgo.model.BlogImg;
 import com.ijenmi.letsgo.service.BlogCommentService;
 import com.ijenmi.letsgo.service.BlogService;
 import com.ijenmi.letsgo.vo.UserInfo;
@@ -30,6 +32,8 @@ import com.ijenmi.letsgo.vo.query.BlogQuery;
 import com.ijenmi.letsgo.vo.query.CurrPage;
 import com.ijenmi.util.UploadFile;
 import com.ijenmi.util.UserAndAuthorityUtil;
+
+import sun.org.mozilla.javascript.internal.json.JsonParser;
 
 @Controller
 @RequestMapping("/blog")
@@ -158,13 +162,23 @@ public class BlogController extends BaseController{
 	@RequestMapping(value="/uploadImg",method=RequestMethod.POST)
 	@ResponseBody
 	public String upload(ModelMap model,@RequestParam("files") MultipartFile[] files, HttpServletRequest request, HttpServletResponse response){
+		BlogImg blogImg = new BlogImg();
 		try {
-			UploadFile.upload(files, request.getSession().getServletContext().getRealPath("/")+"/images/blog");
+			List<Map<String,String>> list = UploadFile.upload(files, request.getSession().getServletContext().getRealPath("/")+"/images/blog/upload/");
+			Map<String,String> map = list.get(0);
+			blogImg.setCreateDate(new Date());
+			blogImg.setImgType(1);
+			blogImg.setIsDelete(0);
+			blogImg.setImgPath(map.get("url"));
+			blogImg.setImgContent(map.get("name"));
+			//blogService.uploadImg(blogImg);
+			//System.out.println(blogImg.getImgId());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "上传失败";
+			return null;
 		}
-		return "12312312";
+		
+		return  null;
 	}
 }

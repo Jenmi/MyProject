@@ -238,4 +238,13 @@
          	type = #{typeId}
     </if>
   </select>
+  
+  <insert id="uploadImg" parameterType="com.ijenmi.letsgo.model.BlogImg">
+  	insert into blog_img(img_id,img_path,img_type,img_content,create_date) values(
+  	#{imgId},#{imgPath},#{imgType},#{imgContent},#{createDate})
+  </insert>
+  <update id="updateBlogIdByImgId" >
+  	update set blog_id= #{blogId} where img_id in (${imgIds,jdbcType=VARCHAR})
+  </update>
+  
 </mapper>

@@ -3,6 +3,7 @@ package com.ijenmi.letsgo.dao;
 import java.util.List;
 
 import com.ijenmi.letsgo.model.Blog;
+import com.ijenmi.letsgo.model.BlogImg;
 import com.ijenmi.letsgo.vo.query.BlogQuery;
 
 public interface BlogMapper {
@@ -23,5 +24,10 @@ public interface BlogMapper {
     Blog getBestNewBlogByTypeId(Integer typeId);
     
     int getBlogCount(Integer typeId);
+    
     List getBestHotBlog();
+    
+    int uploadImg(BlogImg img);
+    
+    int updateBlogIdByImgId(Integer blogId,String imgIds);
 }
