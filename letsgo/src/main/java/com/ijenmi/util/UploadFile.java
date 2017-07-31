@@ -13,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadFile {
 	public static List<Map<String,String>> upload(MultipartFile[] MulFile, String path) throws IllegalStateException, IOException{
 		if(MulFile==null)return null;
-		
 		List<Map<String,String>> list = new ArrayList<Map<String,String>>();
 		
 		

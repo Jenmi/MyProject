@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.ijenmi.letsgo.dao.BlogMapper" >
   <resultMap id="BaseResultMap" type="com.ijenmi.letsgo.model.Blog" >
-    <id column="blog_id" property="blogId" jdbcType="INTEGER" />
+    <id column="blog_id" property="blogId" jdbcType="VARCHAR" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="blog_blong" property="blogBlong" jdbcType="INTEGER" />
@@ -16,6 +16,7 @@
     <result column="comment_num" property="commentNum" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="content_vice" property="contentVice" jdbcType="VARCHAR" />
+    <collection property="blogImgs" resultMap="blogImgResultMap"></collection>
   </resultMap>
   <sql id="Base_Column_List" >
     blog_id, title, content, blog_blong, type, status, zan_num, bad_num, see_num, create_date, update_date,
@@ -31,7 +32,7 @@
     delete from blog
     where blog_id = #{blogId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.ijenmi.letsgo.model.Blog" >
+  <insert id="insert" parameterType="com.ijenmi.letsgo.model.Blog" useGeneratedKeys="true" keyProperty="blogId">
     insert into blog (blog_id, title, content, 
       blog_blong, type, status, 
       zan_num, bad_num, see_num, create_date, update_date, 
@@ -195,7 +196,7 @@
    <select id="query" resultMap="BaseResultMap" parameterType="com.ijenmi.letsgo.vo.query.BlogQuery" >
     select 
     	<include refid="Base_Column_List" />
-    from blog
+    from blog b left join blog_img i on i.blog_id = b.blog_id
    		 where 1=1 
       <if test="id != null">
 	   	and blog_id = #{id,jdbcType=INTEGER}
@@ -221,12 +222,19 @@
     where type = #{typeId}
     ORDER BY create_date  desc LIMIT 0,1
   </select>
+  
     <select id="getBestHotBlog" resultMap="BaseResultMap" >
-    select
-    <include refid="Base_Column_List"/>
-    from blog
-   <!--  where type = #{typeId} -->
-    ORDER BY zan_num  desc LIMIT 0,3
+		select *
+	   <!--  <include refid="Base_Column_List" />,
+	    img_id,
+	    img_path,
+	    img_type,
+	    img_content,
+	    create_date,
+	    is_delete -->
+	    from blog 
+	   <!--  where type = #{typeId} -->
+	    ORDER BY zan_num  desc LIMIT 0,3
   </select>
   
    <select id="getBlogCount"  resultType="java.lang.Integer" parameterType="java.lang.Integer">
@@ -239,9 +247,26 @@
     </if>
   </select>
   
+  
+  
+  
+ <!-- ================= 以下关于博客图片 -->
+  <resultMap type="com.ijenmi.letsgo.model.BlogImg" id="blogImgResultMap">
+  	<id column="img_id" property="imgId" jdbcType="INTEGER" />
+  	<result column="img_path" property="imgPath" jdbcType="VARCHAR"/>
+  	<result column="img_type" property="imgType" jdbcType="INTEGER"/>
+  	<result column="img_content" property="imgContent" jdbcType="VARCHAR"/>
+  	<result column="create_date" property="createDate" jdbcType="DATE"/>
+  	<result column="is_delete" property="isDelete" jdbcType="INTEGER"/>
+  	<result column="blog_id" property="blogId" jdbcType="INTEGER"/>
+  </resultMap>
+  <sql id="blogImgBaseColumn">
+  		img_id,img_path,img_type,img_content,create_date,blog_id,is_delete
+ 	</sql>
+  
   <insert id="uploadImg" parameterType="com.ijenmi.letsgo.model.BlogImg">
-  	insert into blog_img(img_id,img_path,img_type,img_content,create_date) values(
-  	#{imgId},#{imgPath},#{imgType},#{imgContent},#{createDate})
+  	insert into blog_img(img_id,img_path,img_type,img_content,create_date,blog_id) values(
+  	#{imgId},#{imgPath},#{imgType},#{imgContent},#{createDate},#{blogId})
   </insert>
   <update id="updateBlogIdByImgId" >
   	update set blog_id= #{blogId} where img_id in (${imgIds,jdbcType=VARCHAR})

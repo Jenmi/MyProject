@@ -1,6 +1,7 @@
 package com.ijenmi.letsgo.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.gson.Gson;
 import com.ijenmi.base.BaseController;
 import com.ijenmi.letsgo.model.Blog;
 import com.ijenmi.letsgo.model.BlogComment;
@@ -30,10 +32,9 @@ import com.ijenmi.letsgo.service.BlogService;
 import com.ijenmi.letsgo.vo.UserInfo;
 import com.ijenmi.letsgo.vo.query.BlogQuery;
 import com.ijenmi.letsgo.vo.query.CurrPage;
+import com.ijenmi.util.StringUtils;
 import com.ijenmi.util.UploadFile;
 import com.ijenmi.util.UserAndAuthorityUtil;
-
-import sun.org.mozilla.javascript.internal.json.JsonParser;
 
 @Controller
 @RequestMapping("/blog")
@@ -100,12 +101,13 @@ public class BlogController extends BaseController{
 		return "/letsgo/blog/blog-add";
 	}
 	@RequestMapping(value="/doadd",method=RequestMethod.POST)
-	public String doAdd(ModelMap model, Blog blog, HttpServletRequest request, HttpServletResponse response){
-		UserInfo user= UserAndAuthorityUtil.getSessionUser(request);
+	public String doAdd(ModelMap model, Blog blog,String[] blogImgs, HttpServletRequest request, HttpServletResponse response){
+		/*//UserInfo user= UserAndAuthorityUtil.getSessionUser(request);
 		if(user == null){
-		}
+		}*/
+		//blog.setBlogId(StringUtils.getUUIDString());
 		blog.setCreateDate(new Date());
-		blog.setUserId(user.getStaffId());
+		blog.setUserId(1);//user.getStaffId());
 		 StringBuffer sb = new StringBuffer();
 		 if(blog.getContent()!=null){
 			 int length = blog.getContent().length();
@@ -119,6 +121,16 @@ public class BlogController extends BaseController{
 			 blog.setContentVice(sb.toString().substring(0, sb.toString().length()<20?sb.toString().length():20));
 		 }
 		boolean status = blogService.doAdd(blog);
+		//添加图片
+		if(blogImgs!=null){
+			for (String str : blogImgs) {
+				BlogImg imgBean = new Gson().fromJson(str, BlogImg.class);
+				imgBean.setBlogId(blog.getBlogId());
+				blogService.uploadImg(imgBean);
+			}
+		}
+		
+		
 		this.getMsg(status, "对不起，添加失败！");
 		return "redirect:/blog";
 	}
@@ -163,8 +175,9 @@ public class BlogController extends BaseController{
 	@ResponseBody
 	public String upload(ModelMap model,@RequestParam("files") MultipartFile[] files, HttpServletRequest request, HttpServletResponse response){
 		BlogImg blogImg = new BlogImg();
+		List<Map<String,String>> list = null;
 		try {
-			List<Map<String,String>> list = UploadFile.upload(files, request.getSession().getServletContext().getRealPath("/")+"/images/blog/upload/");
+			list = UploadFile.upload(files, request.getSession().getServletContext().getRealPath("/")+"/images/blog/upload/");
 			Map<String,String> map = list.get(0);
 			blogImg.setCreateDate(new Date());
 			blogImg.setImgType(1);
@@ -178,7 +191,13 @@ public class BlogController extends BaseController{
 			e.printStackTrace();
 			return null;
 		}
+//		= JSONObject.(blogImg);
+		//String json = JSON.toJSONString(blogImg);
+		//Gson json = new Gson();
+//		 = JSONArray;//valueToString(blogImg);
 		
-		return  null;
+		Gson json = new Gson();
+		String a = json.toJson(blogImg);
+		return  a;
 	}
 }

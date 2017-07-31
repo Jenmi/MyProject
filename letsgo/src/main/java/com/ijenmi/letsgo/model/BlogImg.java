@@ -65,11 +65,18 @@ public class BlogImg {
         this.isDelete = isDelete;
     }
 
-    public Integer getBlogId() {
-        return blogId;
-    }
+	public Integer getBlogId() {
+		return blogId;
+	}
 
-    public void setBlogId(Integer blogId) {
-        this.blogId = blogId;
-    }
+	public void setBlogId(Integer blogId) {
+		this.blogId = blogId;
+	}
+
+	@Override
+	public String toString() {
+		return "BlogImg [imgId=" + imgId + ", imgPath=" + imgPath + ", imgType=" + imgType + ", imgContent="
+				+ imgContent + ", createDate=" + createDate + ", isDelete=" + isDelete + ", blogId=" + blogId + "]";
+	}
+    
 }

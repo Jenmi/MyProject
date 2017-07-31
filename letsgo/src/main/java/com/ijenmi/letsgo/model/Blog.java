@@ -1,6 +1,7 @@
 package com.ijenmi.letsgo.model;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -31,7 +32,16 @@ public class Blog {
 
     private String contentVice;
     
+    private List<BlogImg> blogImgs;
     
+	public List<BlogImg> getBlogImgs() {
+		return blogImgs;
+	}
+
+	public void setBlogImgs(List<BlogImg> blogImgs) {
+		this.blogImgs = blogImgs;
+	}
+
 	public Integer getSeeNum() {
 		return seeNum;
 	}
@@ -57,14 +67,14 @@ public class Blog {
 	}
 
 	public Integer getBlogId() {
-        return blogId;
-    }
+		return blogId;
+	}
 
-    public void setBlogId(Integer blogId) {
-        this.blogId = blogId;
-    }
+	public void setBlogId(Integer blogId) {
+		this.blogId = blogId;
+	}
 
-    public String getTitle() {
+	public String getTitle() {
         return title;
     }
 
