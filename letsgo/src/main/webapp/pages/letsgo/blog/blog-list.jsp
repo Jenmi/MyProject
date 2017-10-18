@@ -196,7 +196,7 @@
 				<article class="blogpost">
 					<%--<span class="icon-quote"></span>--%>
 					<blockquote class="style1" style="float: left"></blockquote>
-					<h4 class="post-title"><a href="#" style="color: #122b40">${blog.title }</a></h4>
+					<h4 class="post-title"><a href="${ctx }/blog/${blog.blogId }/show" target="_blank" style="color: #122b40">${blog.title }</a></h4>
 					<div class="post-meta">
 						<span><a href="#"><i class="icon-clock2"></i><fmt:formatDate  value="${blog.createDate }" pattern="yyyy-MM-dd HH:mm:ss"/></a></span>
 						<span><a href="#"><i class="icon-eye2"></i> ${blog.seeNum }</a></span>
