@@ -15,12 +15,12 @@
 
 	<%@ include file="/commons/taglib.jsp" %>
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>" type="text/css">
 	<!-- 音乐 -->
 	<%-- <link rel="stylesheet" href="<c:url value='/utils/music/APlayer.min.css'/>" type="text/css">
 	<script src="<c:url value="/utils/music/APlayer.min.js"/>" type="text/javascript"></script> --%>
 	<script src='<c:url value='/utils/musicMax/js/jaudio.js'/>'></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/utils/musicMax/css/main.css"/>" />
+	<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>" type="text/css">
 </head>
 <body id="header6">
 <div id="page-top"></div>
@@ -297,29 +297,29 @@
 			<div class="row">
 				<div class="col-md-3 col-sm-6">
 					<div class="stats1-info">
-						<a href="${ctx }/blog"><i class="icon-trophy"></i></a>
-						<p><span class="count count1">187</span></p>
+						<a href="${ctx }/blog" style="text-decoration:none "><i class="icon-trophy"></i></a>
+						<p><span class="count count1">${blogCount }</span></p>
 						<h2>博客</h2>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="stats1-info">
-						<a href="javascript:"><i class="icon-lock"></i></a>
-						<p><span class="count count1">123</span></p>
-						<h2>说说</h2>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="stats1-info">
-						<a href="${ctx }/photo"><i class=" icon-camera"></i></a>
-						<p><span class="count count1">499</span></p>
+						<a href="${ctx }/photo" style="text-decoration:none "><i class=" icon-camera"></i></a>
+						<p><span class="count count1">9</span></p>
 						<h2>照片</h2>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="stats1-info">
-						<a href="javascript:"><i class="icon-telescope"></i></a>
-						<p><span class="count count1">923</span></p>
+						<a href="javascript:alert('没有开通功能')" style="text-decoration:none "><i class="icon-lock"></i></a>
+						<p><span class="count count1">0</span></p>
+						<h2>说说</h2>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="stats1-info">
+						<a href="javascript:alert('没有开通功能')" style="text-decoration:none "><i class="icon-telescope"></i></a>
+						<p><span class="count count1">0</span></p>
 						<h2>随笔</h2>
 					</div>
 				</div>
@@ -947,7 +947,7 @@ $(function(){
 				} 
 				
 			],
-			autoPlay:true
+			autoPlay:false
 		}
 	var a = $('.jAudio--player').jAudio(t);
 });
