@@ -71,13 +71,13 @@
 					</form>
 				</div> --%>
 				<div class="side-widget space50">
-					<h4>博客 &nbsp;&nbsp;<a href="${ctx }/blog"><i class="icon-plus2"></i></a></h4>
+					<h4>博客 &nbsp;&nbsp;<a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></h4>
 					<ul class="list-unstyled cat-list">
-						<li> <a href="${ctx }/blog?type=3">java博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
-						<li> <a href="${ctx }/blog?type=7">mysql博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
-						<li> <a href="${ctx }/blog?type=2">jquery博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
-						<li> <a href="${ctx }/blog?type=10">项目博客</a><a href="${ctx }/blog/add"> <i class="icon-plus2"></i></a></li>
-						<li> <a href="${ctx }/blog?type=10">生活博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
+						<li> <a href="${ctx }/blog?type=3">java博客</a> <%-- <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a> --%></li>
+						<li> <a href="${ctx }/blog?type=7">mysql博客</a> <%-- <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a> --%></li>
+						<li> <a href="${ctx }/blog?type=2">jquery博客</a> <%-- <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a> --%></li>
+						<li> <a href="${ctx }/blog?type=10">项目博客</a><%-- <a href="${ctx }/blog/add"> <i class="icon-plus2"></i></a> --%></li>
+						<li> <a href="${ctx }/blog?type=10">生活博客</a> <%-- <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a> --%></li>
 					</ul>
 				</div>
 				<div class="side-widget space50">
@@ -123,7 +123,7 @@
 						</li> --%>
 					</ul>
 				</div>
-				<div class="side-widget space50">
+				<!-- <div class="side-widget space50">
 					<h4>Archives</h4>
 					<ul class="list-unstyled cat-list">
 						<li> <a href="#">2016 春季</a> <i class="icon-plus2"></i></li>
@@ -131,7 +131,7 @@
 						<li> <a href="#">2016 秋季</a> <i class="icon-plus2"></i></li>
 						<li> <a href="#">2016 冬季</a> <i class="icon-plus2"></i></li>
 					</ul>
-				</div>
+				</div> -->
 				<div class="side-widget">
 					<h4>标签</h4>
 					<div class="tag-list">
@@ -344,7 +344,7 @@
 </div>
 <script src="<c:url value="/scripts/bootstrap/bootstrap-datepicker.js"/>"></script>
 <script src="<c:url value='/js/main.js'/>"></script>
-<script src="<c:url value='/js/gmaps/greyscale.js'/>"></script>
+<%-- <script src="<c:url value='/js/gmaps/greyscale.js'/>"></script> --%>
 <script type="application/javascript" >
 	$(function(){
 		$(".datepicker").datepicker({
