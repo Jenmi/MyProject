@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="/commons/taglib.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,6 +14,8 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="author" content="">
+	
+<script src="<c:url value="/scripts/jquery-1.8.2-min.js"/>"></script>
 <link rel="stylesheet" href="<c:url value='/css/hippo-off-canvas.css'/>"  type="text/css">
 <link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.carousel.css'/>">
 <link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.theme.css'/>">
@@ -19,12 +23,11 @@
 <link rel="stylesheet" href="<c:url value='/js/rs-plugin/css/settings.css'/>">
 <link rel="stylesheet" href="<c:url value='/js/flexslider/flexslider.css'/>">
 <link rel="stylesheet" href="<c:url value='/js/isotope/isotope.css'/>">
-<link rel="stylesheet" href="<c:url value='/css/jquery-ui.css'/>">
 <link rel="stylesheet" href="<c:url value='/js/magnific-popup/magnific-popup.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
-<link href='<c:url value="/style/bootstrap/bootstrap-datepicker3.min.css"/>' rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="<c:url value='/css/icomoon/style.css'/>" type="text/css">
 <link rel="stylesheet" href="<c:url value='/font-awesome/css/font-awesome.min.css'/>" type="text/css">
+<link href='<c:url value="/style/bootstrap/bootstrap.css"/>' rel='stylesheet' type='text/css' />
 </head>
 <body>
 <div class="outer-wrapper" id="page-top">
@@ -75,24 +78,6 @@
 								<span><a href="#"><i class="icon-speech-bubble"></i> 13 Comments</a></span>--%>
 							</div>
 							<div class="space30"></div>
-							<!-- Media Gallery -->
-							<div class="post-media">
-								<div id="blog-slider" class="owl-carousel owl-theme">
-									<div class="item">
-										<img src="<c:url value='/images/blog/1.jpg'/>" class="img-responsive" alt="">
-									</div>
-									<div class="item">
-										<img src="<c:url value='/images/blog/2.jpg'/>" class="img-responsive" alt="">
-									</div>
-									<div class="item">
-										<img src="<c:url value='/images/blog/3.jpg'/>"  class="img-responsive" alt="">
-									</div>
-									<div class="item">
-										<img src="<c:url value='/images/blog/4.jpg'/>"  class="img-responsive" alt="">
-									</div>
-								</div>
-							</div>
-							<div class="space30"></div>
 							<p>
 								${blog.content }
 							</p>
@@ -103,7 +88,7 @@
 
 						</div>
 					</div>
-					<div class="padding70">
+					<%-- <div class="padding70">
 						<h4 class="uppercase space30">Comments&nbsp;&nbsp;<span>(3)</span></h4>
 						<ul class="comment-list">
 							<li>
@@ -146,7 +131,7 @@
 								</p>
 							</li>
 						</ul>
-					</div>
+					</div> --%>
 					<!-- <h4 class="uppercase space30">Leave a comment</h4>
 					<form method="post" action="#" id="form" role="form" class="form">
 						<div class="row">
@@ -234,7 +219,7 @@
 	</footer>
  --%>
 	<!-- FOOTER COPYRIGHT -->
-	<div class="footer-bottom">
+	<!-- <div class="footer-bottom">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8">
@@ -255,7 +240,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
 
 <!-- jQuery -->
