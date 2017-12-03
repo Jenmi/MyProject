@@ -6,9 +6,7 @@
 <title>博客-新增</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Peculiar Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<%@ include file="/commons/taglib.jsp" %>
+<meta name="keywords" content="" />
 <link href="<c:url value="/style/home/style.css"/>" rel='stylesheet' type='text/css' />
 <link href="<c:url value="/style/home/home.css"/>" rel='stylesheet' type='text/css' />
 

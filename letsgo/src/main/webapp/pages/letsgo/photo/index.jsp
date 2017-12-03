@@ -7,6 +7,30 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>图片</title>
 <%@ include file="/commons/taglib.jsp" %>
+<link rel="stylesheet" href="<c:url value='/css/hippo-off-canvas.css'/>"  type="text/css">
+<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.carousel.css'/>">
+<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.theme.css'/>">
+<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.transitions.css'/>">
+<link rel="stylesheet" href="<c:url value='/js/rs-plugin/css/settings.css'/>">
+<link rel="stylesheet" href="<c:url value='/js/flexslider/flexslider.css'/>">
+<link rel="stylesheet" href="<c:url value='/js/isotope/isotope.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/jquery-ui.css'/>">
+<link rel="stylesheet" href="<c:url value='/js/magnific-popup/magnific-popup.css'/>">
+<link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+<link href='<c:url value="/style/bootstrap/bootstrap-datepicker3.min.css"/>' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="<c:url value='/css/icomoon/style.css'/>" type="text/css">
+<link rel="stylesheet" href="<c:url value='/font-awesome/css/font-awesome.min.css'/>" type="text/css">
+<script src="<c:url value='/js/flexslider/jquery.flexslider.js'/>"></script>
+<script src="<c:url value='/js/tweecool.js'/>"></script>
+<script src="<c:url value='/js/rs-plugin/js/jquery.themepunch.revolution.min.js'/>"></script>
+<script src="<c:url value='/js/jquery.appear.js'/>"></script>
+<script src="<c:url value='/js/owl-carousel/owl.carousel.min.js'/>"></script>
+<script src="<c:url value='/js/jflickrfeed.min.js'/>"></script>
+<script src="<c:url value='/js/jquery.sticky.js'/>"></script>
+<script src="<c:url value='/js/jquery.countdown.min.js'/>"></script>
+<script src="<c:url value='/js/magnific-popup/jquery.magnific-popup.min.js'/>"></script>
+<script src="<c:url value='/js/jquery-ui.js'/>"></script>
+<script src="<c:url value='/js/isotope/isotope.pkgd.js'/>"></script>
 </head>
 <body id="header6">
 	<div id="main-wrapper">
@@ -131,7 +155,7 @@
 						</a>
 					</div>
 					<div class="project-item photoType1 photoType2">
-						<a href="portfolio-single-slider.html"  class="mp-lightbox"  >
+						<a href="<c:url value='/images/projects/7.jpg'/>"  class="mp-lightbox"  >
 							<div class="project-gal">
 								<img src="<c:url value='/images/projects/7.jpg'/>" class="img-responsive" alt="">
 								<div class="overlay-folio2">
@@ -144,7 +168,7 @@
 						</a>
 					</div>
 					<div class="project-item photoType2 photoType3">
-						<a href="portfolio-single-slider.html"  class="mp-lightbox" >
+						<a href="<c:url value='/images/projects/8.jpg'/>"  class="mp-lightbox" >
 							<div class="project-gal">
 								<img src="<c:url value='/images/projects/8.jpg'/>" class="img-responsive" alt="">
 								<div class="overlay-folio2">
@@ -157,7 +181,7 @@
 						</a>
 					</div>
 					<div class="project-item photoType1 photoType3 photoType9">
-						<a href="portfolio-single-slider.html"  class="mp-lightbox"  >
+						<a href="<c:url value='/images/projects/9.jpg'/>"  class="mp-lightbox"  >
 							<div class="project-gal">
 								<img src="<c:url value='/images/projects/9.jpg'/>"  class="img-responsive" alt="">
 								<div class="overlay-folio2">
@@ -170,7 +194,7 @@
 						</a>
 					</div>
 					<div class="project-item photoType1">
-						<a href="portfolio-single-slider.html"  class="mp-lightbox"  >
+						<a href="<c:url value='/images/projects/10.jpg'/>"  class="mp-lightbox"  >
 							<div class="project-gal">
 								<img src="<c:url value='/images/projects/10.jpg'/>"  class="img-responsive" alt="">
 								<div class="overlay-folio2">
@@ -183,7 +207,7 @@
 						</a>
 					</div>
 					<div class="project-item photoType1 photoType3">
-						<a href="portfolio-single-slider.html"  class="mp-lightbox"   >
+						<a href="<c:url value='/images/projects/11.jpg'/>"  class="mp-lightbox"   >
 							<div class="project-gal">
 								<img src="<c:url value='/images/projects/11.jpg'/>"  class="img-responsive" alt="">
 								<div class="overlay-folio2">
@@ -196,7 +220,7 @@
 						</a>
 					</div>
 					<div class="project-item photoType1">
-						<a href="portfolio-single-slider.html"  class="mp-lightbox"   >
+						<a href="<c:url value='/images/projects/12.jpg'/>"  class="mp-lightbox"   >
 							<div class="project-gal">
 								<img src="<c:url value='/images/projects/12.jpg'/>"  class="img-responsive" alt="">
 								<div class="overlay-folio2">

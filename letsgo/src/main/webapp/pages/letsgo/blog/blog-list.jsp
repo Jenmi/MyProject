@@ -13,6 +13,33 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="author" content="">
+	<link rel="stylesheet" href="<c:url value='/css/hippo-off-canvas.css'/>"  type="text/css">
+	<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.carousel.css'/>">
+	<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.theme.css'/>">
+	<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.transitions.css'/>">
+	<link rel="stylesheet" href="<c:url value='/js/rs-plugin/css/settings.css'/>">
+	<link rel="stylesheet" href="<c:url value='/js/flexslider/flexslider.css'/>">
+	<link rel="stylesheet" href="<c:url value='/js/isotope/isotope.css'/>">
+	<link rel="stylesheet" href="<c:url value='/css/jquery-ui.css'/>">
+	<link rel="stylesheet" href="<c:url value='/js/magnific-popup/magnific-popup.css'/>">
+	<link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+	<link href='<c:url value="/style/bootstrap/bootstrap-datepicker3.min.css"/>' rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="<c:url value='/css/icomoon/style.css'/>" type="text/css">
+	<link rel="stylesheet" href="<c:url value='/font-awesome/css/font-awesome.min.css'/>" type="text/css">
+	<!-- SKIN -->
+	<link rel="stylesheet" href="<c:url value='/css/color-scheme/default-black.css'/>" type="text/css">
+	<script src="<c:url value='/js/owl-carousel/owl.carousel.min.js'/>"></script>
+	<script src="<c:url value='/js/jflickrfeed.min.js'/>"></script>
+	<script src="<c:url value='/js/rs-plugin/js/jquery.themepunch.tools.min.js'/>"></script>	
+	<script src="<c:url value='/js/rs-plugin/js/jquery.themepunch.revolution.min.js'/>"></script>
+	<script src="<c:url value='/js/tweecool.js'/>"></script>
+	<script src="<c:url value='/js/flexslider/jquery.flexslider.js'/>"></script>
+	<script src="<c:url value='/js/jquery.appear.js'/>"></script>
+	<script src="<c:url value='/js/jquery.sticky.js'/>"></script>
+	<script src="<c:url value='/js/jquery.countdown.min.js'/>"></script>
+	<script src="<c:url value='/js/magnific-popup/jquery.magnific-popup.min.js'/>"></script>
+	<script src="<c:url value='/js/jquery-ui.js'/>"></script>
+	
 </head>
 <body id="portfolio-wide-four-m">
 <div id="main-wrapper">
