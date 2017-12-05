@@ -1,26 +1,28 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
+<%-- <%@ include file="/commons/taglib.jsp" %> --%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>图片</title>
-<%@ include file="/commons/taglib.jsp" %>
-<link rel="stylesheet" href="<c:url value='/css/hippo-off-canvas.css'/>"  type="text/css">
+<script src="<c:url value="/scripts/jquery-1.8.2-min.js"/>"></script>
+ <%-- <link rel="stylesheet" href="<c:url value='/css/hippo-off-canvas.css'/>"  type="text/css">
 <link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.carousel.css'/>">
 <link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.theme.css'/>">
-<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.transitions.css'/>">
+<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.transitions.css'/>"> --%>
 <link rel="stylesheet" href="<c:url value='/js/rs-plugin/css/settings.css'/>">
 <link rel="stylesheet" href="<c:url value='/js/flexslider/flexslider.css'/>">
 <link rel="stylesheet" href="<c:url value='/js/isotope/isotope.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/jquery-ui.css'/>">
 <link rel="stylesheet" href="<c:url value='/js/magnific-popup/magnific-popup.css'/>">
 <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
-<link href='<c:url value="/style/bootstrap/bootstrap-datepicker3.min.css"/>' rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="<c:url value='/css/icomoon/style.css'/>" type="text/css">
 <link rel="stylesheet" href="<c:url value='/font-awesome/css/font-awesome.min.css'/>" type="text/css">
-<script src="<c:url value='/js/flexslider/jquery.flexslider.js'/>"></script>
+<link href='<c:url value="/style/bootstrap/bootstrap.css"/>' rel='stylesheet' type='text/css' />
+
+<%-- <script src="<c:url value='/js/flexslider/jquery.flexslider.js'/>"></script>
 <script src="<c:url value='/js/tweecool.js'/>"></script>
 <script src="<c:url value='/js/rs-plugin/js/jquery.themepunch.revolution.min.js'/>"></script>
 <script src="<c:url value='/js/jquery.appear.js'/>"></script>
@@ -28,14 +30,15 @@
 <script src="<c:url value='/js/jflickrfeed.min.js'/>"></script>
 <script src="<c:url value='/js/jquery.sticky.js'/>"></script>
 <script src="<c:url value='/js/jquery.countdown.min.js'/>"></script>
+<script src="<c:url value='/js/jquery-ui.js'/>"></script>--%>
+<script src="<c:url value="/scripts/bootstrap/bootstrap.js"/>"></script>
 <script src="<c:url value='/js/magnific-popup/jquery.magnific-popup.min.js'/>"></script>
-<script src="<c:url value='/js/jquery-ui.js'/>"></script>
-<script src="<c:url value='/js/isotope/isotope.pkgd.js'/>"></script>
+<script src="<c:url value='/js/isotope/isotope.pkgd.js'/>"></script> 
 </head>
-<body id="header6">
-	<div id="main-wrapper">
-        <div class="offcanvas-pusher">
-          <div class="content-wrapper">
+<body id="portfolio-wide-four-m">
+<div id="main-wrapper">
+	<div class="offcanvas-pusher">
+		<div class="content-wrapper">
 			<div class="outer-wrapper">
 	<!-- HEADER -->
 	<%@ include file="/pages/letsgo/head.jsp" %>
@@ -275,7 +278,85 @@
         <div class="status-mes"></div>
       </div>
     </div>
-<script src="<c:url value='/js/main.js'/>"></script>
+    <script>
+    //根据类项显示不一样的图片的功能---------start
+    var $container = $('#portfolio-home');
+    $container.isotope({
+        itemSelector: '.project-item'
+    });
+    var $optionSets = $('#portfolio-section .filter'),
+        $optionLinks = $optionSets.find('a');
+    $optionLinks.click(function() {
+        var $this = $(this);
+        if ($this.hasClass('selected')) {
+            return false;
+        }
+        var $optionSet = $this.parents('.filter');
+        $optionSet.find('.selected').removeClass('selected');
+        $this.addClass('selected');
+        var options = {},
+            key = $optionSet.attr('data-option-key'),
+            value = $this.attr('data-option-value');
+        value = value === 'false' ? false : value;
+        options[key] = value;
+        if (key === 'layoutMode' && typeof changeLayoutMode === 'function') {
+            changeLayoutMode($this, options);
+        } else {
+            $container.isotope(options);
+        }
+        return false;
+    });
+  	
+    $('.mp-lightbox').magnificPopup({
+    	  removalDelay: 300,
+    	        type: 'image',
+    	        closeOnContentClick: true,
+    	  mainClass: 'mfp-fade',
+    	        image: {
+    	            verticalFit: true
+    	        },
+    	 gallery:{
+    	    enabled:true
+    	  }
+  	    });
+  //根据类项显示不一样的图片的功能---------end
+    
+ 	//设置外观和颜色的按钮  ---------start 
+	$('.btn-settings').on('click', function() {
+		$(this).parent().toggleClass('active');
+	});
+
+	$('.switch-handle').on('click', function() {
+		$(this).toggleClass('active');
+		$('.outer-wrapper').toggleClass('boxed');
+		
+	});
+
+	$('.bg-list div').on('click', function() {
+		if ($(this).hasClass('active')) return false;
+		if(!$('.switch-handle').hasClass('active')) $('.switch-handle').trigger('click');
+
+		$(this).addClass('active').siblings().removeClass('active');    
+		var cl = $(this).attr('class');
+		$('body').attr('class', cl);
+	});
+
+	$('.color-list div').on('click', function() {
+		if ($(this).hasClass('active')) return false;
+
+		$('link.color-scheme-link').remove();
+		
+		$(this).addClass('active').siblings().removeClass('active');    
+		var src 		= $(this).attr('data-src'),
+			colorScheme = $('<link class="color-scheme-link" rel="stylesheet" />');
+
+		colorScheme
+			.attr('href', src)
+			.appendTo('head');
+	});
+	//设置外观和颜色的按钮  ---------end
+    </script>
+<%-- <script src="<c:url value='/js/main.js'/>"></script> --%>
 <script src="<c:url value='/js/gmaps/greyscale.js'/>"></script>
 </body>
 </html>

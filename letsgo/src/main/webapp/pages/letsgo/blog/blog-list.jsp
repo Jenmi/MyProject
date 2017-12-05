@@ -29,17 +29,6 @@
 	<!-- SKIN -->
 	<link rel="stylesheet" href="<c:url value='/css/color-scheme/default-black.css'/>" type="text/css">
 	<script src="<c:url value='/js/owl-carousel/owl.carousel.min.js'/>"></script>
-	<script src="<c:url value='/js/jflickrfeed.min.js'/>"></script>
-	<script src="<c:url value='/js/rs-plugin/js/jquery.themepunch.tools.min.js'/>"></script>	
-	<script src="<c:url value='/js/rs-plugin/js/jquery.themepunch.revolution.min.js'/>"></script>
-	<script src="<c:url value='/js/tweecool.js'/>"></script>
-	<script src="<c:url value='/js/flexslider/jquery.flexslider.js'/>"></script>
-	<script src="<c:url value='/js/jquery.appear.js'/>"></script>
-	<script src="<c:url value='/js/jquery.sticky.js'/>"></script>
-	<script src="<c:url value='/js/jquery.countdown.min.js'/>"></script>
-	<script src="<c:url value='/js/magnific-popup/jquery.magnific-popup.min.js'/>"></script>
-	<script src="<c:url value='/js/jquery-ui.js'/>"></script>
-	
 </head>
 <body id="portfolio-wide-four-m">
 <div id="main-wrapper">
@@ -112,42 +101,15 @@
 					<ul class="list-unstyled popular-post">
 						<c:forEach var="item" items="${hotList }" varStatus="index">
 							<li>
-								<div class="popular-img">
+								<%-- <div class="popular-img">
 									<a href="#"> <img src="<c:url value='/images/blog/1/${index.index+1 }.jpg'/>"  class="img-responsive" alt=""></a>
-								</div>
+								</div> --%>
 								<div class="popular-desc">
-									<h5> <a href="${ctx }/blog/${item.blogId}/show" target="_blank">${item.title }</a></h5>
+									<h5> <a href="${ctx }/blog/${item.blogId}/show" target="_blank">${index.index+1}.${item.title }</a></h5>
 									<span>Jenmi</span>
 								</div>
 							</li>
 						</c:forEach>
-						<%-- <li>
-							<div class="popular-img">
-								<a href="#"> <img src="<c:url value='/images/blog/1/1.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/blog/1/1.jpg" class="img-responsive" alt=""></a>
-							</div>
-							<div class="popular-desc">
-								<h5> <a href="#">Mattis arcu viverra vel</a></h5>
-								<span>By Admin</span>
-							</div>
-						</li>
-						<li>
-							<div class="popular-img">
-								<a href="#"> <img src="<c:url value='/images/blog/1/2.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/blog/1/2.jpg" class="img-responsive" alt=""></a>
-							</div>
-							<div class="popular-desc">
-								<h5> <a href="#">Sed vel diam sit amet</a></h5>
-								<span>By John Doe</span>
-							</div>
-						</li>
-						<li>
-							<div class="popular-img">
-								<a href="#"> <img src="<c:url value='/images/blog/1/3.jpg'/>" tppabs="http://ckthemes.com/html/maxima/maxima/images/blog/1/3.jpg" class="img-responsive" alt=""></a>
-							</div>
-							<div class="popular-desc">
-								<h5> <a href="#">Cras vulputate dolor</a></h5>
-								<span>By Admin</span>
-							</div>
-						</li> --%>
 					</ul>
 				</div>
 				<!-- <div class="side-widget space50">
@@ -174,22 +136,6 @@
 				</div>
 			</aside>
 			<div class="col-md-9 blog-content">
-			<article class="blogpost">
-				<h4>搜索文章</h4>
-					<form role="" action="${ctx }/blog" class="" method="post">
-						<span><input type="text" style="height:30px;width:250px; display: inline-block;margin-bottom:10px;" class="datepicker form-control" id="beginDate"  name="beginDate"  value="<fmt:formatDate value="${query.beginDate }" pattern="yyyy-MM-dd"/>" placeholder="开始日期"> </span>
-						<span><input type="text" style="height:30px;width:250px; display:inline-block;margin-bottom:10px; " class="datepicker form-control" id="endDate" name="endDate" value="<fmt:formatDate value="${query.endDate }" pattern="yyyy-MM-dd"/>"  placeholder="结束日期"></span>
-					<!-- 	<input class="form-control" type="text" placeholder="请输入内容" style="margin-bottom:10px;" name="content">&nbsp; -->
-						<input type="hidden" name="type" value="${query.type}"/>
-						<input type="hidden" name="type_child" value="${query.type}"/>
-
-						<!--icon-search icon-white  -->
-						<button type="submit" class="btn btn-primary">
-							搜索
-						</button>
-						<%--<button type="submit" class="btn btn-primary">Search</button>--%>
-					</form>
-			</article>
 				<article class="blogpost">
 					<h2 class="post-title"><a href="#">最新文章</a></h2>
 					<div class="post-meta">
@@ -217,8 +163,23 @@
 						<p>Morbi interdum, lectus eget mattis vehicula, est nisi dapibus risus, a vestibulum enim leo sed velit. Etiam rhoncus dui quis tellus consectetur laoreet et a nulla. Suspendisse eleifend velit vitae lectus faucibus, vel consectetur magna pellentesque. Aliquam a efficitur ipsum.</p>
 					</div>
 				</article>
-				<div class="blog-sep"></div>
+				<article class="blogpost">
+					<h4>搜索文章</h4>
+					<form role="" action="${ctx }/blog" class="" method="post">
+						<span><input type="text" style="height:30px;width:250px; display: inline-block;margin-bottom:10px;" class="datepicker form-control" id="beginDate"  name="beginDate"  value="<fmt:formatDate value="${query.beginDate }" pattern="yyyy-MM-dd"/>" placeholder="开始日期"> </span>
+						<span><input type="text" style="height:30px;width:250px; display:inline-block;margin-bottom:10px; " class="datepicker form-control" id="endDate" name="endDate" value="<fmt:formatDate value="${query.endDate }" pattern="yyyy-MM-dd"/>"  placeholder="结束日期"></span>
+					<!-- 	<input class="form-control" type="text" placeholder="请输入内容" style="margin-bottom:10px;" name="content">&nbsp; -->
+						<input type="hidden" name="type" value="${query.type}"/>
+						<input type="hidden" name="type_child" value="${query.type}"/>
 
+						<!--icon-search icon-white  -->
+						<button type="submit" class="btn btn-primary">
+							搜索
+						</button>
+						<%--<button type="submit" class="btn btn-primary">Search</button>--%>
+					</form>
+				</article>
+				<div class="blog-sep" style="padding-top:10px;"></div>
 				<c:forEach items="${blogs }" var="blog" varStatus="index">
 				<article class="blogpost">
 					<%--<span class="icon-quote"></span>--%>
@@ -276,7 +237,7 @@
 	</div>
 </div>
 <!-- TWEET / SUBSCRIBE -->
-<div class="footer-top">
+<!-- <div class="footer-top">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 f-tweet">
@@ -294,7 +255,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
  <%@ include file="/pages/letsgo/foot2.jsp" %>
 </div>
@@ -357,7 +318,6 @@
 		<div data-src="<c:url value='/css/color-scheme/gray-cyan.css'/>" style="background: #aeced2"></div>
 		<div data-src="<c:url value='/css/color-scheme/de-green.css'/>" style="background: #b6cd71"></div>
 		<div data-src="<c:url value='/css/color-scheme/cream.css'/>" style="background: #e0d6b2"></div>
-
 	</div>
 	<div class="btn-settings"></div>
 </div>
@@ -370,16 +330,65 @@
 	</div>
 </div>
 <script src="<c:url value="/scripts/bootstrap/bootstrap-datepicker.js"/>"></script>
-<script src="<c:url value='/js/main.js'/>"></script>
+<%-- <script src="<c:url value='/js/main.js'/>"></script> --%>
 <%-- <script src="<c:url value='/js/gmaps/greyscale.js'/>"></script> --%>
 <script type="application/javascript" >
+	
+
 	$(function(){
+		
 		$(".datepicker").datepicker({
 			autoclose: true,//选中之后自动隐藏日期选择框
 			clearBtn: true,//清除按钮
 			todayBtn: 'linked',//今日按钮
 			format: "yyyy-mm-dd",//日期格式
 		});
+		
+		//设置颜色按钮 ------------------start
+		$('.btn-settings').on('click', function() {
+			$(this).parent().toggleClass('active');
+		});
+		$('.switch-handle').on('click', function() {
+			$(this).toggleClass('active');
+			$('.outer-wrapper').toggleClass('boxed');
+			
+		});
+
+		$('.bg-list div').on('click', function() {
+			if ($(this).hasClass('active')) return false;
+			if(!$('.switch-handle').hasClass('active')) $('.switch-handle').trigger('click');
+
+			$(this).addClass('active').siblings().removeClass('active');    
+			var cl = $(this).attr('class');
+			$('body').attr('class', cl);
+		});
+
+		$('.color-list div').on('click', function() {
+			if ($(this).hasClass('active')) return false;
+
+			$('link.color-scheme-link').remove();
+			
+			$(this).addClass('active').siblings().removeClass('active');    
+			var src 		= $(this).attr('data-src'),
+				colorScheme = $('<link class="color-scheme-link" rel="stylesheet" />');
+
+			colorScheme
+				.attr('href', src)
+				.appendTo('head');
+		});
+		//设置颜色按钮 ------------------end
+		
+		// BLOG SLIDER	  
+	    $("#blog-slider").owlCarousel({
+
+	        navigation: true, // Show next and prev buttons
+	        slideSpeed: 300,
+	        pagination: false,
+	        paginationSpeed: 400,
+	        singleItem: true
+
+	    });
+		
 	});
 
 	function zan(blogId){

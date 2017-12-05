@@ -14,13 +14,9 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="author" content="">
-	
 <script src="<c:url value="/scripts/jquery-1.8.2-min.js"/>"></script>
+<script src="<c:url value="/scripts/bootstrap/bootstrap.js"/>"></script>
 <link rel="stylesheet" href="<c:url value='/css/hippo-off-canvas.css'/>"  type="text/css">
-<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.carousel.css'/>">
-<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.theme.css'/>">
-<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.transitions.css'/>">
-<link rel="stylesheet" href="<c:url value='/js/rs-plugin/css/settings.css'/>">
 <link rel="stylesheet" href="<c:url value='/js/flexslider/flexslider.css'/>">
 <link rel="stylesheet" href="<c:url value='/js/isotope/isotope.css'/>">
 <link rel="stylesheet" href="<c:url value='/js/magnific-popup/magnific-popup.css'/>">
