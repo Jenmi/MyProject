@@ -418,16 +418,6 @@
 
     });
 
-    // FLICKRFEED
-
-    $('#flickr').jflickrfeed({
-        limit: 9,
-        qstrings: {
-            id: '51035555243@N01'
-        },
-        itemTemplate: '<li><a href="{{image_b}}"><img src="{{image_s}}" alt="{{title}}" /></a></li>'
-    });
-
     // ACCORDION
 
     $('#accordion .collapse').on('shown.bs.collapse', function() {
@@ -631,10 +621,10 @@ $('#price2')
 $(window).load(function() {
     "use strict";
     // Isotope
-    var $container = $('#blog-mason');
+  /*  var $container = $('#blog-mason');
     $container.isotope({
         itemSelector: '.bm-item'
-    });
+    });*/
     var $optionSets = $('#portfolio .folio-filter'),
         $optionLinks = $optionSets.find('a');
     $optionLinks.click(function() {
@@ -654,7 +644,7 @@ $(window).load(function() {
         if (key === 'layoutMode' && typeof changeLayoutMode === 'function') {
             changeLayoutMode($this, options);
         } else {
-            $container.isotope(options);
+            //$container.isotope(options);
         }
         return false;
     });
