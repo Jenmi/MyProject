@@ -1,5 +1,5 @@
 // GOOGLE MAP - GREYSCALE
-google.maps.event.addDomListener(window, 'load', init);
+//google.maps.event.addDomListener(window, 'load', init);
 
 function init() {
 	var mapOptions = {
