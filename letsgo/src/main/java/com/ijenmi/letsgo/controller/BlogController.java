@@ -1,8 +1,9 @@
 package com.ijenmi.letsgo.controller;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -32,9 +33,11 @@ import com.ijenmi.letsgo.service.BlogService;
 import com.ijenmi.letsgo.vo.UserInfo;
 import com.ijenmi.letsgo.vo.query.BlogQuery;
 import com.ijenmi.letsgo.vo.query.CurrPage;
-import com.ijenmi.util.StringUtils;
+import com.ijenmi.util.FreamarkerUtil;
 import com.ijenmi.util.UploadFile;
 import com.ijenmi.util.UserAndAuthorityUtil;
+
+import freemarker.template.Configuration;
 
 @Controller
 @RequestMapping("/blog")
@@ -129,7 +132,17 @@ public class BlogController extends BaseController{
 				blogService.uploadImg(imgBean);
 			}
 		}
+		Map map = new HashMap();
+		/* Configuration configuration = new Configuration();  
+         try {
+        	 String a = this.getClass().getClassLoader().getResource("")+"properties/freemarker_property.properties";
+			configuration.setDirectoryForTemplateLoading(new File(a));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  */
 		
+		FreamarkerUtil.createStaticPage(new Configuration(), request, "aaa.html", map, "/report/blog", "blog-show.html");
 		
 		this.getMsg(status, "对不起，添加失败！");
 		return "redirect:/blog";

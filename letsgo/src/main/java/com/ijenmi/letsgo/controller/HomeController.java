@@ -53,6 +53,7 @@ public class HomeController extends BaseController{
 		map.addAttribute("blog", blog);
 		map.addAttribute("liveBlog",liveBlog);
 		map.addAttribute("proBlog",proBlog);
+		map.addAttribute("blogCount", blogCount);
 		return "/letsgo/home";
 	}
 	@RequestMapping("/login")

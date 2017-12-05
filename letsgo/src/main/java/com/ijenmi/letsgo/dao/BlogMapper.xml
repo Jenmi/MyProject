@@ -19,8 +19,8 @@
     <collection property="blogImgs" resultMap="blogImgResultMap"></collection>
   </resultMap>
   <sql id="Base_Column_List" >
-    blog_id, title, content, blog_blong, type, status, zan_num, bad_num, see_num, create_date, update_date,
-    comment_num, user_id, content_vice
+    blog.blog_id, blog.title, blog.content, blog.blog_blong, blog.type, blog.status, blog.zan_num, blog.bad_num, blog.see_num, blog.create_date, blog.update_date,
+    blog.comment_num, blog.user_id, blog.content_vice
   </sql>
   <select id="selectByPrimaryKey"  resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -196,23 +196,23 @@
    <select id="query" resultMap="BaseResultMap" parameterType="com.ijenmi.letsgo.vo.query.BlogQuery" >
     select 
     	<include refid="Base_Column_List" />
-    from blog b left join blog_img i on i.blog_id = b.blog_id
+    from blog left join blog_img i on i.blog_id = blog.blog_id
    		 where 1=1 
       <if test="id != null">
-	   	and blog_id = #{id,jdbcType=INTEGER}
+	   	and blog.blog_id = #{id,jdbcType=INTEGER}
       </if>  
       <if test="beginDate != null">
-	   	and create_date >= #{beginDate,jdbcType=DATE}
+	   	and blog.create_date >= #{beginDate,jdbcType=DATE}
       </if> 
       <if test="endDate != null">
-	   	and create_date &lt;= #{endDate,jdbcType=DATE} 
+	   	and blog.create_date &lt;= #{endDate,jdbcType=DATE} 
       </if> 
       <if test="content != null">
            <bind name="content_" value="'%' +content + '%'" />
-          and content like #{content_,jdbcType=VARCHAR}
+          and blog.content like #{content_,jdbcType=VARCHAR}
       </if>
       <if test="type != null">
-         and type = #{type,jdbcType=INTEGER}
+         and blog.type = #{type,jdbcType=INTEGER}
       </if>
   </select>
   <select id="getBestNewBlogByTypeId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
