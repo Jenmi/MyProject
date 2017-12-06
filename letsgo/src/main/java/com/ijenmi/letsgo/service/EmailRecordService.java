@@ -92,9 +92,9 @@ public class EmailRecordService {
 				throw new RuntimeException(e);
 		}*/
 		try {
-			simpleMailMessage.setText(record.getEamilContent());
+			simpleMailMessage.setText("内容："+record.getEamilContent()+"，地址："+record.getEmailAddress()+",电话："+record.getEmailPhone());
 			simpleMailMessage.setTo("ijenmi@foxmail.com");//
-			simpleMailMessage.setSubject(record.getEmailTitle());
+			simpleMailMessage.setSubject(record.getEmailName());
 			mailSender.send(simpleMailMessage);
 		}catch (Exception e) {
 			// TODO: handle exception

@@ -33,7 +33,7 @@ import com.ijenmi.letsgo.vo.UserInfo;
  * @since 1.0
  */
 @Controller
-@RequestMapping("/home")
+@RequestMapping("/")
 public class HomeController extends BaseController{
 	@Autowired
 	private UserManager userManager;

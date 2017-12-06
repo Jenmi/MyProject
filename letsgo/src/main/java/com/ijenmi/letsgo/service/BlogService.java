@@ -41,6 +41,10 @@ public class BlogService {
 		return blogMapper.getBestHotBlog();
 	}
 	
+	public List getBestNewBlog() {
+		return blogMapper.getBestNewBlog();
+	}
+	
 	
 	/**
 	 * 用于拜访者点赞、访问次数、鄙视等操作计数存储

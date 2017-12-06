@@ -58,6 +58,8 @@ public class BlogController extends BaseController{
 		
 		List hotList = blogService.getBestHotBlog();
 		model.addAttribute("hotList", hotList);
+		List newList = blogService.getBestNewBlog();
+		model.addAttribute("newList", newList);
 		UserInfo user = UserAndAuthorityUtil.getSessionUser(request);
 		Boolean canedit = (Boolean) request.getAttribute("canedit");
 		if(canedit!=null && canedit){
@@ -142,7 +144,7 @@ public class BlogController extends BaseController{
 			e.printStackTrace();
 		}  */
 		
-		FreamarkerUtil.createStaticPage(new Configuration(), request, "aaa.html", map, "/report/blog", "blog-show.html");
+		//FreamarkerUtil.createStaticPage(new Configuration(), request, "aaa.html", map, "/report/blog", "blog-show.html");
 		
 		this.getMsg(status, "对不起，添加失败！");
 		return "redirect:/blog";
