@@ -32,7 +32,7 @@
 
 					<div id="navbar-collapse-1" class="navbar-collapse collapse navbar-right">
 						<ul class="nav navbar-nav">
-							<li class="page-scroll"><a href="${ctx}/home">主页</a></li>
+							<li class="page-scroll"><a href="${ctx}/">主页</a></li>
 							<li class="page-scroll"><a href="${ctx}/blog">博客</a></li>
 							<li class="page-scroll"><a href="${ctx}/photo">照片</a></li>
 							<li class="page-scroll"><a href="#6">项目</a></li>

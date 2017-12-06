@@ -38,7 +38,7 @@
 </head>
 <body id="loginBody" >
 	<div class="easyui-panel center" style="width:305px;background: rgba(255,255,255,0.5);border-radius:16px;"  data-options="border:false">
-   	  	<form id="loginForm" action="${ctx}/home/dologin" method="post">
+   	  	<form id="loginForm" action="${ctx}/dologin" method="post">
     	  	<input type="hidden" name="uriPath" value="${pre_uri}"/>
 	       	<div style="margin: 20px; font-size: 17px; text-align: center;margin-top:30px;color:#000"><span style="display:inline-block; font-size:18px;color:#000" ></span>用户登陆</div>
 	       	<label style="margin-left:25px;color:red">${userInfo.message }</label>

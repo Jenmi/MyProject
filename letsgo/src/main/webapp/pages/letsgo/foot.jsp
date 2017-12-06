@@ -39,7 +39,7 @@
 						</div>
 						<div class="row">
 							<div class="form-group col-xs-12">
-								<button type="button" onclick="contactSub()" class="btn btn-primary">发送消息</button>
+								<button type="button" onclick="contactSub()" class="btn btn-primary" style="background-color: rgba(2, 121, 206, 0.75)">发送消息</button>
 							</div>
 						</div>
 					</form>

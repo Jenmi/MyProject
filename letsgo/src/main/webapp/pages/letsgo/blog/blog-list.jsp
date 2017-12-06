@@ -86,16 +86,16 @@
 						<button type="submit" class="btn btn-primary">Search</button>
 					</form>
 				</div> --%>
-				<div class="side-widget space50">
+				<%-- <div class="side-widget space50">
 					<h4>博客 &nbsp;&nbsp;<a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></h4>
 					<ul class="list-unstyled cat-list">
-						<li> <a href="${ctx }/blog?type=3">java博客</a> <%-- <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a> --%></li>
-						<li> <a href="${ctx }/blog?type=7">mysql博客</a> <%-- <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a> --%></li>
-						<li> <a href="${ctx }/blog?type=2">jquery博客</a> <%-- <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a> --%></li>
-						<li> <a href="${ctx }/blog?type=10">项目博客</a><%-- <a href="${ctx }/blog/add"> <i class="icon-plus2"></i></a> --%></li>
-						<li> <a href="${ctx }/blog?type=10">生活博客</a> <%-- <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a> --%></li>
+						<li> <a href="${ctx }/blog?type=3">java博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
+						<li> <a href="${ctx }/blog?type=7">mysql博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
+						<li> <a href="${ctx }/blog?type=2">jquery博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
+						<li> <a href="${ctx }/blog?type=10">项目博客</a><a href="${ctx }/blog/add"> <i class="icon-plus2"></i></a></li>
+						<li> <a href="${ctx }/blog?type=10">生活博客</a> <a href="${ctx }/blog/add"><i class="icon-plus2"></i></a></li>
 					</ul>
-				</div>
+				</div> --%>
 				<div class="side-widget space50">
 					<h4>热门文章</h4>
 					<ul class="list-unstyled popular-post">
@@ -124,53 +124,68 @@
 				<div class="side-widget">
 					<h4>标签</h4>
 					<div class="tag-list">
-						<a href="#">java</a>
-						<a href="#">web</a>
-						<a href="#">News</a>
-						<a href="#">Fashion</a>
-						<a href="#">Marketing</a>
-						<a href="#">video</a>
-						<a href="#">vector</a>
-						<a href="#">Photoshop</a>
+						<a href="javascript:">java</a>
+						<a href="javascript:">web</a>
+						<a href="javascript:">News</a>
+						<a href="javascript:">Fashion</a>
+						<a href="javascript:">Marketing</a>
+						<a href="javascript:">video</a>
+						<a href="javascript:">vector</a>
+						<a href="javascript:">Photoshop</a>
 					</div>
 				</div>
 			</aside>
 			<div class="col-md-9 blog-content">
-				<article class="blogpost">
-					<h2 class="post-title"><a href="#">最新文章</a></h2>
-					<div class="post-meta">
-						<span><a href="#"><i class="icon-clock2"></i> 23 May</a></span>
-						<span><a href="#"><i class="icon-user"></i> John Doe</a></span>
-						<span><i class="icon-archive3"></i> <a href="">Vector</a>, <a href="#">Design</a></span>
-						<span><a href="#"><i class="icon-speech-bubble"></i> 13 Comments</a></span>
-					</div>
-					<div class="space20"></div>
-					<!-- Media Gallery -->
-					<div class="post-media">
-						<div id="blog-slider" class="owl-carousel owl-theme">
-							<div class="item">
-								<img src="<c:url value='/images/blog/1.jpg'/>" tppabs="" class="img-responsive" alt="">
-							</div>
-							<div class="item">
-								<img src="<c:url value='/images/blog/2.jpg'/>" tppabs="" class="img-responsive" alt="">
-							</div>
-							<div class="item">
-								<img src="<c:url value='/images/blog/3.jpg'/>" tppabs=""  class="img-responsive" alt="">
+				<c:forEach var="items" items="${ newList}">
+					<article class="blogpost">
+						<h3 class="post-title"><a href="javascript:">最新文章</a></h2>
+						<div class="post-meta">
+							<span><a href="javascript:"><i class="icon-clock2"></i> ${items.createDate }</a></span>
+							<span><a href="javascript:"><i class="icon-user"></i> Jenmi</a></span>
+							<span><a href="#"><i class="icon-eye2"></i> ${items.seeNum }</a></span>
+							<span><a href="javascript:zan(${items.blogId})" title=""><i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i> <span id="zanNum${blog.blogId }">${blog.zanNum==null?0:blog.zanNum}</span></a></span>
+							<span><a href="javascript:bad(${items.blogId})"><i class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></i> <span id="badNum${blog.blogId }">${blog.badNum==null?0:blog.badNum}</span></a></span>
+						</div>
+						<div class="space20"></div>
+						<!-- Media Gallery -->
+						<div class="post-media">
+							<div id="blog-slider" class="owl-carousel owl-theme">
+								<div class="item">
+									<img src="<c:url value='/images/blog/1.jpg'/>" tppabs="" class="img-responsive" alt="">
+								</div>
+								<div class="item">
+									<img src="<c:url value='/images/blog/2.jpg'/>" tppabs="" class="img-responsive" alt="">
+								</div>
+								<div class="item">
+									<img src="<c:url value='/images/blog/3.jpg'/>" tppabs=""  class="img-responsive" alt="">
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="post-excerpt">
-						<p>Morbi interdum, lectus eget mattis vehicula, est nisi dapibus risus, a vestibulum enim leo sed velit. Etiam rhoncus dui quis tellus consectetur laoreet et a nulla. Suspendisse eleifend velit vitae lectus faucibus, vel consectetur magna pellentesque. Aliquam a efficitur ipsum.</p>
-					</div>
-				</article>
+						<div class="post-excerpt">
+							<h4><a href="${ctx }/blog/${items.blogId }/show" target="_blank" >${items.title }:</a></h4>
+							<p>
+								${items.contentVice }...
+							</p>
+						</div>
+					</article>
+				</c:forEach>
 				<article class="blogpost">
-					<h4>搜索文章</h4>
+					<h4>文章列表</h4>
 					<form role="" action="${ctx }/blog" class="" method="post">
-						<span><input type="text" style="height:30px;width:250px; display: inline-block;margin-bottom:10px;" class="datepicker form-control" id="beginDate"  name="beginDate"  value="<fmt:formatDate value="${query.beginDate }" pattern="yyyy-MM-dd"/>" placeholder="开始日期"> </span>
-						<span><input type="text" style="height:30px;width:250px; display:inline-block;margin-bottom:10px; " class="datepicker form-control" id="endDate" name="endDate" value="<fmt:formatDate value="${query.endDate }" pattern="yyyy-MM-dd"/>"  placeholder="结束日期"></span>
+						<select class="form-control"  name="type" style="width: 120px;  float:left; margin-bottom:10px;"
+							placeholder="Choose a type">
+								<option value="" <c:if test="${empty query.type }">selected</c:if> >--选择类型--</option>
+								<option value="3" <c:if test="${query.type==3 }">selected</c:if> >Java博客</option>
+								<option value="7" <c:if test="${query.type==7 }">selected</c:if>>Mysql博客</option>
+								<option value="2" <c:if test="${query.type==2 }">selected</c:if>>JQuery博客</option>
+								<option value="11" <c:if test="${query.type==11 }">selected</c:if>>项目博客</option>
+								<option value="10" <c:if test="${query.type==10 }">selected</c:if>>生活博客</option>
+						</select>&nbsp;
+						<span><input type="text" style="height:34px;width:250px; display: inline-block;margin-bottom:10px;" class="datepicker form-control" id="beginDate"  name="beginDate"  value="<fmt:formatDate value="${query.beginDate }" pattern="yyyy-MM-dd"/>" placeholder="开始日期"> </span>
+						<span><input type="text" style="height:34px;width:250px; display:inline-block;margin-bottom:10px; " class="datepicker form-control" id="endDate" name="endDate" value="<fmt:formatDate value="${query.endDate }" pattern="yyyy-MM-dd"/>"  placeholder="结束日期"></span>
 					<!-- 	<input class="form-control" type="text" placeholder="请输入内容" style="margin-bottom:10px;" name="content">&nbsp; -->
-						<input type="hidden" name="type" value="${query.type}"/>
-						<input type="hidden" name="type_child" value="${query.type}"/>
+						<%-- <input type="hidden" name="type" value="${query.type}"/>
+						<input type="hidden" name="type_child" value="${query.type}"/> --%>
 
 						<!--icon-search icon-white  -->
 						<button type="submit" class="btn btn-primary">
@@ -209,7 +224,7 @@
 				</c:forEach>
 				<!-- Pagination -->
 				<div class="page_nav">
-					<a href=""><i class="fa fa-angle-left"></i></a>
+					<a href="${ctx }/blog?currPage=${(query.currPage-1)<=1?1:query.currPage}"><i class="fa fa-angle-left"></i></a>
 					<c:choose>
 						<c:when test="${pageInfo.pages > 10}" >
 							<c:forEach var="index" begin="${pageInfo.pageNum }" end="${pageInfo.pageNum+5 }" varStatus="status">  
@@ -229,7 +244,7 @@
 					<a href="">3</a> 
 					<a class="no-active">...</a>
 					<a href="">9</a>-->
-					<a href=""><i class="fa fa-angle-right"></i></a>
+					<a href="${ctx }/blog?currPage=${(query.currPage+1)>=pageInfo.pages ?pageInfo.pages:(query.currPage+1)}"><i class="fa fa-angle-right"></i></a>
 				</div>
 				<!-- End Pagination -->
 			</div>
@@ -389,6 +404,7 @@
 
 	    });
 		
+		
 	});
 
 	function zan(blogId){
@@ -412,6 +428,20 @@
 		});
 	}
 
+	
+	/* 获取第一张图片  */
+	 function getOneImage(str){
+		 var reg = /<img[^>]*>/gi;
+		 var strs = str.match(reg);
+		if(strs == null ||  strs =="" || strs == undefined){
+			return '<img src="${ctx }/images/blog/1.jpg"/>';
+		}else{
+			return strs[0];
+		}
+	};
+	
+	 //$(".chzn-select-deselect").chosen({allow_single_deselect:true,disable_search:true});
+	// $('.chzn-select-deselect').selectpicker();
 </script>
 
 </body>
