@@ -889,20 +889,57 @@
 <script src="<c:url value='/js/gmaps/greyscale.js'/>"></script>
 <script src="<c:url value='/js/main.js'/>"></script>
 <script type="text/javascript">
+/* 倒计时60秒 */
+var wait=60;
+function time(o) {
+  if (wait == 0) {
+	   o.attr("onclick","contactSub()");   
+	   o.text("发送消息");
+	   wait = 60;
+  } else { 
+  	   o.attr("onclick","");   
+	   o.text("发送消息(还剩"+wait+"秒)");
+	   wait--;
+	   setTimeout(function() {
+	    time(o)
+	   },
+	   1000)
+  }
+}
 	function contactSub(){
 		//var emailTitle = $("#emailTitle").val();
 		var eamilContent = $("#eamilContent").val();
 		var emailName = $("#emailName").val();
 		var emailAddress = $("#emailAddress").val();
 		var emailPhone = $("#emailPhone").val();
+		if(eamilContent==""){
+			alert("请输入内容");
+			return;
+		}else if(emailName==""){
+			alert("请输入姓名");
+			return;
+		}else if(emailAddress==""){
+			alert("请输入地址");
+			return;
+		}else if(emailPhone==""){
+			alert("请输入联系方式");
+			return;
+		}
+		if(wait<60){
+			alert("请稍等!");
+			return;
+		}
+		
+		time($("#sendbutton"));//限制时间
 		//emailTitle:emailTitle,
-		/* */ $.post("${ctx }/email/send",{eamilContent:eamilContent,emailName:emailName,emailAddress:emailAddress,emailPhone:emailPhone},
-		function(data){
-			if(data!=""){
-				alert(data);
-			}
-		});
+	/* */ $.post("${ctx }/email/send",{eamilContent:eamilContent,emailName:emailName,emailAddress:emailAddress,emailPhone:emailPhone},
+			function(data){
+				if(data!=""){
+					alert(data);
+				}
+			});
 	}
+	
 	
 /* 	var ap2 = new APlayer({
         element: document.getElementById('player'),

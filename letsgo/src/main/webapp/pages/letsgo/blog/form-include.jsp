@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 
-<link href="<c:url value="/utils/bootstrap-fileupload/fileinput.css" />" rel="stylesheet" type="text/css"  />
+<%-- <link href="<c:url value="/utils/bootstrap-fileupload/fileinput.css" />" rel="stylesheet" type="text/css"  />
 <script src="<c:url value="/utils/bootstrap-fileupload/fileinput.js" />"></script>
-<script href="<c:url value="/utils/bootstrap-fileupload/fileinput_locale_zh.js" />"></script>
+<script href="<c:url value="/utils/bootstrap-fileupload/fileinput_locale_zh.js" />"></script> --%>
 <div class="content-message" style="">
 		<script type="text/javascript">
 			$(function(){/* 初始化值 */
@@ -13,11 +13,11 @@
 			});
 		</script>
 		<div style="padding:5px 10px;height:100%">
-			<div>
+			<!-- <div>
 				<div class="form-group">
 					<input id="blogImg" type="file" name="files" multiple="multiple"  data-overwrite-initial="false" data-min-file-count="2">
 				</div>
-			</div>
+			</div> -->
 			文章标题 &nbsp;
 			<div style="">
 				<select class="chzn-select-deselect" id="blogBlong" name="blogBlong" style="width: 80px; float:left;"
@@ -67,7 +67,7 @@
 		</div>
 	</div>
 	<script>
-            $("#blogImg").fileinput({
+            /* $("#blogImg").fileinput({
                 language: 'zh',
                 uploadUrl: "${ctx}/blog/uploadImg", // you must set a valid URL here else you will get an error
                 allowedFileExtensions : ['jpg', 'png','gif'],
@@ -91,6 +91,6 @@
             	$("#buttonDiv").append("<input name='blogImgs' type='' value='"+str+"'/>")
             	//$("#blogImgId").val($("#blogImgId").val()+","+data.response);
              });
-
+ */
 
 	</script>
