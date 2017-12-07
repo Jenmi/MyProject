@@ -27,6 +27,8 @@ public interface BlogMapper {
     
     List getBestHotBlog();
     
+    List getBestNewBlog();
+    
     int uploadImg(BlogImg img);
     
     int updateBlogIdByImgId(Integer blogId,String imgIds);
