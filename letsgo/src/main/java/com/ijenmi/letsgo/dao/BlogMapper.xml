@@ -16,11 +16,12 @@
     <result column="comment_num" property="commentNum" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="content_vice" property="contentVice" jdbcType="VARCHAR" />
+    <result column="keywords" property="keywords" jdbcType="VARCHAR" />
     <collection property="blogImgs" resultMap="blogImgResultMap"></collection>
   </resultMap>
   <sql id="Base_Column_List" >
     blog.blog_id, blog.title, blog.content, blog.blog_blong, blog.type, blog.status, blog.zan_num, blog.bad_num, blog.see_num, blog.create_date, blog.update_date,
-    blog.comment_num, blog.user_id, blog.content_vice
+    blog.comment_num, blog.user_id, blog.content_vice, blog.keywords
   </sql>
   <select id="selectByPrimaryKey"  resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -36,11 +37,11 @@
     insert into blog (blog_id, title, content, 
       blog_blong, type, status, 
       zan_num, bad_num, see_num, create_date, update_date, 
-      comment_num, user_id,content_vice)
+      comment_num, user_id,content_vice, keywords)
     values (#{blogId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
       #{blogBlong,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
       #{zanNum,jdbcType=INTEGER}, #{badNum,jdbcType=INTEGER}, #{seeNum,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=DATE}, 
-      #{commentNum,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{contentVice,jdbcType=VARCHAR})
+      #{commentNum,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{contentVice,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ijenmi.letsgo.model.Blog" >
     insert into blog
@@ -172,6 +173,9 @@
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
+      <if test="keywords != null" >
+        keywords = #{keywords,jdbcType=VARCHAR},
+      </if>
     </set>
     where blog_id = #{blogId,jdbcType=INTEGER}
   </update>
@@ -189,7 +193,8 @@
       update_date = #{updateDate,jdbcType=DATE},
       comment_num = #{commentNum,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
-      content_vice = #{contentVice,jdbcType=VARCHAR}
+      content_vice = #{contentVice,jdbcType=VARCHAR},
+      keywords = #{keywords,jdbcType=VARCHAR}
     where blog_id = #{blogId,jdbcType=INTEGER}
   </update>
   

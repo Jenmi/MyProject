@@ -8,11 +8,11 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-	<title>Jenmi博客 | ${blog.title }</title>
+	<title>${blog.title }|Jenmi博客 </title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
+	<meta name="description" content="${blog.contentVice}">
+	<meta name="keywords" content="${blog.keywords }">
 	<meta name="author" content="">
 <script src="<c:url value="/scripts/jquery-1.8.2-min.js"/>"></script>
 <script src="<c:url value="/scripts/bootstrap/bootstrap.js"/>"></script>

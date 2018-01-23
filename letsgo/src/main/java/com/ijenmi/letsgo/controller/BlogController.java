@@ -93,6 +93,7 @@ public class BlogController extends BaseController{
 	public String doEdit(ModelMap model, Blog blog, HttpServletRequest request, HttpServletResponse response){
 		UserInfo user= UserAndAuthorityUtil.getSessionUser(request);
 		user.getStaffId();
+		blog.setContentVice(getContentVice(blog.getContent()));
 		boolean status = blogService.update(blog);
 		
 		this.getMsg(status, "淇敼澶辫触锛屾垨璁告偍鍦ㄨ繘琛岄潪娉曟搷浣滐紒");
@@ -113,18 +114,9 @@ public class BlogController extends BaseController{
 		//blog.setBlogId(StringUtils.getUUIDString());
 		blog.setCreateDate(new Date());
 		blog.setUserId(1);//user.getStaffId());
-		 StringBuffer sb = new StringBuffer();
-		 if(blog.getContent()!=null){
-			 int length = blog.getContent().length();
-			 String content = blog.getContent();
-			 for (int i = 0; i < length; i++) {
-				 boolean matches = Pattern.matches("^[\u4E00-\u9FA5]{0,}$", ""+ content.charAt(i));
-				 if (matches) {
-					 sb.append(content.charAt(i));
-				 }
-			 }
-			 blog.setContentVice(sb.toString().substring(0, sb.toString().length()<20?sb.toString().length():20));
-		 }
+		
+		blog.setContentVice(getContentVice(blog.getContent()));
+		
 		boolean status = blogService.doAdd(blog);
 		//添加图片
 		if(blogImgs!=null){
@@ -214,5 +206,22 @@ public class BlogController extends BaseController{
 		Gson json = new Gson();
 		String a = json.toJson(blogImg);
 		return  a;
+	}
+	
+	
+	private String getContentVice(String str){
+		
+		String value = str;
+		 StringBuffer sb = new StringBuffer();
+		 if(str!=null){
+			 int length = value.length();
+			 for (int i = 0; i < length; i++) {
+				 boolean matches = Pattern.matches("^[\u4E00-\u9FA5]{0,}$", ""+ value.charAt(i));
+				 if (matches) {
+					 sb.append(value.charAt(i));
+				 }
+			 }
+		 }
+		return sb.toString().substring(0, sb.toString().length()<100?sb.toString().length():100);
 	}
 }

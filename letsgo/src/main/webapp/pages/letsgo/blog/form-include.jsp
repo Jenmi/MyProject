@@ -52,6 +52,11 @@
 				<input type='radio' name='type' id='radChl11' value='11' /><label for='radChl11'>综合</label>&nbsp;&nbsp;
 			</div>
 			<br>
+			文章关键词&nbsp;
+			<div style="">
+				<input type="text" class="form-control" style="" id="keywords" name="keywords" value="${blog.keywords }" placeholder="关键词">
+			</div>
+			<br>
 			<div class="contact-but" id="buttonDiv">
 				<input name="blogId" type="hidden" value="${blog.blogId }"/>
 				<input name="status" type="hidden" value="${blog.status }"/>
