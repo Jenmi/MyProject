@@ -30,7 +30,7 @@
 			</div>
 			<br>
 			文章内容
-			<textarea rows="5" id="blogContent" name="content"cols="5" value="${blog.content }" style="display:none" ></textarea>
+			<textarea rows="5" id="blogContent" name="content"cols="5" value="" style="display:none" ></textarea>
 			<div style="width:100%;height:500px;  overflow:scroll;">
 			    <script id="editor" type="text/plain" style="width:1050px;height:100%; ">
 					${blog.content}
@@ -39,17 +39,17 @@
 			<br>
 			文章分类
 			<div class="radioBox">
-				<input type='radio' name='type' id='radChl1' value='1' ${blog.type==1?'selected':''} /><label for='radChl1'>移动开发</label> &nbsp;&nbsp;
-				<input type='radio' name='type' id='radChl2' value='2' ${blog.type==2?'selected':''}/><label for='radChl2'>Web前端</label>&nbsp;&nbsp;
-				<input type='radio' name='type' id='radChl3' value='3' ${blog.type==3?'selected':''}/><label for='radChl3'>JAVA</label>&nbsp;&nbsp;
-				<input type='radio' name='type' id='radChl4' value='4' ${blog.type==4?'selected':''}/><label for='radChl4'>架构设计</label>&nbsp;&nbsp;
-				<input type='radio' name='type' id='radChl5' value='5' ${blog.type==5?'selected':''}/><label for='radChl5'>编程语言</label>&nbsp;&nbsp;
-				<input type='radio' name='type' id='radChl6' value='6' ${blog.type==6?'selected':''}/><label for='radChl6'>互联网</label>&nbsp;&nbsp;
-				<input type='radio' name='type' id='radChl7' value='7' ${blog.type==7?'selected':''}/><label for='radChl7'>数据库</label>&nbsp;&nbsp;
-				<input type='radio' name='type' id='radChl8' value='8' ${blog.type==8?'selected':''}/><label for='radChl8'>系统运维</label>&nbsp;&nbsp;
-				<input type='radio' name='type' id='radChl9' value='9' ${blog.type==9?'selected':''}/><label for='radChl9'>云计算</label>&nbsp;&nbsp;
-				<input type='radio' name='type' id='radChl10' value='10' ${blog.type==10?'selected':''}/><label for='radChl10'>生活</label>&nbsp;&nbsp;
-				<input type='radio' name='type' id='radChl11' value='11' ${blog.type==11?'selected':''}/><label for='radChl11'>综合</label>&nbsp;&nbsp;
+				<input type='radio' name='type' id='radChl1' value='1' ${blog.type==1?'checked':''} /><label for='radChl1'>移动开发</label> &nbsp;&nbsp;
+				<input type='radio' name='type' id='radChl2' value='2' ${blog.type==2?'checked':''}/><label for='radChl2'>Web前端</label>&nbsp;&nbsp;
+				<input type='radio' name='type' id='radChl3' value='3' ${blog.type==3?'checked':''}/><label for='radChl3'>JAVA</label>&nbsp;&nbsp;
+				<input type='radio' name='type' id='radChl4' value='4' ${blog.type==4?'checked':''}/><label for='radChl4'>架构设计</label>&nbsp;&nbsp;
+				<input type='radio' name='type' id='radChl5' value='5' ${blog.type==5?'checked':''}/><label for='radChl5'>编程语言</label>&nbsp;&nbsp;
+				<input type='radio' name='type' id='radChl6' value='6' ${blog.type==6?'checked':''}/><label for='radChl6'>互联网</label>&nbsp;&nbsp;
+				<input type='radio' name='type' id='radChl7' value='7' ${blog.type==7?'checked':''}/><label for='radChl7'>数据库</label>&nbsp;&nbsp;
+				<input type='radio' name='type' id='radChl8' value='8' ${blog.type==8?'checked':''}/><label for='radChl8'>系统运维</label>&nbsp;&nbsp;
+				<input type='radio' name='type' id='radChl9' value='9' ${blog.type==9?'checked':''}/><label for='radChl9'>云计算</label>&nbsp;&nbsp;
+				<input type='radio' name='type' id='radChl10' value='10' ${blog.type==10?'checked':''}/><label for='radChl10'>生活</label>&nbsp;&nbsp;
+				<input type='radio' name='type' id='radChl11' value='11' ${blog.type==11?'checked':''}/><label for='radChl11'>综合</label>&nbsp;&nbsp;
 			</div>
 			<br>
 			文章关键词&nbsp;

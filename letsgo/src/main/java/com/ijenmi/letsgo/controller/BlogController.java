@@ -33,7 +33,6 @@ import com.ijenmi.letsgo.service.BlogService;
 import com.ijenmi.letsgo.vo.UserInfo;
 import com.ijenmi.letsgo.vo.query.BlogQuery;
 import com.ijenmi.letsgo.vo.query.CurrPage;
-import com.ijenmi.util.FreamarkerUtil;
 import com.ijenmi.util.UploadFile;
 import com.ijenmi.util.UserAndAuthorityUtil;
 
@@ -96,7 +95,7 @@ public class BlogController extends BaseController{
 		blog.setContentVice(getContentVice(blog.getContent()));
 		boolean status = blogService.update(blog);
 		
-		this.getMsg(status, "淇敼澶辫触锛屾垨璁告偍鍦ㄨ繘琛岄潪娉曟搷浣滐紒");
+		this.getMsg(status, "娣囶喗鏁兼径杈Е閿涘本鍨ㄧ拋鍛婂亶閸︺劏绻樼悰宀勬姜濞夋洘鎼锋担婊愮磼");
 		return "redirect:/blog";
 	}
 	
@@ -118,7 +117,7 @@ public class BlogController extends BaseController{
 		blog.setContentVice(getContentVice(blog.getContent()));
 		
 		boolean status = blogService.doAdd(blog);
-		//添加图片
+		//娣诲姞鍥剧墖
 		if(blogImgs!=null){
 			for (String str : blogImgs) {
 				BlogImg imgBean = new Gson().fromJson(str, BlogImg.class);
@@ -138,7 +137,7 @@ public class BlogController extends BaseController{
 		
 		//FreamarkerUtil.createStaticPage(new Configuration(), request, "aaa.html", map, "/report/blog", "blog-show.html");
 		
-		this.getMsg(status, "对不起，添加失败！");
+		this.getMsg(status, "瀵逛笉璧凤紝娣诲姞澶辫触锛�");
 		return "redirect:/blog";
 	}
 	
@@ -149,7 +148,7 @@ public class BlogController extends BaseController{
 	}
 	
 	/**
-	 * 璧炶幏鍙栧弽璧�
+	 * 鐠х偠骞忛崣鏍у冀鐠э拷
 	 * @param model
 	 * @param id
 	 * @param type
