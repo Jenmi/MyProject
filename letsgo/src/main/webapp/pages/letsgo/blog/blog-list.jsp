@@ -13,6 +13,7 @@
 	<meta name="description" content="jenmi个人博客记录自己生活日志以及自己在程序之路的学习与见解">
 	<meta name="keywords" content="jenmi博客,个人博客,jenmi,java博客,java">
 	<meta name="author" content="jenmi">
+	<meta name="360-site-verification" content="ff5562b02f3c854e3f12b6274e1bd7c6" />
 	<link rel="stylesheet" href="<c:url value='/css/hippo-off-canvas.css'/>"  type="text/css">
 	<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.carousel.css'/>">
 	<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.theme.css'/>">
