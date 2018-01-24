@@ -9,9 +9,9 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title>Jenmi 主页</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="">
+	<meta name="description" content="jenmi个人博客记录自己生活日志以及自己在程序之路的学习与见解">
+	<meta name="keywords" content="jenmi博客,个人博客,jenmi,博客,jenmi主页">
+	<meta name="author" content="jenmi">
 	<%@ include file="/commons/taglib.jsp" %>
 	<!-- 新版本库 -->
 	<link rel="stylesheet" href="<c:url value='/css/hippo-off-canvas.css'/>"  type="text/css">

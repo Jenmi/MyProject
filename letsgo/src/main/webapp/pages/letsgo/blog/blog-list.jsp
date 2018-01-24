@@ -10,9 +10,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="author" content="">
+	<meta name="description" content="jenmi个人博客记录自己生活日志以及自己在程序之路的学习与见解">
+	<meta name="keywords" content="jenmi博客,个人博客,jenmi,java博客,java">
+	<meta name="author" content="jenmi">
 	<link rel="stylesheet" href="<c:url value='/css/hippo-off-canvas.css'/>"  type="text/css">
 	<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.carousel.css'/>">
 	<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.theme.css'/>">

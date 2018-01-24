@@ -61,6 +61,7 @@
 				<input name="blogId" type="hidden" value="${blog.blogId }"/>
 				<input name="status" type="hidden" value="${blog.status }"/>
 				<input name="zanNum" type="hidden" value="${blog.zanNum }"/>
+				<input name="seeNum" type="hidden" value="${blog.seeNum }"/>
 				<input name="createDate" type="hidden" value='<fmt:formatDate value="${blog.createDate }"/>'/>
 				<input name="commentNum" type="hidden" value="${blog.commentNum }"/>
 				<input name="userId" type="hidden" value="${blog.userId }"/>
