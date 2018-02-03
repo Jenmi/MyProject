@@ -89,7 +89,7 @@ public class HomeController extends BaseController{
 			//return "forward:"+uriPath;  bug//
 			response.sendRedirect(uriPath);
 		}*/
-		return "/letsgo/home";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/edit")

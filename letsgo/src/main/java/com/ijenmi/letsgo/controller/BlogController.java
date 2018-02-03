@@ -33,6 +33,7 @@ import com.ijenmi.letsgo.service.BlogService;
 import com.ijenmi.letsgo.vo.UserInfo;
 import com.ijenmi.letsgo.vo.query.BlogQuery;
 import com.ijenmi.letsgo.vo.query.CurrPage;
+import com.ijenmi.util.BaiDuSEOUtils;
 import com.ijenmi.util.UploadFile;
 import com.ijenmi.util.UserAndAuthorityUtil;
 
@@ -117,6 +118,9 @@ public class BlogController extends BaseController{
 		blog.setContentVice(getContentVice(blog.getContent()));
 		
 		boolean status = blogService.doAdd(blog);
+		String[] urls = { "http://www.ihonming.cn/blog/"+blog.getBlogId()+"/show"}; 
+		BaiDuSEOUtils.Post(null, urls);
+		
 		//娣诲姞鍥剧墖
 		if(blogImgs!=null){
 			for (String str : blogImgs) {
