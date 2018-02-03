@@ -55,7 +55,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<ul class="bcrumbs">
-						<li><a href="${ctx}/home"><i class="fa fa-home"></i>主页</a></li>
+						<li><a href="${ctx}/"><i class="fa fa-home"></i>主页</a></li>
 						<li>博客</li>
 					</ul>
 					<div class="clearfix"></div>
