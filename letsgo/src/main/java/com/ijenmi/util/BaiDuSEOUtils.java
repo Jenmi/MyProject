@@ -4,10 +4,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
 public class BaiDuSEOUtils {
+	public static void main(String[] args) throws MalformedURLException{
+		 /** 
+	     * @param args 
+	     */  
+		String url = "http://data.zz.baidu.com/urls?site=www.aaa.cn&token=IHZk9z1gzxI2VOz4";//网站的服务器连接  
+		String[] param = {  
+				"http://www.aaa.cn/blog/25/show"
+			};  
+		String json = Post(url, param);//执行推送方法  
+		System.out.println("结果是"+json);  //打印推送结果  
+	}
+	
 	 /** 
      * 百度链接实时推送 
      * @param PostUrl 
