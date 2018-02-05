@@ -1,6 +1,5 @@
 package com.ijenmi.letsgo.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -36,8 +35,6 @@ import com.ijenmi.letsgo.vo.query.CurrPage;
 import com.ijenmi.util.BaiDuSEOUtils;
 import com.ijenmi.util.UploadFile;
 import com.ijenmi.util.UserAndAuthorityUtil;
-
-import freemarker.template.Configuration;
 
 @Controller
 @RequestMapping("/blog")
