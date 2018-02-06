@@ -211,7 +211,7 @@ public class BlogController extends BaseController{
 	
 	private String getContentVice(String str){
 		
-		String value = str;
+		/*String value = str;
 		 StringBuffer sb = new StringBuffer();
 		 if(str!=null){
 			 int length = value.length();
@@ -221,7 +221,19 @@ public class BlogController extends BaseController{
 					 sb.append(value.charAt(i));
 				 }
 			 }
-		 }
-		return sb.toString().substring(0, sb.toString().length()<100?sb.toString().length():100);
+		 }*/
+		// <p>段落替换为换行
+		 str = str.replaceAll("<p .*?>", "\r\n");
+		 // <br><br/>替换为换行
+		 str = str.replaceAll("<br\\s*/?>", "\r\n");
+		 // 去掉其它的<>之间的东西
+		 str = str.replaceAll("\\<.*?>", "");
+		 
+		 str = str.replaceAll("&nbsp;", "");
+		 str = str.replaceAll("&gt;", "");
+		 str = str.replaceAll("&lt;", "");
+		 str = str.trim();
+		 
+		return str.toString().substring(0, str.toString().length()<100?str.toString().length():100);
 	}
 }
