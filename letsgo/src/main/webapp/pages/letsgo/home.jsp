@@ -53,8 +53,8 @@
 	<!-- 音乐 -->
 	<%-- <link rel="stylesheet" href="<c:url value='/utils/music/APlayer.min.css'/>" type="text/css">
 	<script src="<c:url value="/utils/music/APlayer.min.js"/>" type="text/javascript"></script> --%>
-	<script src='<c:url value='/utils/musicMax/js/jaudio.js'/>'></script>
-	<link rel="stylesheet" type="text/css" href="<c:url value="/utils/musicMax/css/main.css"/>" />
+	<%-- <script src='<c:url value='/utils/musicMax/js/jaudio.js'/>'></script>
+	<link rel="stylesheet" type="text/css" href="<c:url value="/utils/musicMax/css/main.css"/>" /> --%>
 </head>
 <body id="header6">
 <div id="page-top"></div>
@@ -993,7 +993,7 @@ $(function(){
 				  trackAlbum: "Single",
 				} 
 				, */
-				{
+				/* {
 				  file: "utils/musicMax/tracks/M80.mp3",
 				  thumb: "utils/musicMax/thumbs/03.jpg",
 				  trackName: "Fade",
@@ -1015,12 +1015,12 @@ $(function(){
 				  trackName: "Fade",
 				  trackArtist: "Alan Walker",
 				  trackAlbum: "Single",
-				} 
+				}  */
 				
 			],
 			autoPlay:false
 		}
-	var a = $('.jAudio--player').jAudio(t);
+	//var a = $('.jAudio--player').jAudio(t);
 });
 	
 </script>
