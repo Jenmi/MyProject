@@ -7,7 +7,6 @@
 var uuid = 0,
 	runiqueId = /^ui-id-\d+$/;
 
-// $.ui might exist from components with no dependencies, e.g., $.ui.position
 $.ui = $.ui || {};
 
 $.extend( $.ui, {
@@ -80,15 +79,8 @@ $.fn.extend({
 		if ( this.length ) {
 			var elem = $( this[ 0 ] ), position, value;
 			while ( elem.length && elem[ 0 ] !== document ) {
-				// Ignore z-index if position is set to a value where z-index is ignored by the browser
-				// This makes behavior of this function consistent across browsers
-				// WebKit always returns auto if the element is positioned
 				position = elem.css( "position" );
 				if ( position === "absolute" || position === "relative" || position === "fixed" ) {
-					// IE returns 0 when zIndex is not specified
-					// other browsers return a string
-					// we ignore the case of nested elements with an explicit value of 0
-					// <div style="z-index: -10;"><div style="z-index: 0;"></div></div>
 					value = parseInt( elem.css( "zIndex" ), 10 );
 					if ( !isNaN( value ) && value !== 0 ) {
 						return value;
@@ -14560,25 +14552,18 @@ $.widget( "ui.tabs", {
 
 		this.xhr = $.ajax( this._ajaxSettings( anchor, event, eventData ) );
 
-		// support: jQuery <1.8
-		// jQuery <1.8 returns false if the request is canceled in beforeSend,
-		// but as of 1.8, $.ajax() always returns a jqXHR object.
 		if ( this.xhr && this.xhr.statusText !== "canceled" ) {
 			tab.addClass( "ui-tabs-loading" );
 			panel.attr( "aria-busy", "true" );
 
 			this.xhr
 				.success(function( response ) {
-					// support: jQuery <1.8
-					// http://bugs.jquery.com/ticket/11778
 					setTimeout(function() {
 						panel.html( response );
 						that._trigger( "load", event, eventData );
 					}, 1 );
 				})
 				.complete(function( jqXHR, status ) {
-					// support: jQuery <1.8
-					// http://bugs.jquery.com/ticket/11778
 					setTimeout(function() {
 						if ( status === "abort" ) {
 							that.panels.stop( false, true );
@@ -14647,14 +14632,10 @@ $.widget( "ui.tooltip", {
 	version: "1.10.3",
 	options: {
 		content: function() {
-			// support: IE<9, Opera in jQuery <1.7
-			// .text() can't accept undefined, so coerce to a string
 			var title = $( this ).attr( "title" ) || "";
-			// Escape title, since we're going from an attribute to raw HTML
 			return $( "<a>" ).text( title ).html();
 		},
 		hide: true,
-		// Disabled elements have inconsistent behavior across browsers (#8661)
 		items: "[title]:not([disabled])",
 		position: {
 			my: "left top+15",
@@ -14676,9 +14657,7 @@ $.widget( "ui.tooltip", {
 			focusin: "open"
 		});
 
-		// IDs of generated tooltips, needed for destroy
 		this.tooltips = {};
-		// IDs of parent tooltips where we removed the title attribute
 		this.parents = {};
 
 		if ( this.options.disabled ) {
@@ -14708,14 +14687,12 @@ $.widget( "ui.tooltip", {
 	_disable: function() {
 		var that = this;
 
-		// close open tooltips
 		$.each( this.tooltips, function( id, element ) {
 			var event = $.Event( "blur" );
 			event.target = event.currentTarget = element[0];
 			that.close( event, true );
 		});
 
-		// remove title attributes to prevent native tooltips
 		this.element.find( this.options.items ).addBack().each(function() {
 			var element = $( this );
 			if ( element.is( "[title]" ) ) {
@@ -14727,7 +14704,6 @@ $.widget( "ui.tooltip", {
 	},
 
 	_enable: function() {
-		// restore title attributes
 		this.element.find( this.options.items ).addBack().each(function() {
 			var element = $( this );
 			if ( element.data( "ui-tooltip-title" ) ) {
@@ -14739,11 +14715,8 @@ $.widget( "ui.tooltip", {
 	open: function( event ) {
 		var that = this,
 			target = $( event ? event.target : this.element )
-				// we need closest here due to mouseover bubbling,
-				// but always pointing at the same event target
 				.closest( this.options.items );
 
-		// No element to show a tooltip for or the tooltip is already open
 		if ( !target.length || target.data( "ui-tooltip-id" ) ) {
 			return;
 		}
@@ -14789,18 +14762,10 @@ $.widget( "ui.tooltip", {
 		}
 
 		content = contentOption.call( target[0], function( response ) {
-			// ignore async response if tooltip was closed already
 			if ( !target.data( "ui-tooltip-open" ) ) {
 				return;
 			}
-			// IE may instantly serve a cached response for ajax requests
-			// delay this call to _open so the other call to _open runs first
 			that._delay(function() {
-				// jQuery creates a special event for focusin when it doesn't
-				// exist natively. To improve performance, the native event
-				// object is reused and the type is changed. Therefore, we can't
-				// rely on the type being correct after the event finished
-				// bubbling, so we set it back to the previous value. (#8740)
 				if ( event ) {
 					event.type = eventType;
 				}
@@ -14820,21 +14785,12 @@ $.widget( "ui.tooltip", {
 			return;
 		}
 
-		// Content can be updated multiple times. If the tooltip already
-		// exists, then just update the content and bail.
 		tooltip = this._find( target );
 		if ( tooltip.length ) {
 			tooltip.find( ".ui-tooltip-content" ).html( content );
 			return;
 		}
 
-		// if we have a title, clear it to prevent the native tooltip
-		// we have to check first to avoid defining a title if none exists
-		// (we don't want to cause an element to start matching [title])
-		//
-		// We use removeAttr only for key events, to allow IE to export the correct
-		// accessible attributes. For mouse events, set to empty string to avoid
-		// native tooltip showing up (happens only when removing inside mouseover).
 		if ( target.is( "[title]" ) ) {
 			if ( event && event.type === "mouseover" ) {
 				target.attr( "title", "" );
@@ -14858,7 +14814,6 @@ $.widget( "ui.tooltip", {
 			this._on( this.document, {
 				mousemove: position
 			});
-			// trigger once to override element-relative positioning
 			position( event );
 		} else {
 			tooltip.position( $.extend({
@@ -14869,9 +14824,6 @@ $.widget( "ui.tooltip", {
 		tooltip.hide();
 
 		this._show( tooltip, this.options.show );
-		// Handle tracking tooltips that are shown with a delay (#8644). As soon
-		// as the tooltip is visible, position the tooltip using the most recent
-		// event.
 		if ( this.options.show && this.options.show.delay ) {
 			delayedShow = this.delayedShow = setInterval(function() {
 				if ( tooltip.is( ":visible" ) ) {
@@ -14909,16 +14861,12 @@ $.widget( "ui.tooltip", {
 			target = $( event ? event.currentTarget : this.element ),
 			tooltip = this._find( target );
 
-		// disabling closes the tooltip, so we need to track when we're closing
-		// to avoid an infinite loop in case the tooltip becomes disabled on close
 		if ( this.closing ) {
 			return;
 		}
 
-		// Clear the interval for delayed tracking tooltips
 		clearInterval( this.delayedShow );
 
-		// only set title if we had one before (see comment in _open())
 		if ( target.data( "ui-tooltip-title" ) ) {
 			target.attr( "title", target.data( "ui-tooltip-title" ) );
 		}
@@ -14932,7 +14880,6 @@ $.widget( "ui.tooltip", {
 
 		target.removeData( "ui-tooltip-open" );
 		this._off( target, "mouseleave focusout keyup" );
-		// Remove 'remove' binding only on delegated targets
 		if ( target[0] !== this.element[0] ) {
 			this._off( target, "remove" );
 		}
@@ -14980,18 +14927,13 @@ $.widget( "ui.tooltip", {
 	_destroy: function() {
 		var that = this;
 
-		// close open tooltips
 		$.each( this.tooltips, function( id, element ) {
-			// Delegate to close method to handle common cleanup
 			var event = $.Event( "blur" );
 			event.target = event.currentTarget = element[0];
 			that.close( event, true );
 
-			// Remove immediately; destroying an open tooltip doesn't use the
-			// hide animation
 			$( "#" + id ).remove();
 
-			// Restore the title
 			if ( element.data( "ui-tooltip-title" ) ) {
 				element.attr( "title", element.data( "ui-tooltip-title" ) );
 				element.removeData( "ui-tooltip-title" );

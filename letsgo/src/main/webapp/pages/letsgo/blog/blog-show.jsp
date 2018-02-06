@@ -8,7 +8,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-	<title>${blog.title }|Jenmi博客 </title>
+	<title>${blog.title } | Jenmi博客 </title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="${blog.contentVice}">
@@ -266,8 +266,13 @@
 			}
 		});
 	}
-	
 </script>
 
+	<script>/* 360自动收录的代码 */
+	(function(){
+	var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?115bacbd5b86c0276a290440c8072c8a":"https://jspassport.ssl.qhimg.com/11.0.1.js?115bacbd5b86c0276a290440c8072c8a";
+	document.write('<script src="' + src + '" id="sozz"><\/script>');
+	})();
+	</script>
 </body>
 </html>

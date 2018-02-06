@@ -13,9 +13,11 @@
 	<meta name="description" content="jenmi个人博客记录自己生活日志以及自己在程序之路的学习与见解">
 	<meta name="keywords" content="jenmi博客,个人博客,jenmi,博客,jenmi主页">
 	<meta name="author" content="jenmi">
-	<%@ include file="/commons/taglib.jsp" %>
+	<script src="<c:url value="/scripts/jquery-1.11.0.min.js"/>"></script>
+	<script src="<c:url value="/scripts/bootstrap/bootstrap.js"/>"></script>
+	<link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>" type="text/css">
 	<!-- 新版本库 -->
-	<link rel="stylesheet" href="<c:url value='/css/hippo-off-canvas.css'/>"  type="text/css">
+	<%-- <link rel="stylesheet" href="<c:url value='/css/hippo-off-canvas.css'/>"  type="text/css"> --%>
 	<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.carousel.css'/>">
 	<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.theme.css'/>">
 	<link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.transitions.css'/>">
@@ -23,9 +25,9 @@
 	<link rel="stylesheet" href="<c:url value='/js/flexslider/flexslider.css'/>">
 	<link rel="stylesheet" href="<c:url value='/js/isotope/isotope.css'/>">
 	<link rel="stylesheet" href="<c:url value='/css/jquery-ui.css'/>">
-	<link rel="stylesheet" href="<c:url value='/js/magnific-popup/magnific-popup.css'/>">
+	<%-- <link rel="stylesheet" href="<c:url value='/js/magnific-popup/magnific-popup.css'/>"> --%>
 	<link rel="stylesheet" href="<c:url value='/css/style.css'/>">
-	<link href='<c:url value="/style/bootstrap/bootstrap-datepicker3.min.css"/>' rel='stylesheet' type='text/css' />
+	<%-- <link href='<c:url value="/style/bootstrap/bootstrap-datepicker3.min.css"/>' rel='stylesheet' type='text/css' /> --%>
 	<link rel="stylesheet" href="<c:url value='/css/icomoon/style.css'/>" type="text/css">
 	<link rel="stylesheet" href="<c:url value='/font-awesome/css/font-awesome.min.css'/>" type="text/css">
 	<!-- SKIN -->
@@ -40,7 +42,7 @@
 	<script src="<c:url value='/js/tweecool.js'/>"></script>
 	<script src="<c:url value='/js/flexslider/jquery.flexslider.js'/>"></script>
 	<script src="<c:url value='/js/easypie/jquery.easypiechart.min.js'/>"></script>
-	<script src="<c:url value='/js/jquery-ui.js'/>"></script>
+	<script src="<c:url value='/js/jquery-ui-1.10.3.min.js'/>"></script>
 	<script src="<c:url value='/js/jquery.appear.js'/>"></script>
 	<%-- <script src="<c:url value='/js/jquery.inview.js'/>"></script> --%>
 	<script src="<c:url value='/js/jquery.countdown.min.js'/>"></script>
@@ -53,7 +55,6 @@
 	<script src="<c:url value="/utils/music/APlayer.min.js"/>" type="text/javascript"></script> --%>
 	<script src='<c:url value='/utils/musicMax/js/jaudio.js'/>'></script>
 	<link rel="stylesheet" type="text/css" href="<c:url value="/utils/musicMax/css/main.css"/>" />
-	<%-- <link rel="stylesheet" href="<c:url value='/css/bootstrap.min.css'/>" type="text/css"> --%>
 </head>
 <body id="header6">
 <div id="page-top"></div>
@@ -492,7 +493,7 @@
 						</a>
 					</div>
 					<div class="project-item illustration web-design illustration" style="position: absolute; left: 449px; top: 0px;">
-						<a href="javascript:" target="_blank">
+						<a href="${ctx}/photo" target="_blank">
 							<div class="project-gal">
 								<img src="<c:url value='/images/projects/2.jpg'/>" class="img-responsive" alt="">
 								<div class="overlay-folio2">
@@ -505,7 +506,7 @@
 						</a>
 					</div>
 					<div class="project-item illustration print" style="position: absolute; left: 899px; top: 0px;">
-						<a href="./portfolio-single-slider.html">
+						<a href="${ctx}/photo">
 							<div class="project-gal">
 								<img src="<c:url value='/images/projects/3.jpg'/>" class="img-responsive" alt="">
 								<div class="overlay-folio2">
@@ -518,7 +519,7 @@
 						</a>
 					</div>
 					<div class="project-item web-design" style="position: absolute; left: 0px; top: 289px;">
-						<a href="./portfolio-single-slider.html">
+						<a href="${ctx}/photo">
 							<div class="project-gal">
 								<img src="<c:url value='/images/projects/4.jpg'/>" class="img-responsive" alt="">
 								<div class="overlay-folio2">
@@ -531,7 +532,7 @@
 						</a>
 					</div>
 					<div class="project-item branding" style="position: absolute; left: 449px; top: 289px;">
-						<a href="./portfolio-single-slider.html">
+						<a href="${ctx}/photo">
 							<div class="project-gal">
 								<img src="<c:url value='/images/projects/5.jpg'/>" class="img-responsive" alt="">
 								<div class="overlay-folio2">
@@ -544,7 +545,7 @@
 						</a>
 					</div>
 					<div class="project-item illustration web-design print" style="position: absolute; left: 899px; top: 289px;">
-						<a href="./portfolio-single-slider.html">
+						<a href="${ctx}/photo">
 							<div class="project-gal">
 								<img src="<c:url value='/images/projects/6.jpg'/>" class="img-responsive" alt="">
 								<div class="overlay-folio2">
@@ -826,9 +827,9 @@
 									<!-- <a class="product-overlay-cart" href="#"><i class="fa fa-cart-plus"></i></a> -->
 								</div>
 							</div>
-							<h3 class="product-title"><a href="${ctx}/herp/login" target="_blank">ERP项目</a></h3>
+							<h3 class="product-title"><a href="JavaScript:" target="_blank">ERP项目</a></h3>
 							<span class="product-price"  style="font-size:1px;color:#878787">四川远海国际旅行社，根据公司业务做得一套项目</span>
-							<a href="${ctx}/herp/login" target="_blank" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
+							<a href="javascript:" target="_blank" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
 						</div>
 					</div>
 				</li>
@@ -843,9 +844,9 @@
 									<a class="product-overlay-cart" href="#"><i class="fa fa-cart-plus"></i></a>
 								</div>
 							</div>
-							<h3 class="product-title"><a href="${ctx}/oa" target="_blank">OA项目</a></h3>
+							<h3 class="product-title"><a href="JavaScript:" target="_blank">OA项目</a></h3>
 							<span class="product-price" style="font-size:1px;color:#878787">四川天纵科技</span>
-							<a href="${ctx}/oa" target="_blank" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
+							<a href="javascript:" target="_blank" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
 						</div>
 					</div>
 				</li>
@@ -859,7 +860,7 @@
 									<a class="product-overlay-cart" href="#"><i class="fa fa-cart-plus"></i></a>
 								</div> -->
 							</div>
-							<h3 class="product-title"><a href="#">个人博客</a></h3>
+							<h3 class="product-title"><a href="JavaScript:">个人博客</a></h3>
 							<span class="product-price" style="font-size:1px;color:#878787">属于自己的个人主页</span>
 							<a href="#" class="button btn-md btn-radius btn-center color2 btn-radius add_to_cart_button">查看详情</a>
 						</div>
@@ -993,8 +994,8 @@ $(function(){
 				} 
 				, */
 				{
-				  file: "utils/musicMax/tracks/ItsOnTonight.mp3",
-				  thumb: "utils/musicMax/thumbs/02.jpg",
+				  file: "utils/musicMax/tracks/M80.mp3",
+				  thumb: "utils/musicMax/thumbs/03.jpg",
 				  trackName: "Fade",
 				  trackArtist: "Alan Walker",
 				  trackAlbum: "Single",
@@ -1009,8 +1010,8 @@ $(function(){
 				} 
 				,
 				{
-				  file: "utils/musicMax/tracks/M80.mp3",
-				  thumb: "utils/musicMax/thumbs/03.jpg",
+				  file: "utils/musicMax/tracks/ItsOnTonight.mp3",
+				  thumb: "utils/musicMax/thumbs/02.jpg",
 				  trackName: "Fade",
 				  trackArtist: "Alan Walker",
 				  trackAlbum: "Single",
