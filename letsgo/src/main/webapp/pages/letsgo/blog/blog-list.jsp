@@ -5,13 +5,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>博客</title>
+<title>博客-jenmi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="jenmi个人博客记录自己生活日志以及自己在程序之路的学习与见解">
-	<meta name="keywords" content="jenmi博客,个人博客,jenmi,java博客,java">
+	<meta name="keywords" content="jenmi博客,个人博客,jenmi,java博客,java,弘名博客">
 	<meta name="author" content="jenmi">
 	<meta name="360-site-verification" content="ff5562b02f3c854e3f12b6274e1bd7c6" />
 	<link rel="stylesheet" href="<c:url value='/css/hippo-off-canvas.css'/>"  type="text/css">
