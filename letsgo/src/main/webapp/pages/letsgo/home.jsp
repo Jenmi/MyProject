@@ -407,7 +407,7 @@
 						</div>
 						<h4>
 							<c:choose>
-								<c:when test="${not empty blog.title}"><a href="${ctx}/blog/${liveBlog.blogId}/show" target="_blank">-${blog.title}</a></c:when>
+								<c:when test="${not empty liveBlog.title}"><a href="${ctx}/blog/${liveBlog.blogId}/show" target="_blank">${liveBlog.title}</a></c:when>
 								<c:otherwise>
 									<a href="${ctx}/blog" target="_blank"> —生活博客</a>
 								</c:otherwise>
@@ -435,7 +435,7 @@
 						</div>
 						<h4>
 							<c:choose>
-								<c:when test="${not empty blog.title}"><a href="${ctx}/blog/${proBlog.blogId}/show" target="_blank">-${blog.title}</a></c:when>
+								<c:when test="${not empty proBlog.title}"><a href="${ctx}/blog/${proBlog.blogId}/show" target="_blank">${proBlog.title}</a></c:when>
 								<c:otherwise>
 									<a href="${ctx}/blog" target="_blank"> —项目博客</a>
 								</c:otherwise>
