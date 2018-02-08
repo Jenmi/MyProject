@@ -47,8 +47,8 @@ public class HomeController extends BaseController{
 //		Integer photoCount = 
 		
 		//我的博客数据
-		Blog blog = blogManager.getBestNewBlogByTypeId(4);
-		Blog liveBlog=blogManager.getBestNewBlogByTypeId(6);
+		Blog blog = blogManager.getBestNewBlogByTypeId(3);
+		Blog liveBlog=blogManager.getBestNewBlogByTypeId(10);
 		Blog proBlog = blogManager.getBestNewBlogByTypeId(8);
 		map.addAttribute("blog", blog);
 		map.addAttribute("liveBlog",liveBlog);
