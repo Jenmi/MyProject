@@ -333,14 +333,14 @@
 					<div class="stats1-info">
 						<a href="${ctx }/blog" style="text-decoration:none "><i class="icon-trophy"></i></a>
 						<p><span class="count count1">${blogCount }</span></p>
-						<h2>博客</h2>
+						<h2><a href="${ctx }/blog" style="text-decoration:none ">博客</a></h2>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
 					<div class="stats1-info">
 						<a href="${ctx }/photo" style="text-decoration:none "><i class=" icon-camera"></i></a>
 						<p><span class="count count1">9</span></p>
-						<h2>照片</h2>
+						<h2><a href="${ctx }/photo" style="text-decoration:none ">照片</a></h2>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6">
