@@ -8,7 +8,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 
-	<title>${blog.title } | Jenmi博客 </title>
+	<title>${blog.title }|Jenmi博客 </title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="${blog.contentVice}">
@@ -39,7 +39,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h3><span>博客</span>一个人的豁达，体现在落魄</h3>
+						<h3><span>Jenmi博客</span>
+							<script> document.write('一个人的豁达，体现在落魄')</script>
+						</h3>
 					</div>
 				</div>
 			</div>
@@ -67,7 +69,7 @@
 				<div class="col-sm-8 col-sm-offset-2">
 					<div class="blog-single">
 						<article class="blogpost">
-							<h2 class="post-title"><a href="#">${blog.title }</a></h2>
+							<h2 class="post-title"><a href="#" style="text-transform:none">${blog.title }</a></h2>
 							<div class="post-meta">
 								<span><a href="#"><i class="icon-clock2"></i><fmt:formatDate  value="${blog.createDate }" pattern="yyyy-MM-dd HH:mm:ss"/></a></span>
 								<span><a href="#"><i class="icon-eye2"></i> ${blog.seeNum }</a></span>
