@@ -80,8 +80,8 @@
 					<li><a href="#" data-option-value=".photoType3">物&nbsp;&nbsp;品</a></li>
 					<li><a href="#" data-option-value=".photoType9">其&nbsp;&nbsp;他</a></li>
 				</ul>
-				<div id="portfolio-home" class="isotope folio-boxed-4col ">
-					<div class="project-item photoType1">
+				 <div id="portfolio-home" class="isotope folio-boxed-4col ">
+				<%--	<div class="project-item photoType1">
 						<a href="<c:url value='/images/projects/1.jpg'/>" class="mp-lightbox" >
 							<div class="project-gal">
 								<img src="<c:url value='/images/projects/1.jpg'/>" class="img-responsive" alt="">
@@ -236,7 +236,7 @@
 								</div>
 							</div>
 						</a>
-					</div>
+					</div> --%>
 					<c:forEach var="item" items="${photos }">
 							<div class="project-item photoType${item.type }">
 						<a href="<c:url value='${item.photoPath }'/>"  class="mp-lightbox" >
