@@ -6,7 +6,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>图片</title>
+<title>图片  | Jenmi图片</title>
+<meta name="keywords" content="jenmi博客,个人博客,jenmi照片,jenmi图片,jenmi主页">
+<meta name="description" content="jenmi个人照片随手一拍的照片，照出生活的一点一滴">
 <script src="<c:url value="/scripts/jquery-1.8.2-min.js"/>"></script>
  <%-- <link rel="stylesheet" href="<c:url value='/css/hippo-off-canvas.css'/>"  type="text/css">
 <link rel="stylesheet" href="<c:url value='/js/owl-carousel/owl.carousel.css'/>">
@@ -269,7 +271,7 @@
     </div><!-- /#main-wrapper -->
 <!-- STYLE SWITCHER 
 ============================================= -->
-<%@ include file="/pages/letsgo/color_block.jsp" %>
+<%-- <%@ include file="/pages/letsgo/color_block.jsp" %> --%>
 <!-- END STYLE SWITCHER 
 ============================================= -->
     <!-- Preloader -->

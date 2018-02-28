@@ -281,7 +281,7 @@
 
 <!-- STYLE SWITCHER
 ============================================= -->
-<div class="b-settings-panel">
+<%-- <div class="b-settings-panel">
 	<div class="settings-section">
 		<span>
 		Boxed
@@ -336,7 +336,7 @@
 		<div data-src="<c:url value='/css/color-scheme/cream.css'/>" style="background: #e0d6b2"></div>
 	</div>
 	<div class="btn-settings"></div>
-</div>
+</div> --%>
 <!-- END STYLE SWITCHER
 ============================================= -->
 <!-- Preloader -->
