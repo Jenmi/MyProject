@@ -79,4 +79,6 @@
 	<mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
 	<mvc:resources mapping="/widgets/**" location="/widgets/"></mvc:resources>
 	<mvc:resources mapping="/font-awesome/**" location="/font-awesome/"></mvc:resources>
+	<mvc:resources mapping="/report/**" location="/report/"></mvc:resources>
+	<mvc:resources mapping="/temp/**" location="/temp/"></mvc:resources>
 </beans>
