@@ -74,8 +74,8 @@
 		<div class="container container-full">
 			<section id="portfolio-section">
 				<ul class="filter no-margin-top" data-option-key="filter">
-					<li><a class="selected" href="#filter" data-option-value="*">全&nbsp;&nbsp;部</a></li>
-					<li><a href="#" data-option-value=".photoType1">美&nbsp;&nbsp;景</a></li>
+					<li><a class="selected" href="#filter" data-option-value="*" id="allimg">全&nbsp;&nbsp;部</a></li>
+					<li><a href="#" data-option-value=".photoType1" id="meijing">美&nbsp;&nbsp;景</a></li>
 					<li><a href="#" data-option-value=".photoType2">人&nbsp;&nbsp;物</a></li>
 					<li><a href="#" data-option-value=".photoType3">物&nbsp;&nbsp;品</a></li>
 					<li><a href="#" data-option-value=".photoType9">其&nbsp;&nbsp;他</a></li>
@@ -357,6 +357,11 @@
 			.appendTo('head');
 	});
 	//设置外观和颜色的按钮  ---------end
+	
+	window.onload = function(){
+		$("#meijing").click();
+		$("#allimg").click();
+	}
     </script>
 <%-- <script src="<c:url value='/js/main.js'/>"></script> --%>
 <script src="<c:url value='/js/gmaps/greyscale.js'/>"></script>
