@@ -18,6 +18,10 @@ import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGEncodeParam;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
+/**
+ * @author Administrator
+ *	图片压缩工具类
+ */
 public class ImgCompressUtils {
 	public static void main(String[] args) {
 		 /** 

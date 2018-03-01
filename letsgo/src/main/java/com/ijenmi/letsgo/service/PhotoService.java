@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ijenmi.letsgo.dao.PhotoMapper;
 import com.ijenmi.letsgo.model.Photo;
+import com.ijenmi.util.ImgCompressUtils;
 
 @Service
 public class PhotoService {
@@ -32,6 +33,9 @@ public class PhotoService {
 				f.mkdirs();
 			}
 			photoFile.transferTo(f);
+			
+			
+			ImgCompressUtils.resize(f, f, 1, 0.5f);
 			//photo.setPhotoId(photoId);
 			photo.setPhotoPath(webdir+"/"+realName);
 			photo.setCreateDate(new Date());
