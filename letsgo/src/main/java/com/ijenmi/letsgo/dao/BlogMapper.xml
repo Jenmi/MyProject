@@ -219,6 +219,7 @@
       <if test="type != null">
          and blog.type = #{type,jdbcType=INTEGER}
       </if>
+      order by see_num desc
   </select>
   <select id="getBestNewBlogByTypeId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
     select
