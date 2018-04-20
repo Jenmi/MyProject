@@ -35,7 +35,7 @@ var editor = new UE.ui.Editor({
              'insertimage', 'emotion','scrawl', 'insertvideo','music','attachment', 'map', 'gmap', 'insertframe','highlightcode','webapp','pagebreak','template','background', '|',
              'horizontal', 'date', 'time', 'spechars','snapscreen', 'wordimage', '|',
              'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', '|',
-             'print', 'preview', 'searchreplace','help']
+             'print', 'preview', 'searchreplace','help','insertcode']
      ]
      //focus时自动清空初始化时的内容
      //autoClearinitialContent:true,
