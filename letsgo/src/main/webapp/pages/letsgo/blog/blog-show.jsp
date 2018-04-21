@@ -93,6 +93,7 @@ $(function(){
 								<br>
 							</p>
 							<div class="" style="width:auto;text-align:center;" >
+								感谢大家的支持与观看，希望能帮助到大家。如果有什么问题，大家可以加一下群，咱们一起讨论。
 								<img alt="" src="${ctx }/images/JavaQun.png" style="width:auto;">
 							</div>
 						</article>
