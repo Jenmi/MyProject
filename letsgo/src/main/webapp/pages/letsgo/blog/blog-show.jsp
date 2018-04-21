@@ -90,7 +90,11 @@ $(function(){
 							<div class="space30"></div>
 							<p>
 								${blog.content }
+								<br>
 							</p>
+							<div class="" style="width:auto;text-align:center;" >
+								<img alt="" src="${ctx }/images/JavaQun.png" style="width:auto;">
+							</div>
 						</article>
 						<div style="width: auto;margin-top:10px; text-align: center">
 							<span><a href="javascript:zan(${blog.blogId})" title=""><i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i></a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
