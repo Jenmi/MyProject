@@ -24,12 +24,19 @@
 <link rel="stylesheet" href="<c:url value='/css/icomoon/style.css'/>" type="text/css">
 <link rel="stylesheet" href="<c:url value='/font-awesome/css/font-awesome.min.css'/>" type="text/css">
 <link href='<c:url value="/style/bootstrap/bootstrap.css"/>' rel='stylesheet' type='text/css' />
+<script src="<c:url value="/utils/ueditor/third-party/SyntaxHighlighter/shCore.js"/>"></script>
+<link rel="stylesheet" href="<c:url value='/utils/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css'/>"  type="text/css">
 </head>
 <style type="text/css">
 	img{
 	    width: 100%;
 	  }
 </style>
+<script>
+$(function(){
+	SyntaxHighlighter.all();
+});
+</script>
 <body>
 <div class="outer-wrapper" id="page-top">
 	<%@ include file="/pages/letsgo/head.jsp" %>
