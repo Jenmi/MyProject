@@ -117,6 +117,7 @@ public class BlogController extends BaseController{
 		boolean status = blogService.doAdd(blog);
 		String[] urls = { "http://www.ihonming.cn/blog/"+blog.getBlogId()+"/show"}; 
 		BaiDuSEOUtils.Post(null, urls);
+		BaiDuSEOUtils.xzhPost(urls);
 		
 		//娣诲姞鍥剧墖
 		if(blogImgs!=null){
