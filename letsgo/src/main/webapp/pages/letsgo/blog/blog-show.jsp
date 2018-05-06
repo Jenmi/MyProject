@@ -38,6 +38,9 @@ $(function(){
 });
 </script>
 <body>
+<%--用于熊掌号--%>
+<script src="https://c.mipcdn.com/extensions/platform/v1/mip-cambrian/mip-cambrian.js"></script>
+<mip-cambrian site-id="1599220802345930"></mip-cambrian>
 <div class="outer-wrapper" id="page-top">
 	<%@ include file="/pages/letsgo/head.jsp" %>
 	<!-- PAGE HEADER -->
