@@ -34,7 +34,9 @@
 </style>
 <script>
 $(function(){
-	SyntaxHighlighter.all();
+	if(!(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent))) {
+		SyntaxHighlighter.all();
+	}
 });
 </script>
 <body>
@@ -96,8 +98,10 @@ $(function(){
 								<br>
 							</p>
 							<div class="" style="width:auto;text-align:center;" >
-								感谢大家的支持与观看，希望能帮助到大家。如果有什么问题，大家可以加一下群，咱们一起讨论。
+								<c:if test="${blog.type==3 }">
+									感谢大家的支持与观看，希望能帮助到大家。如果有什么问题，大家可以加一下群，咱们一起讨论。
 								<img alt="" src="${ctx }/images/JavaQun.png" style="width:auto;">
+								</c:if>
 							</div>
 						</article>
 						<div style="width: auto;margin-top:10px; text-align: center">
@@ -179,7 +183,6 @@ $(function(){
 			</div>
 		</div>
 	</div>
-
 	<!-- FOOTER -->
 	<%-- <footer>
 		<div class="container">
